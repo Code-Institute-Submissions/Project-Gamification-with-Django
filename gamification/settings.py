@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
 # Application definition
 
 INSTALLED_APPS = [
-    'user_management',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
