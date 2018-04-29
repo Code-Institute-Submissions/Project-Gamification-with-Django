@@ -34,7 +34,10 @@ ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
 # Application definition
 
 INSTALLED_APPS = [
+    'projects',
     'accounts',
+    'kickstart_project',
+    'django_forms_bootstrap',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -66,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+                'kickstart_project.contexts.support_project'
             ],
         },
     },
@@ -104,7 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.CaseInsensitiveAuth']
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -124,6 +131,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

@@ -18,10 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts.views import index
 from accounts import urls as accounts_urls
+from projects import urls as projects_urls
+from kickstart_project import urls as kickstart_project_urls
+from projects.views import all_projects
+from django.views import static
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name="index"),
-    path('accounts/', include(accounts_urls))
+    path('', all_projects, name="index"),
+    path('accounts/', include(accounts_urls)),
+    path('projects/', include(projects_urls)),
+    path('kickstart/', include(kickstart_project_urls)),
+    path('media/<path>', static.serve, {'document_root': MEDIA_ROOT}),
 
 ]
