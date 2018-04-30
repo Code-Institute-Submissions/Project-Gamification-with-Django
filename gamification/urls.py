@@ -20,6 +20,7 @@ from accounts.views import index
 from accounts import urls as accounts_urls
 from projects import urls as projects_urls
 from kickstart_project import urls as kickstart_project_urls
+from project_search import urls as project_search_urls
 from projects.views import all_projects
 from django.views import static
 from .settings import MEDIA_ROOT
@@ -30,6 +31,7 @@ urlpatterns = [
     path('accounts/', include(accounts_urls)),
     path('projects/', include(projects_urls)),
     path('kickstart/', include(kickstart_project_urls)),
+    path('find_project/', include(project_search_urls)),
     path('media/<path>', static.serve, {'document_root': MEDIA_ROOT}),
 
 ]
