@@ -1,5 +1,5 @@
 from django.db import models
-from project.models import Project
+from projects.models import Project
 
 # Create your models here.
 class Donation(models.Model):
@@ -12,8 +12,8 @@ class Donation(models.Model):
 
 
 class SupportedProject(models.Model):
-    donation = models.ForeignKey(Donation, null=False)
-    project = models.ForeignKey(Project, null=False)
+    donation = models.ForeignKey(Donation, null=False, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(blank=False)
     
     def __str__(self):

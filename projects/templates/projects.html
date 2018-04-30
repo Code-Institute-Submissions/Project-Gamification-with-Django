@@ -5,14 +5,15 @@
 
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
 
+
         <div class="panel-body">
-            <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.project_plan }}')"></div>
+            <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
 
             <h3>{{ project.name }}</h3>
             <p class="project-description">{{ project.description }}</p>
             <p>{{ project.project_manager }}</p>
             <p>{{ project.budget }}</p>
-            
+
 
             <form method="post" action="{% url 'support_project' project.id %}">
                 {% csrf_token %}

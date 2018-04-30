@@ -7,7 +7,7 @@ class SupportedProjectAdminInline(admin.TabularInline):
     model = SupportedProject
     
 class DonationAdmin(admin.ModelAdmin):
-    inlines - (SupportedProjectAdminInline, )
+    inlines = (SupportedProjectAdminInline, )
     
     
 admin.site.register( Donation, DonationAdmin)    

@@ -32,7 +32,7 @@ footer {
     background-color:  #c67605;
 }
 
-.product {
+.project {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
@@ -61,6 +61,6 @@ caption p {
     border: 1px solid #ddd;
 }
 
-.product-description {
+.project-description {
     min-height: 40px;
 }

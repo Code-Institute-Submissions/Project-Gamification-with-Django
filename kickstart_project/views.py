@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, reverse
 # Create your views here.
 
 def view_backed_projects(request):
-    return render(request, "backed_projects.html")
+    return render(request, "kickstart_project.html")
     
 def support_project(request, id):
     quantity=int(request.POST.get('quantity'))
