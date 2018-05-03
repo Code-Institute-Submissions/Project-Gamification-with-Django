@@ -1,35 +1,91 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row row-flex">
-    {% for project in projects %}
-
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-
-
-        <div class="panel-body">
-            <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
-
-            <h3>{{ project.name }}</h3>
-            <p class="project-description">{{ project.description }}</p>
-            <p>{{ project.project_manager }}</p>
-            <p>{{ project.budget }}</p>
-
-
-            <form method="post" action="{% url 'support_project' project.id %}">
-                {% csrf_token %}
-                <div class="input-group">
-                    <input name='quantity' type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                    <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">Support</button>
-                          </span>
-                </div>
-                <!-- /input-group -->
-
-            </form>
-
-
+<div class="header">
+    <h1 class="page-header">
+        Project Gamification
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li class="active">Data</li>
+    </ol>
+    {% if messages %}
+    <div class="alert alert-success">
+        <div class="messages">
+            {% for message in messages %} {{ message }} {% endfor %}
         </div>
     </div>
-    {% endfor %}
+    {% endif %}
+
 </div>
+<div class="container">
+    <div class="display">
+        <form action="{% url 'find_project' %}" method="get">
+            <input type="text" name="q">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 col-lg-1 text-center">
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="title">
+        <h1>PENDING</h1>
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="title">
+        <h1>ANALYSIS</h1>
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="title">
+        <h1>DEVELOPMENT</h1>
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="title">
+        <h1>TEST</h1>
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="title">
+        <h1>DEPLOY</h1>
+    </div>
+    <div class="col-md-1 col-lg-1 text-center">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 col-lg-1 text-center">
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+        {% for project in projects %}
+        <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
+
+        <h3>{{ project.name }}</h3>
+        <p class="project-description">{{ project.description }}</p>
+        <p>{{ project.project_manager }}</p>
+        <p>{{ project.budget }}</p>
+        <form method="post" action="{% url 'support_project' project.id %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <input name='quantity' type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Support</button>
+                          </span>
+            </div>
+            <!-- /input-group -->
+
+        </form>
+        {% endfor %}
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+
+    </div>
+    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+    </div>
+    <div class="col-md-1 col-lg-1 text-center">
+    </div>
+</div>
+
 {% endblock %}

@@ -16,6 +16,7 @@
     <link href="{% static 'js/morris/morris-0.4.3.min.css' %}" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="{% static 'css/custom-styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -80,81 +81,8 @@
         <!-- /. NAV SIDE  -->
 
         <div id="page-wrapper">
-            <div class="header">
-                <h1 class="page-header">
-                    Project Gamification
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Dashboard</a></li>
-                    <li class="active">Data</li>
-                </ol>
-                {% if messages %}
-                <div class="alert alert-success">
-                    <div class="messages">
-                        {% for message in messages %} {{ message }} {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-
-            </div>
-            <div class="container">
-                <div class="display">
-                    <form action="{% url 'find_project' %}" method="get">
-                        <input type="text" name="q">
-                        <button type="submit">Search</button>
-                    </form>
-                </div>
-                {% block content %} {% endblock %}
-            </div>
-            <div id="page-inner">
-                <div class="row"></div>
-                <div class="row">
-                    <div class="col-md-1 col-lg-1 text-center">
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="title">
-                        <h1>PENDING</h1>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="title">
-                        <h1>ANALYSIS</h1>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="title">
-                        <h1>DEVELOPMENT</h1>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="title">
-                        <h1>TEST</h1>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="title">
-                        <h1>DEPLOY</h1>
-                    </div>
-                    <div class="col-md-1 col-lg-1 text-center">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1 col-lg-1 text-center">
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
-
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
-
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
-
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
-
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
-                    </div>
-                    <div class="col-md-1 col-lg-1 text-center">
-                    </div>
-                </div>
-
-
-
-
-            </div>
+            
+            {% block content %} {% endblock %}
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
@@ -183,7 +111,7 @@
 
     <!-- Custom Js -->
     <script src="{% static 'js/custom-scripts.js' %}"></script>
-
+    <script src="{% static 'js/register.js' %}"></script>
 
 </body>
 
