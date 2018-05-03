@@ -983,7 +983,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 @media(max-width:768px) {
 
     .navbar-header {
-        background: #f44336;
+        background: #2a5776;
     }
     .navbar-side {
         z-index: 2;
@@ -1036,7 +1036,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 }
 
 strong {
-    font-size: 40px;
+    font-size: 36px;
     margin-left: 3px;
     margin-top: 5px;
 }
