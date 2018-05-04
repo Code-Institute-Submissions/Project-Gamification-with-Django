@@ -19,11 +19,18 @@ def logout(request):
     return redirect(reverse('index'))
 
 
-def login(request):
-    """A view that manages the login form"""
+
+@login_required
+def profile(request):
+    """A view that displays the profile page of a logged in user"""
+    return render(request, 'profile.html')
+
+
+def user_login(request):
+    """A view that manages the registration form"""
     if request.method == 'POST':
-        user_form = UserLoginForm(request.POST)
-        if user_form.is_valid():
+        login_form = UserLoginForm(request.POST)
+        if login_form.is_valid():
             user = auth.authenticate(request.POST['username_or_email'],
                                      password=request.POST['password'])
 
@@ -37,23 +44,7 @@ def login(request):
                 else:
                     return redirect(reverse('index'))
             else:
-                user_form.add_error(None, "Your username or password are incorrect")
-    else:
-        user_form = UserLoginForm()
-
-    args = {'user_form': user_form, 'next': request.GET.get('next', '')}
-    return render(request, 'login.html', args)
-
-
-@login_required
-def profile(request):
-    """A view that displays the profile page of a logged in user"""
-    return render(request, 'profile.html')
-
-
-def register(request):
-    """A view that manages the registration form"""
-    if request.method == 'POST':
+                login_form.add_error(None, "Your username or password are incorrect")
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
             user_form.save()
@@ -70,7 +61,8 @@ def register(request):
                 messages.error(request, "unable to log you in at this time!")
     else:
         user_form = UserRegistrationForm()
+        login_form = UserLoginForm()
 
-    args = {'user_form': user_form}
-    return render(request, 'register.html', args)
+    args = {'user_form': user_form, 'login_form': login_form, 'next': request.GET.get('next', '')}
+    return render(request, 'user_login.html', args)
 

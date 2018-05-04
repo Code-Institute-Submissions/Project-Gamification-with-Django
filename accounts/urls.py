@@ -1,11 +1,10 @@
 from django.urls import path, include
 from . import urls_reset
-from .views import index, register, profile, logout, login
+from .views import index, user_login, profile, logout
 
 urlpatterns = [
-    path('register/', register, name='register'),
+    path('user_login/', user_login, name='user_login'),
     path('profile/', profile, name='profile'),
     path('logout/', logout, name='logout'),
-    path('login/', login, name='login'),
     path('password-reset/', include(urls_reset)),
 ]
