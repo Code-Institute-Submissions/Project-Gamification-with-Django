@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Gamification</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <a class="dropdown-button btn-medium navbar-brand waves-effect waves-dark active" data-activates="dropdown_main"><i class="large material-icons">menu</i></a>
+
+            </div>
+            <div class="nav navbar-top-links navbar-left">
+                <strong style="font-weight: bold">Big Game Hunters</strong>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown_main" class="dropdown-content">
+            <li>
+                <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i></a>
+            </li>
+            <li>
+                <a href="chart.html" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i></a>
+            </li>
+            <li>
+                <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i></a>
+            </li>
+
+            <li>
+                <a href="table.html" class="waves-effect waves-dark"><i class="fa fa-table"></i></a>
+            </li>
+            <li>
+                <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i></a>
+            </li>
+            <li>
+                <a href="table.html" class="waves-effect waves-dark"><i class="fa fa-table"></i></a>
+            </li>
+            <li>
+                <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i></a>
+            </li>
+        </ul>
+
+        <!--/. NAV TOP  -->
+
+        <!-- /. NAV SIDE  -->
+
+        <div id="page-wrapper">
+            <div class="header">
+                <h1 class="page-header">
+                    User Profile
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li class="active">Profile</li>
+                </ol>
+
+            </div>
+            <div id="page-inner">
+                <div class="col-md-7 col-lg-7 text-center">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 text-center" id="title">
+                            <img src="/assets/img/keldorn.png">
+                        </div>
+                        <div class="col-md-5 col-lg-5 text-left">
+                            <div class="row" style="display:inline">
+                                <div class="col-md-3 col-lg-3 text-left">
+                                    <h4 style="display:inline">Username:</h4>
+                                </div>
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <h3 style="display:inline">Keldorn Firecam</h3>
+                                </div>
+                            </div>
+                            <div class="row"></div>
+                            <div class="row" style="display:inline">
+                                <div class="col-md-3 col-lg-3 text-left">
+                                    <h4 style="display:inline">Position: </h4>
+                                </div>
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <h3 style="display:inline">Tank</h3>
+                                </div>
+                            </div>
+                            <div class="row"></div>
+                            <div class="row" style="display:inline">
+                                <div class="col-md-3 col-lg-3 text-left">
+                                    <h4 style="display:inline">Email: </h4>
+                                </div>
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <h3 style="display:inline">Paladin@gmail.com</h3>
+                                </div>
+                            </div>
+                            <div class="row"></div>
+                            <div class="row" style="display:inline">
+                                <div class="col-md-3 col-lg-3 text-left">
+                                    <h4 style="display:inline">Profession: </h4>
+                                </div>
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <h3 style="display:inline">Paladin</h3>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3 col-lg-3 text-center" id="title" style="background-color:white"></div>
+
+
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 text-center" id="title">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-3 text-left">
+                                    <img src="/assets/img/quest.jpg" height="120" width="160">
+                                </div>
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam unde harum autem quia quis eum assumenda cum eius in adipisci?</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-lg-3 text-left">
+                                    <img src="/assets/img/quest.jpg" height="120" width="160">
+                                </div>
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quis quas, vitae reiciendis, ab commodi.</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-lg-3 text-left">
+                                    <img src="/assets/img/quest.jpg" height="120" width="160">
+                                </div>
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque necessitatibus obcaecati officiis vel est non ab velit.</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-lg-3 text-left">
+                                    <img src="/assets/img/quest.jpg" height="120" width="160">
+                                </div>
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque necessitatibus obcaecati officiis vel est non ab velit.</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 text-center">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 text-center" id="title">
+                            <div class="col-md-4 col-lg-4 text-center">
+                                <div class="row">
+                                    <h1>143</h1>
+                                </div>
+                                <div class="row">
+                                    <h3>NeuroCoins</h3>
+                                </div>
+                                <div class="row" style="background-color:white"></div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 text-center">
+                                <div class="row">
+                                    <h1>3</h1>
+                                </div>
+                                <div class="row">
+                                    <h3>Projects</h3>
+                                </div>
+                                <div class="row" style="background-color:white"></div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 text-center">
+                                <div class="row">
+                                    <h1>5</h1>
+                                </div>
+                                <div class="row">
+                                    <h3>Issues</h3>
+                                </div>
+                                <div class="row" style="background-color:white"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 text-center" id="title">
+                            <div class="col-md-12 col-lg-12 text-center">
+                                <div class="row" style="background-color:white"></div>
+                                <div class="row">
+                                    <h2>Motto:</h2>
+                                </div>
+                                <div class="row">
+                                    <h3 style="font-style: italic">"I must fall back and regroup!"</h3>
+                                </div>
+                                <div class="row" style="background-color:white"></div>
+                                <div class="row" style="background-color:white"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 text-center" id="title">
+                            <h3 style="color:blue">Issue1</h3>
+                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                            <h1>--------</h1>
+                            <h3 style="color:green">Issue1</h3>
+                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                            <h1>--------</h1>
+                            <h3 style="color:red">Issue1</h3>
+                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                            <h1>--------</h1>
+                            <h3 style="color:green">Issue1</h3>
+                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                            <h1>--------</h1>
+                            <h3 style="color:green">Issue1</h3>
+                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script src="assets/materialize/js/materialize.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+
+
+    <script src="assets/js/easypiechart.js"></script>
+    <script src="assets/js/easypiechart-data.js"></script>
+
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>
+
+
+</body>
+
+</html>
