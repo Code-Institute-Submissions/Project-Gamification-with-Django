@@ -11,6 +11,8 @@ class UserLoginForm(forms.Form):
 
 
 class UserRegistrationForm(UserCreationForm):
+    position = forms.CharField(max_length=30)
+    personality = forms.CharField(max_length=30)
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(
         label='Password Confirmation',
@@ -19,7 +21,7 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'position', 'personality', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

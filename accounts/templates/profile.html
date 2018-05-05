@@ -1,5 +1,171 @@
-{% extends "base.html" %}
-{% block content %}
-    <h2>Success!</h2>
-    <p>You are logged in as {{ user.email }} </p>
+{% extends "base.html" %} {% load staticfiles %} {% load bootstrap_tags %} {% block content %}
+<div class="header">
+    <h1 class="page-header">
+        User Profile
+    </h1>
+    <ol class="breadcrumb text-left">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li class="active">Profile</li>
+    </ol>
+
+</div>
+<div id="page-inner">
+    <div class="col-md-7 col-lg-7 text-center">
+        <div class="row">
+            <div class="col-md-3 col-lg-3 text-center" id="title">
+                <img src="{% static 'img/keldorn.png' %}">
+            </div>
+            <div class="col-md-5 col-lg-5 text-left">
+                <div class="row" style="display:inline">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <h4 style="display:inline">Username:</h4>
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">{{ user.username }}</h3>
+                    </div>
+                </div>
+                <div class="row"></div>
+                <div class="row" style="display:inline">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <h4 style="display:inline">Email: </h4>
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">{{ user.email }}</h3>
+                    </div>
+                </div>
+                <div class="row"></div>
+                <div class="row" style="display:inline">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <h4 style="display:inline">Position: </h4>
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">{{ user.position }}</h3>
+                    </div>
+                </div>
+                <div class="row"></div>
+                <div class="row" style="display:inline">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <h4 style="display:inline">Personality: </h4>
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">{{ user.personality }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 text-center" id="title" style="background-color:white"></div>
+        </div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 text-center" id="title">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam unde harum autem quia quis eum assumenda cum eius in adipisci?</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quis quas, vitae reiciendis, ab commodi.</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque necessitatibus obcaecati officiis vel est non ab velit.</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque necessitatibus obcaecati officiis vel est non ab velit.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4 text-center">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 text-center" id="title">
+                <div class="col-md-4 col-lg-4 text-center">
+                    <div class="row">
+                        <h1>143</h1>
+                    </div>
+                    <div class="row">
+                        <h3>NeuroCoins</h3>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                </div>
+                <div class="col-md-4 col-lg-4 text-center">
+                    <div class="row">
+                        <h1>3</h1>
+                    </div>
+                    <div class="row">
+                        <h3>Projects</h3>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                </div>
+                <div class="col-md-4 col-lg-4 text-center">
+                    <div class="row">
+                        <h1>5</h1>
+                    </div>
+                    <div class="row">
+                        <h3>Issues</h3>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color:white"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-lg-12 text-center" id="title">
+                <div class="col-md-12 col-lg-12 text-center">
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row">
+                        <h2>Motto:</h2>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-style: italic">"I must fall back and regroup!"</h3>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row" style="background-color:white"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 text-center" id="title">
+                <h3 style="color:blue">Issue1</h3>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                <h1>--------</h1>
+                <h3 style="color:green">Issue1</h3>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                <h1>--------</h1>
+                <h3 style="color:red">Issue1</h3>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                <h1>--------</h1>
+                <h3 style="color:green">Issue1</h3>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                <h1>--------</h1>
+            </div>
+
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
 {% endblock %}

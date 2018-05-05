@@ -683,6 +683,7 @@ ul.nav.nav-second-level.collapse.in {
 .top-navbar {
     background: #2a5776;
     border-bottom: none;
+    padding-right: 16px;
 }
 
 .top-navbar .nav>li>a>i {
