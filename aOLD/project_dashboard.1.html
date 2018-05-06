@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Gamification</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <a class="dropdown-button btn-medium navbar-brand waves-effect waves-dark active" data-activates="dropdown_main"><i class="large material-icons">menu</i></a>
+
+            </div>
+            <div class="nav navbar-top-links navbar-left">
+                <strong style="font-weight: bold">Big Game Hunters</strong>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown_main" class="dropdown-content">
+            <li>
+                <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i></a>
+            </li>
+            <li>
+                <a href="chart.html" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i></a>
+            </li>
+            <li>
+                <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i></a>
+            </li>
+
+            <li>
+                <a href="table.html" class="waves-effect waves-dark"><i class="fa fa-table"></i></a>
+            </li>
+            <li>
+                <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i></a>
+            </li>
+            <li>
+                <a href="table.html" class="waves-effect waves-dark"><i class="fa fa-table"></i></a>
+            </li>
+            <li>
+                <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i></a>
+            </li>
+        </ul>
+
+        <!--/. NAV TOP  -->
+
+        <!-- /. NAV SIDE  -->
+
+        <div id="page-wrapper">
+            <div class="header">
+                <h1 class="page-header">
+                    Project Gamification
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li class="active">Data</li>
+                </ol>
+
+            </div>
+            <div id="page-inner">
+                <div class="row"></div>
+                <div class="row">
+
+                    <div class="col-md-2 col-lg-2 text-center" id="title">
+                        <h2>Proposed</h2>
+                        <h1>3</h1>
+                    </div>
+                    <div class="col-md-2 col-lg-2 text-center" id="title">
+                        <h2>Analysis</h2>
+                        <h1>2</h1>
+                    </div>
+                    <div class="col-md-2 col-lg-2 text-center" id="title">
+                        <h2>Development</h2>
+                        <h1>2</h1>
+                    </div>
+                    <div class="col-md-2 col-lg-2 text-center" id="title">
+                        <h2>Test</h2>
+                        <h1>1</h1>
+                    </div>
+                    <div class="col-md-2 col-lg-2 text-center" id="title">
+                        <h2>Deployment</h2>
+                        <h1>3</h1>
+                    </div>
+                    <div class="col-md-1 col-lg-1 text-left">
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+                        <div class="card" id="project-card">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/keldorn.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="project-card2">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/ruda.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="project-card2">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/keldorn.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+                        <div class="card" id="project-card3">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/light.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="project-card">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/keldorn.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+                        <div class="card" id="project-card3">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/ruda.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="project-card2">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/ruda.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+                        <div class="card" id="project-card">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/light.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+                        <div class="card" id="project-card2">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/keldorn.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="project-card3">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/keldorn.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="project-card2">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 text-left">
+                                    <i class="material-icons large" style="color:green">get_app</i>
+                                </div>
+
+                                <div class="col-md-7 col-lg-7 text-left">
+                                    <h3>New Quest</h3>
+                                </div>
+
+                                <div class="col-md-3 col-lg-3 text-right">
+                                    <img src="/assets/img/light.png" height="60" width="50">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 text-left">
+                                    <h3> Created at:</h3>
+                                </div>
+                                <div class="col-md-7 col-lg-7 text-right">
+                                    <h3> 2014-02-13</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 text-left">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit.</p>
+                                </div>
+                                <div class="col-md-1 col-lg-1 text-right">
+                                </div>
+                                <div class="col-md-2 col-lg-2 text-right">
+                                    <h2 style="display:inline; color: red">!</h2><h2 style="display:inline"> 6</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-lg-1 text-center">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script src="assets/materialize/js/materialize.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+
+
+    <script src="assets/js/easypiechart.js"></script>
+    <script src="assets/js/easypiechart-data.js"></script>
+
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>
+
+
+</body>
+
+</html>

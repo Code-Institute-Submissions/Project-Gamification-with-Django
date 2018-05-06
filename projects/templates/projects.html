@@ -27,65 +27,100 @@
     </div>
 
 </div>
-<div class="row"></div>
-<div class="row">
-    <div class="col-md-1 col-lg-1 text-center">
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="title">
-        <h1>PENDING</h1>
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="title">
-        <h1>ANALYSIS</h1>
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="title">
-        <h1>DEVELOPMENT</h1>
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="title">
-        <h1>TEST</h1>
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="title">
-        <h1>DEPLOY</h1>
-    </div>
-    <div class="col-md-1 col-lg-1 text-center">
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-1 col-lg-1 text-center">
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="bucket">
-        {% for project in projects %}
-        <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
 
-        <h3>{{ project.name }}</h3>
-        <p class="project-description">{{ project.description }}</p>
-        <p>{{ project.project_manager }}</p>
-        <p>{{ project.budget }}</p>
-        <form method="post" action="{% url 'support_project' project.id %}">
-            {% csrf_token %}
-            <div class="input-group">
-                <input name='quantity' type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                <span class="input-group-btn">
+<div id="page-inner">
+    <div class="row"></div>
+    <div class="row">
+
+        <div class="col-md-2 col-lg-2 text-center" id="title">
+            <h2>Proposed</h2>
+            <h1>3</h1>
+        </div>
+        <div class="col-md-2 col-lg-2 text-center" id="title">
+            <h2>Analysis</h2>
+            <h1>2</h1>
+        </div>
+        <div class="col-md-2 col-lg-2 text-center" id="title">
+            <h2>Development</h2>
+            <h1>2</h1>
+        </div>
+        <div class="col-md-2 col-lg-2 text-center" id="title">
+            <h2>Test</h2>
+            <h1>1</h1>
+        </div>
+        <div class="col-md-2 col-lg-2 text-center" id="title">
+            <h2>Deployment</h2>
+            <h1>3</h1>
+        </div>
+        <div class="col-md-1 col-lg-1 text-left">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-lg-2 text-center" id="bucket">
+            {% for project in projects %}
+            <div class="card" id="project-card2">
+                <div class="row">
+                    <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
+                    <div class="col-md-2 col-lg-2 text-left">
+                        <i class="material-icons large" style="color:green">get_app</i>
+                    </div>
+
+                    <div class="col-md-7 col-lg-7 text-left">
+                        <h3>{{ project.name }}</h3>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-lg-5 text-left">
+                        <h3> Created by:</h3>
+                    </div>
+                    <div class="col-md-7 col-lg-7 text-right">
+                        <h3>{{ project.project_manager }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <p>{{ project.description }}</p>
+                    </div>
+                    <div class="col-md-1 col-lg-1 text-right">
+                    </div>
+                    <div class="col-md-2 col-lg-2 text-right">
+                        <h2 style="display:inline; color: green">$</h2>
+                        <h2 style="display:inline">{{ project.budget }}</h2>
+
+                    </div>
+                </div>
+                <form method="post" action="{% url 'support_project' project.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input name='quantity' type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                        <span class="input-group-btn">
                             <button class="btn btn-success" type="submit">Support</button>
                           </span>
+                    </div>
+                    <!-- /input-group -->
+                </form>
             </div>
-            <!-- /input-group -->
+            {% endfor %}
+        </div>
+        
+        <div class="col-md-2 col-lg-2 text-center" id="bucket">
 
-        </form>
-        {% endfor %}
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+        </div>
+        <div class="col-md-2 col-lg-2 text-center" id="bucket">
 
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+        </div>
+        <div class="col-md-2 col-lg-2 text-center" id="bucket">
 
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="bucket">
+        </div>
+        <div class="col-md-2 col-lg-2 text-center" id="bucket">
 
-    </div>
-    <div class="col-md-2 col-lg-2 text-center" id="bucket">
-    </div>
-    <div class="col-md-1 col-lg-1 text-center">
+        </div>
+        <div class="col-md-1 col-lg-1 text-center">
+        </div>
     </div>
 </div>
+<!-- /. PAGE INNER  -->
 
 {% endblock %}
