@@ -21,7 +21,7 @@ body {
     padding: 15px 15px;
     min-height: 600px;
     background: #ececec;
-    
+    overflow:auto;
     
 }
 
@@ -30,8 +30,10 @@ body {
     margin: 10px 20px 10px 0px;
     padding: 15px 30px;
     min-height: 1200px;
-    background-image: url('../../assets/img/nice.png');
+    
+    background-image: url('../../static/img/nice.png');
     background-size: cover;
+    
     
 }
 
@@ -1049,7 +1051,6 @@ strong {
 
 #bucket {
     height: 800px;
-    background-color: #f5f5f5;
     margin-right: 20px;
 }
 

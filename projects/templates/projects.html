@@ -21,7 +21,7 @@
 <div class="container">
     <div class="display">
         <form action="{% url 'find_project' %}" method="get">
-            <input type="text" name="q">
+            <input type="text" name="query">
             <button type="submit">Search</button>
         </form>
     </div>
@@ -62,7 +62,8 @@
                 <div class="row">
                     <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
                     <div class="col-md-2 col-lg-2 text-left">
-                        <i class="material-icons large" style="color:green">get_app</i>
+                        <button onclick="window.location='{% url 'project_details' pk=project.id %}'" class="btn btn-success" type="submit"><i class="material-icons large" style="color:green">get_app</i></button>
+                        
                     </div>
 
                     <div class="col-md-7 col-lg-7 text-left">
@@ -80,6 +81,22 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-5 col-lg-5 text-left">
+                        <h3> Status:</h3>
+                    </div>
+                    <div class="col-md-7 col-lg-7 text-right">
+                        <h3>{{ project.status }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-lg-5 text-left">
+                        <h2 style="display:inline; color: red">Issues</h2>
+                    </div>    
+                    <div class="col-md-7 col-lg-7 text-right">
+                        <h2 style="display:inline">{{ project.issues }}</h2>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-9 col-lg-9 text-left">
                         <p>{{ project.description }}</p>
                     </div>
@@ -91,6 +108,7 @@
 
                     </div>
                 </div>
+                
                 <form method="post" action="{% url 'support_project' project.id %}">
                     {% csrf_token %}
                     <div class="input-group">

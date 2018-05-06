@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import reverse
+from django.core.url.resolvers import reverse
 
 
 # Create your models here.
@@ -13,7 +13,7 @@ class Project(models.Model):
     image = models.ImageField(upload_to='images')
     
     def get_absolute_url(self):
-        return reverse('project_details', kwargs={'pk': self.pk})
+        return reverse('project')
     
     def __str__(self):
         return self.name

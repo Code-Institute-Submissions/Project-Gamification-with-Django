@@ -1,241 +1,144 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+{% extends "base.html" %} {% load staticfiles %} {% load bootstrap_tags %} {% block content %}
+<div class="header">
+    <h1 class="page-header">
+        {{ project.name }}
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li class="active">Projects</li>
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Gamification</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection" />
-    <!-- Bootstrap Styles-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
-    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <!-- Custom Styles-->
-    <link href="assets/css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-</head>
+    </ol>
 
-<body>
-    <div id="wrapper">
-        <nav class="navbar navbar-default top-navbar" role="navigation">
-            <div class="navbar-header">
-                <a class="dropdown-button btn-medium navbar-brand waves-effect waves-dark active" data-activates="dropdown_main"><i class="large material-icons">menu</i></a>
-
-            </div>
-            <div class="nav navbar-top-links navbar-left">
-                <strong style="font-weight: bold">Big Game Hunters</strong>
-            </div>
-            <ul class="nav navbar-top-links navbar-right">
-                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
-        </nav>
-        <!-- Dropdown Structure -->
-        <ul id="dropdown_main" class="dropdown-content">
-            <li>
-                <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i></a>
-            </li>
-            <li>
-                <a href="chart.html" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i></a>
-            </li>
-            <li>
-                <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i></a>
-            </li>
-
-            <li>
-                <a href="table.html" class="waves-effect waves-dark"><i class="fa fa-table"></i></a>
-            </li>
-            <li>
-                <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i></a>
-            </li>
-            <li>
-                <a href="table.html" class="waves-effect waves-dark"><i class="fa fa-table"></i></a>
-            </li>
-            <li>
-                <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i></a>
-            </li>
-        </ul>
-
-        <!--/. NAV TOP  -->
-
-        <!-- /. NAV SIDE  -->
-
-        <div id="page-wrapper">
-            <div class="header">
-                <h1 class="page-header">
-                    Magnificent Project
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Dashboard</a></li>
-                    <li class="active">Projects</li>
-
-                </ol>
-
-            </div>
-            <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-5 col-lg-5 text-left">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12 text-center">
-                                <div class="row" id="row-table">
-                                    <div class="col-md-5 col-lg-5 text-left" id="details-left">
-                                        <h3>Project Manager</h3>
-                                    </div>
-                                    <div class="col-md-7 col-lg-7 text-left" id="details-right">
-                                        <h3>Michalangelo</h3>
-                                    </div>
-                                </div>
-                                <div class="row" id="row-table">
-                                    <div class="col-md-5 col-lg-5 text-left" id="details-left">
-                                        <h3>Target Release</h3>
-                                    </div>
-                                    <div class="col-md-7 col-lg-7 text-left" id="details-right">
-                                        <h3>2014-02-13</h3>
-                                    </div>
-                                </div>
-                                <div class="row" id="row-table">
-                                    <div class="col-md-5 col-lg-5 text-left" id="details-left">
-                                        <h3>Budget</h3>
-                                    </div>
-                                    <div class="col-md-7 col-lg-7 text-left" id="details-right">
-                                        <h3>700</h3>
-                                    </div>
-                                </div>
-                                <div class="row" id="row-table">
-                                    <div class="col-md-5 col-lg-5 text-left" id="details-left">
-                                        <h3>Project Status</h3>
-                                    </div>
-                                    <div class="col-md-7 col-lg-7 text-left" id="details-right">
-                                        <h3>Test</h3>
-                                    </div>
-                                </div>
-                                <div class="row" id="row-table">
-                                    <div class="col-md-5 col-lg-5 text-left" id="details-left">
-                                        <h3>Developer</h3>
-                                    </div>
-                                    <div class="col-md-7 col-lg-7 text-left" id="details-right">
-                                        <h3>Radek</h3>
-                                    </div>
-                                </div>
-                                <div class="row" id="row-table">
-                                    <div class="col-md-5 col-lg-5 text-left" id="details-left">
-                                        <h3>Developer</h3>
-                                    </div>
-                                    <div class="col-md-7 col-lg-7 text-left" id="details-right">
-                                        <h3>Stachu</h3>
-                                    </div>
-                                </div>
-                            </div>
+</div>
+<div id="page-inner">
+    <div class="row">
+        <div class="col-md-5 col-lg-5 text-left">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 text-center">
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>Project Manager</h3>
+                        </div>
+                        <div class="col-md-7 col-lg-7 text-left" id="details-right">
+                            <h3>{{ project.project_manager }}</h3>
                         </div>
                     </div>
-                    <div class="col-md-1 col-lg-1 text-left"></div>
-                    <div class="col-md-6 col-lg-6 text-left">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12 text-center" id="title">
-                                <h3 style="color:blue">Issue1</h3>
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                                <h1>--------</h1>
-                                <h3 style="color:green">Issue1</h3>
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                                <h1>--------</h1>
-                                <h3 style="color:red">Issue1</h3>
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                                <h1>--------</h1>
-                                <h3 style="color:green">Issue1</h3>
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                                <h1>--------</h1>
-
-                            </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>Issues</h3>
+                        </div>
+                        <div class="col-md-7 col-lg-7 text-left" id="details-right">
+                            <h3>{{ project.issues }}</h3>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-5 col-lg-5 text-left">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12 text-center">
-                                <div class="row">
-                                    <div class="col-md-3 col-lg-3 text-left">
-                                        <img src="/assets/img/light.png" height="120" width="100">
-                                    </div>
-                                    <div class="col-md-9 col-lg-9 text-left">
-                                        <h3 style="display:inline">Lorem ipsum do quia quis eum assumenda cum eius in adipisci?</h3>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-lg-3 text-left">
-                                        <img src="/assets/img/keldorn.png" height="120" width="100">
-                                    </div>
-                                    <div class="col-md-9 col-lg-9 text-left">
-                                        <h3 style="display:inline">Lorem Voluptates quis quas, vitae reiciendis, ab commodi.</h3>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-lg-3 text-left">
-                                        <img src="/assets/img/ruda.png" height="120" width="100">
-                                    </div>
-                                    <div class="col-md-9 col-lg-9 text-left">
-                                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. .</h3>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-lg-3 text-left">
-                                        <img src="/assets/img/light.png" height="120" width="100">
-                                    </div>
-                                    <div class="col-md-9 col-lg-9 text-left">
-                                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h3>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>Budget</h3>
+                        </div>
+                        <div class="col-md-7 col-lg-7 text-left" id="details-right">
+                            <h3>{{ project.budget }}</h3>
                         </div>
                     </div>
-                    <div class="col-md-1 col-lg-1 text-left"></div>
-                    <div class="col-md-6 col-lg-6 text-left">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12 text-center" id="title">
-                                <img src="/assets/img/plan.png" height="420" width="450">
-                            </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>Project Status</h3>
+                        </div>
+                        <div class="col-md-7 col-lg-7 text-left" id="details-right">
+                            <h3>{{ project.status }}</h3>
+                        </div>
+                    </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>Developer</h3>
+                        </div>
+                        <div class="col-md-7 col-lg-7 text-left" id="details-right">
+                            <h3>Radek</h3>
+                        </div>
+                    </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>Developer</h3>
+                        </div>
+                        <div class="col-md-7 col-lg-7 text-left" id="details-right">
+                            <h3>Stachu</h3>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /. PAGE INNER  -->
         </div>
-        <!-- /. PAGE WRAPPER  -->
+        <div class="col-md-1 col-lg-1 text-left"></div>
+        <div class="col-md-6 col-lg-6 text-left">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 text-center" id="title">
+                    <h3 style="color:blue">Issue1</h3>
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                    <h1>--------</h1>
+                    <h3 style="color:green">Issue1</h3>
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                    <h1>--------</h1>
+                    <h3 style="color:red">Issue1</h3>
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                    <h1>--------</h1>
+                    <h3 style="color:green">Issue1</h3>
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                    <h1>--------</h1>
+
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <div class="row">
+        <div class="col-md-5 col-lg-5 text-left">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 text-center">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 text-left">
+                            <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
+                        </div>
+                        <div class="col-md-9 col-lg-9 text-left">
+                            <h3 style="display:inline">{{ project.description }}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 text-left">
+                            <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
+                        </div>
+                        <div class="col-md-9 col-lg-9 text-left">
+                            <h3 style="display:inline">Lorem Voluptates quis quas, vitae reiciendis, ab commodi.</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 text-left">
+                            <img src="/assets/img/ruda.png" height="120" width="100">
+                        </div>
+                        <div class="col-md-9 col-lg-9 text-left">
+                            <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. .</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 text-left">
+                            <img src="/assets/img/light.png" height="120" width="100">
+                        </div>
+                        <div class="col-md-9 col-lg-9 text-left">
+                            <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 col-lg-1 text-left"></div>
+        <div class="col-md-6 col-lg-6 text-left">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 text-center" id="title">
+                    <img src="/assets/img/plan.png" height="420" width="450">
+                </div>
+            </div>
 
-    <!-- Bootstrap Js -->
-    <script src="assets/js/bootstrap.min.js"></script>
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
 
-    <script src="assets/materialize/js/materialize.min.js"></script>
-
-    <!-- Metis Menu Js -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
-    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="assets/js/morris/morris.js"></script>
-
-
-    <script src="assets/js/easypiechart.js"></script>
-    <script src="assets/js/easypiechart-data.js"></script>
-
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
-
-    <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
-
-
-</body>
-
-</html>
+{% endblock %}
