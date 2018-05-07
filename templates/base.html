@@ -88,6 +88,8 @@
     </div>
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- jQuery Js -->
     <script src="{% static 'js/jquery-1.10.2.js' %}"></script>
 
@@ -111,6 +113,8 @@
     <!-- Custom Js -->
     <script src="{% static 'js/custom-scripts.js' %}"></script>
     <script src="{% static 'js/register.js' %}"></script>
+    
+    <script> var csrf_token = '{{ csrf_token }}' </script>
 
 </body>
 

@@ -59,6 +59,7 @@
         <div class="col-md-2 col-lg-2 text-center" id="bucket">
             {% for project in projects %}
             <div class="card" id="project-card2">
+                
                 <div class="row">
                     <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
                     <div class="col-md-2 col-lg-2 text-left">
@@ -107,6 +108,7 @@
                         <h2 style="display:inline">{{ project.budget }}</h2>
 
                     </div>
+                    
                 </div>
                 
                 <form method="post" action="{% url 'support_project' project.id %}">
@@ -119,6 +121,7 @@
                     </div>
                     <!-- /input-group -->
                 </form>
+                <button data-id="{{ project.id }}" onclick="deleteProject(this)" class="btn btn-danger">Delete</button>
             </div>
             {% endfor %}
         </div>

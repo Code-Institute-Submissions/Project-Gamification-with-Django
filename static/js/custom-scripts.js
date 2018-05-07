@@ -1,8 +1,4 @@
-/*------------------------------------------------------
-    Author : www.webthemez.com
-    License: Commons Attribution 3.0
-    http://creativecommons.org/licenses/by/3.0/
----------------------------------------------------------  */
+
 
 (function ($) {
     "use strict";
@@ -227,3 +223,31 @@
 	$(".dropdown-button").dropdown();
 	
 }(jQuery));
+
+
+function deleteProject(project){
+  var $project = $(project)
+  $project.parent().remove()
+  var id = $project.data('id')
+
+  $.ajax({
+    url: 'projects/delete_project/' + id,
+    method: 'DELETE',
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRFToken', csrf_token)
+    }
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project
 from .forms import ProposeProjectForm
 from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 
 def all_projects(request):
@@ -37,3 +38,14 @@ def propose_project(request):
         form = ProposeProjectForm()
         
     return render (request, 'propose_project.html', {'form': form })    
+    
+    
+def delete_project(request, pk):
+    
+    if request.method == 'DELETE':
+        project = get_object_or_404(Project, pk=pk)
+        project.delete()
+        
+    return HttpResponseRedirect('/')
+    
+    
