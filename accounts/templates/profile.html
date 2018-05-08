@@ -35,12 +35,14 @@
                     </div>
                 </div>
                 <div class="row"></div>
+                {% for field in my_profile %}
                 <div class="row" style="display:inline">
                     <div class="col-md-3 col-lg-3 text-left">
                         <h4 style="display:inline">Position: </h4>
                     </div>
+                    
                     <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ user.position }}</h3>
+                        <h3 style="display:inline">{{ field.position }}</h3>
                     </div>
                 </div>
                 <div class="row"></div>
@@ -49,9 +51,10 @@
                         <h4 style="display:inline">Personality: </h4>
                     </div>
                     <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ user.personality }}</h3>
+                        <h3 style="display:inline">{{ field.personality }}</h3>
                     </div>
                 </div>
+                {% endfor %}
             </div>
             <div class="col-md-3 col-lg-3 text-center" id="title" style="background-color:white"></div>
         </div>
@@ -138,6 +141,7 @@
                     </div>
                     <div class="row">
                         <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" >New Project</button></a>
+                        <a href="{% url 'my_details' %}"><button type="submit" class="btn_login" >Add Details</button></a>
                     </div>
                     <div class="row" style="background-color:white"></div>
                     <div class="row" style="background-color:white"></div>
@@ -149,18 +153,11 @@
         <div class="row" style="background-color:white"></div>
         <div class="row">
             <div class="col-md-12 col-lg-12 text-center" id="title">
-                <h3 style="color:blue">Issue1</h3>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                <h1>--------</h1>
-                <h3 style="color:green">Issue1</h3>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                <h1>--------</h1>
-                <h3 style="color:red">Issue1</h3>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                <h1>--------</h1>
-                <h3 style="color:green">Issue1</h3>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                <h1>--------</h1>
+                {% for project in projects %}
+                <h3 style="color:blue">{{ project.name }}</h3>
+                <h4>{{ project.description }}</h4>
+                
+                {% endfor%}
             </div>
 
         </div>

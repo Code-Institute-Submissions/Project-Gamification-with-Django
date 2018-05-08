@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import messages, auth
 from django.urls import reverse
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, MyDetailsForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
+from .models import MyProfile
+from projects.models import Project
 
 
 # Create your views here.
@@ -23,7 +25,11 @@ def logout(request):
 @login_required
 def profile(request):
     """A view that displays the profile page of a logged in user"""
-    return render(request, 'profile.html')
+    user = request.user
+    projects = Project.objects.filter(proposed_by=request.user)
+    my_profile = MyProfile.objects.filter(owner=request.user)
+    return render(request, 'profile.html', {'user': user, 'projects': projects, 'my_profile': my_profile })
+
 
 
 def user_login(request):
@@ -66,3 +72,34 @@ def user_login(request):
     args = {'user_form': user_form, 'login_form': login_form, 'next': request.GET.get('next', '')}
     return render(request, 'user_login.html', args)
 
+@login_required
+def my_details(request):
+    
+    if request.method == 'POST':
+       
+       form = MyDetailsForm(request.POST)
+       
+       if form.is_valid():
+           position = form.cleaned_data['position']
+           personality = form.cleaned_data['personality']
+           owner = request.user
+           
+           MyProfile.objects.create(
+               position = position,
+               personality = personality,
+               owner = owner
+               ).save()
+
+           return redirect(reverse('profile'))
+       
+    else:
+       form = MyDetailsForm()
+        
+    return render (request, 'my_details.html', {'form': form })    
+    
+    
+    
+    
+    
+    
+    

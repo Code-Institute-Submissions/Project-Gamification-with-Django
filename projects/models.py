@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -8,6 +9,7 @@ class Project(models.Model):
     description = models.TextField()
     status = models.CharField(max_length=254, default='proposed')
     project_manager = models.CharField(max_length=254, default='')
+    proposed_by = models.ForeignKey(User, on_delete=models.CASCADE)
     budget = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)
     issues = models.DecimalField(max_digits=2, decimal_places = 0, default = 0)
     image = models.ImageField(upload_to='images')
