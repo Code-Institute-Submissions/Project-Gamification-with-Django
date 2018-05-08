@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 class MyProfile(models.Model):
     position = models.CharField(max_length=254, default='rookie')
     personality = models.CharField(max_length=254, default='programmer')
+    image = models.ImageField(upload_to='portraits')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 

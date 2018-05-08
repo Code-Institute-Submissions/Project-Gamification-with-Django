@@ -78,16 +78,18 @@ def my_details(request):
     
     if request.method == 'POST':
        
-       form = MyDetailsForm(request.POST)
+       form = MyDetailsForm(request.POST, request.FILES)
        
        if form.is_valid():
            position = form.cleaned_data['position']
            personality = form.cleaned_data['personality']
+           image = form.cleaned_data['image']
            owner = request.user
            
            MyProfile.objects.create(
                position = position,
                personality = personality,
+               image = image,
                owner = owner
                ).save()
 

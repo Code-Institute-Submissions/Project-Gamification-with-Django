@@ -49,7 +49,7 @@ class MyDetailsForm(forms.ModelForm):
     
     class Meta:
         model = MyProfile
-        fields = ['position','personality']
+        fields = ['position','personality','image']
         
         
         
