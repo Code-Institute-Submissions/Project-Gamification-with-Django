@@ -20,4 +20,14 @@ class Project(models.Model):
     def __str__(self):
         return self.name
         
+class Issue(models.Model):
+    name = models.CharField(max_length=254, default='')
+    description = models.TextField()
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    proposed_by = models.ForeignKey(User, on_delete=models.CASCADE)
     
+    def get_absolute_url(self):
+        return reverse('project_details', kwargs={'pk': self.pk})
+        
+    def __str__(self):
+        return self.name

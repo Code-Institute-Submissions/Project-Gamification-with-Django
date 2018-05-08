@@ -63,38 +63,17 @@
         <div class="row" style="background-color:white"></div>
         <div class="row">
             <div class="col-md-12 col-lg-12 text-center" id="title">
+                {% for project in projects %}
                 <div class="row">
                     <div class="col-md-3 col-lg-3 text-left">
                         <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
                     </div>
                     <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam unde harum autem quia quis eum assumenda cum eius in adipisci?</h3>
+                        <h3 style="display:inline">{{ project.name }}</h3>
+                        <h4>{{ project.description }}</h4>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3 col-lg-3 text-left">
-                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
-                    </div>
-                    <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quis quas, vitae reiciendis, ab commodi.</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-lg-3 text-left">
-                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
-                    </div>
-                    <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque necessitatibus obcaecati officiis vel est non ab velit.</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-lg-3 text-left">
-                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
-                    </div>
-                    <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque necessitatibus obcaecati officiis vel est non ab velit.</h3>
-                    </div>
-                </div>
+                {% endfor%}
             </div>
         </div>
     </div>
@@ -153,9 +132,9 @@
         <div class="row" style="background-color:white"></div>
         <div class="row">
             <div class="col-md-12 col-lg-12 text-center" id="title">
-                {% for project in projects %}
-                <h3 style="color:blue">{{ project.name }}</h3>
-                <h4>{{ project.description }}</h4>
+                {% for issue in issues %}
+                <h3 style="color:blue">{{ issue.name }}</h3>
+                <h4>{{ issue.description }}</h4>
                 
                 {% endfor%}
             </div>

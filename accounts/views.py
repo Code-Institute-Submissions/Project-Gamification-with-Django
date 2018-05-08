@@ -5,7 +5,7 @@ from .forms import UserLoginForm, UserRegistrationForm, MyDetailsForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from .models import MyProfile
-from projects.models import Project
+from projects.models import Project, Issue
 
 
 # Create your views here.
@@ -26,9 +26,10 @@ def logout(request):
 def profile(request):
     """A view that displays the profile page of a logged in user"""
     user = request.user
+    issues = Issue.objects.filter(proposed_by=request.user)
     projects = Project.objects.filter(proposed_by=request.user)
     my_profile = MyProfile.objects.filter(owner=request.user)
-    return render(request, 'profile.html', {'user': user, 'projects': projects, 'my_profile': my_profile })
+    return render(request, 'profile.html', {'user': user, 'projects': projects, 'issues': issues, 'my_profile': my_profile })
 
 
 

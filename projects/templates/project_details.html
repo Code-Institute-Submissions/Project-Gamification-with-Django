@@ -2,15 +2,13 @@
 <div class="header">
     <h1 class="page-header">
         {{ project.name }}
-        
+    <a href="{% url 'raise_issue' pk=project.id %}"><button type="submit" class="btn_login" >Raise an Issue</button></a>    
     </h1>
     <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
         <li><a href="#">Dashboard</a></li>
         <li class="active">Projects</li>
-
     </ol>
-
 </div>
 <div id="page-inner">
     <div class="row">
@@ -72,18 +70,11 @@
         <div class="col-md-6 col-lg-6 text-left">
             <div class="row">
                 <div class="col-md-12 col-lg-12 text-center" id="title">
-                    <h3 style="color:blue">Issue1</h3>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
+                    {% for issue in issues %}
+                    <h3 style="color:blue">{{issue.name}}</h3>
+                    <h4>{{ issue.description }}</h4>
                     <h1>--------</h1>
-                    <h3 style="color:green">Issue1</h3>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                    <h1>--------</h1>
-                    <h3 style="color:red">Issue1</h3>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                    <h1>--------</h1>
-                    <h3 style="color:green">Issue1</h3>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, nihil.</h4>
-                    <h1>--------</h1>
+                    {% endfor %}
 
                 </div>
             </div>

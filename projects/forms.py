@@ -1,5 +1,5 @@
 from django import forms
-from .models import Project
+from .models import Project, Issue
 
 class ProposeProjectForm(forms.ModelForm):
     
@@ -8,7 +8,11 @@ class ProposeProjectForm(forms.ModelForm):
         fields = ['name','description','project_manager','budget']
    
    
-   
+class RaiseIssueForm(forms.ModelForm):
+    
+    class Meta:
+        model = Issue
+        fields = ['name','description']   
    
    
    
