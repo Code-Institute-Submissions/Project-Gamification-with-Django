@@ -2,7 +2,7 @@
 <div class="header">
     <h1 class="page-header">
         {{ project.name }}
-    <a href="{% url 'raise_issue' pk=project.id %}"><button type="submit" class="btn_login" >Raise an Issue</button></a>    
+    <button class="btn_login modal-trigger" href="#issueModal">Issue</button>    
     </h1>
     <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
@@ -127,10 +127,32 @@
                 </div>
             </div>
 
+
+<div id="issueModal" class="modal">
+    
+        <h1>Raise an issue</h1>
+        <div class="modal-content">
+            <form method="POST">
+                {% csrf_token %}
+                <label for="name"></label>
+                <input placeholder="name" name="name">
+                <label for="description"></label>
+                <input placeholder="description" name="description">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
         </div>
         <!-- /. PAGE INNER  -->
     </div>
     <!-- /. PAGE WRAPPER  -->
 </div>
+
+<script>
+    var elem = document.querySelector('.modal')
+    var instance = M.Modal.init(elem)
+</script>
 
 {% endblock %}

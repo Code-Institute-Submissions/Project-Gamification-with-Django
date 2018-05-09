@@ -15,7 +15,29 @@ def all_projects(request):
 def project_details(request, pk):
     project = Project.objects.get(id=pk)
     issues = Issue.objects.filter(project=project)
-    return render(request, 'project_details.html', {'project': project, 'issues': issues })
+    
+    if request.method == 'GET':
+        return render(request, 'project_details.html', {'project': project, 'issues': issues })
+        
+    elif request.method == 'POST':
+        
+        form = RaiseIssueForm(request.POST)
+       
+        if form.is_valid():
+           name = form.cleaned_data['name']
+           description = form.cleaned_data['description']
+           project = project
+           proposed_by = request.user
+           
+           Issue.objects.create(
+               name = name,
+               description = description,
+               project = project,
+               proposed_by = proposed_by
+               ).save()
+           
+
+    return render(request, 'project_details.html', {'project': project, 'issues': issues })   
 
 
 @login_required
@@ -59,31 +81,31 @@ def delete_project(request, pk):
     return HttpResponseRedirect('/')
     
 
-@login_required
-def raise_issue(request, pk):
+# @login_required
+# def raise_issue(request, pk):
     
-    project = Project.objects.get(id=pk)
+#     project = Project.objects.get(id=pk)
     
-    if request.method == 'POST':
+#     if request.method == 'POST':
        
-       form = RaiseIssueForm(request.POST)
+#       form = RaiseIssueForm(request.POST)
        
-       if form.is_valid():
-           name = form.cleaned_data['name']
-           description = form.cleaned_data['description']
-           project = project
-           proposed_by = request.user
+#       if form.is_valid():
+#           name = form.cleaned_data['name']
+#           description = form.cleaned_data['description']
+#           project = project
+#           proposed_by = request.user
            
-           Issue.objects.create(
-               name = name,
-               description = description,
-               project = project,
-               proposed_by = proposed_by
-               ).save()
+#           Issue.objects.create(
+#               name = name,
+#               description = description,
+#               project = project,
+#               proposed_by = proposed_by
+#               ).save()
 
-           return HttpResponseRedirect('/')
+#           return HttpResponseRedirect('/')
        
-    else:
-        form = RaiseIssueForm()
+#     else:
+#         form = RaiseIssueForm()
         
-    return render (request, 'raise_issue.html', {'form': form })        
+#     return render (request, 'raise_issue.html', {'form': form })        

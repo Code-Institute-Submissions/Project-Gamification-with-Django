@@ -52,9 +52,6 @@ def profile(request):
                image = image,
                owner = owner
                ).save()
-              
-       else:
-           form = MyDetailsForm()       
 
     return redirect(reverse('profile'), {'form': form, 'personalities': personalities, 'positions': positions })
    
@@ -106,34 +103,34 @@ def user_login(request):
     args = {'user_form': user_form, 'login_form': login_form, 'next': request.GET.get('next', '')}
     return render(request, 'user_login.html', args)
 
-# @login_required
-# def my_details(request):
+@login_required
+def my_details(request):
     
-#     personalities = Personality.objects.all()
-#     positions = Position.objects.all()
-#     if request.method == 'POST':
+    personalities = Personality.objects.all()
+    positions = Position.objects.all()
+    if request.method == 'POST':
        
-#       form = MyDetailsForm(request.POST, request.FILES)
+       form = MyDetailsForm(request.POST, request.FILES)
        
-#       if form.is_valid():
-#           position = form.cleaned_data['position']
-#           personality = form.cleaned_data['personality']
-#           image = form.cleaned_data['image']
-#           owner = request.user
+       if form.is_valid():
+           position = form.cleaned_data['position']
+           personality = form.cleaned_data['personality']
+           image = form.cleaned_data['image']
+           owner = request.user
            
-#           MyProfile.objects.create(
-#               position = position,
-#               personality = personality,
-#               image = image,
-#               owner = owner
-#               ).save()
+           MyProfile.objects.create(
+               position = position,
+               personality = personality,
+               image = image,
+               owner = owner
+               ).save()
 
-#           return redirect(reverse('profile'))
+           return redirect(reverse('profile'))
        
-#     else:
-#       form = MyDetailsForm()
+    else:
+       form = MyDetailsForm()
         
-#     return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions })    
+    return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions })    
     
     
     
