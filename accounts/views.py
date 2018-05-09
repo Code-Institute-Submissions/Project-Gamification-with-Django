@@ -4,7 +4,7 @@ from django.urls import reverse
 from .forms import UserLoginForm, UserRegistrationForm, MyDetailsForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-from .models import MyProfile
+from .models import MyProfile, Personality, Position
 from projects.models import Project, Issue
 
 
@@ -76,6 +76,8 @@ def user_login(request):
 @login_required
 def my_details(request):
     
+    personalities = Personality.objects.all()
+    positions = Position.objects.all()
     if request.method == 'POST':
        
        form = MyDetailsForm(request.POST, request.FILES)
@@ -98,7 +100,7 @@ def my_details(request):
     else:
        form = MyDetailsForm()
         
-    return render (request, 'my_details.html', {'form': form })    
+    return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions })    
     
     
     

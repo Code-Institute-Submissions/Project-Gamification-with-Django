@@ -16,3 +16,16 @@ class MyProfile(models.Model):
     
     def __str__(self):
         return self.position
+        
+        
+class Position(models.Model):
+    name = models.CharField(max_length=254, default='undefined')
+    
+    def __str__(self):
+        return self.name
+    
+class Personality(models.Model):
+    name = models.CharField(max_length=254, default='undefined')    
+    
+    def __str__(self):
+        return self.name

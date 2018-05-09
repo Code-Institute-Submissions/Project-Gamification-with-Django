@@ -30,3 +30,20 @@
 
 
 {% endblock %}
+
+
+<label>{{field.label}}</label>
+        <input placeholder="{{field.label}}" name="{{field.name}}" class="form-control" /> 
+        
+<div class="row">
+    <div class="input-field col s12" id="field">
+        <i class="material-icons prefix">storage</i>
+        <select id="type_of_algorithm" name="type_of_algorithm">
+                  <option value="" disabled selected>Choose type:</option>
+                  {% for type in personalities %}
+                      <option value={{type.name}}>{{type.name}}</option>
+                  {% endfor %}
+                </select>
+        <label>Type of Algorithm</label>
+    </div>
+</div>        

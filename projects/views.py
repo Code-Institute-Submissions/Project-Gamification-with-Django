@@ -23,13 +23,14 @@ def propose_project(request):
     
     if request.method == 'POST':
        
-       form = ProposeProjectForm(request.POST)
+       form = ProposeProjectForm(request.POST, request.FILES)
        
        if form.is_valid():
            name = form.cleaned_data['name']
            description = form.cleaned_data['description']
            project_manager = form.cleaned_data['project_manager']
            budget = form.cleaned_data['budget']
+           image = form.cleaned_data['image']
            proposed_by = request.user
            
            Project.objects.create(
@@ -37,6 +38,7 @@ def propose_project(request):
                description = description,
                project_manager = project_manager,
                budget = budget,
+               image = image,
                proposed_by = proposed_by
                ).save()
 
