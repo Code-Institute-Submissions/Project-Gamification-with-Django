@@ -24,41 +24,31 @@ def logout(request):
 
 
 @login_required
-def profile(request):
-    """A view that displays the profile page of a logged in user"""
+def profile(request, user):
+    
     user = request.user
     issues = Issue.objects.filter(proposed_by=request.user)
     projects = Project.objects.filter(proposed_by=request.user)
     personalities = Personality.objects.all()
     positions = Position.objects.all()
-    my_profile = MyProfile.objects.filter(owner=request.user)
+    my_profile = get_object_or_404(MyProfile, owner=request.user)
     
     if request.method == 'GET':
  
         return render(request, 'profile.html', {'user': user, 'projects': projects, 'issues': issues, 'my_profile': my_profile, 'personalities': personalities, 'positions': positions })
     
     if request.method == 'POST':
-       form = MyDetailsForm(request.POST, request.FILES)
+       my_profile = get_object_or_404(MyProfile, owner=request.user)
+       form = MyDetailsForm(request.POST, request.FILES, instance=my_profile)
        
        if form.is_valid():
-           position = form.cleaned_data['position']
-           personality = form.cleaned_data['personality']
-           image = form.cleaned_data['image']
-           owner = request.user
-           
-           MyProfile.objects.create(
-               position = position,
-               personality = personality,
-               image = image,
-               owner = owner
-               ).save()
+           my_profile = form.save()
               
        else:
            form = MyDetailsForm()       
 
-    return redirect(reverse('profile'), {'form': form, 'personalities': personalities, 'positions': positions })
+    return render(request, 'profile.html', {'form': form, 'personalities': personalities, 'positions': positions, 'my_profile': my_profile, 'projects': projects, 'issues': issues, })
    
-    # return render(request, 'profile.html', {'user': user, 'projects': projects, 'issues': issues, 'my_profile': my_profile }) 
 
 
 
@@ -81,16 +71,24 @@ def user_login(request):
                     return redirect(reverse('index'))
             else:
                 login_form.add_error(None, "Your username or password are incorrect")
+                
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
             user_form.save()
-
+            
+            
             user = auth.authenticate(request.POST.get('email'),
                                      password=request.POST.get('password1'))
 
             if user:
                 auth.login(request, user)
                 messages.success(request, "You have successfully registered")
+                
+                MyProfile.objects.create(
+                position = "guest",
+                personality = "guest",
+                owner = request.user
+                ).save()
                 return redirect(reverse('index'))
 
             else:
@@ -105,24 +103,32 @@ def user_login(request):
 
 @login_required
 def my_details(request, owner):
+    
     personalities = Personality.objects.all()
     positions = Position.objects.all()
-    my_profile = get_object_or_404(MyProfile, owner=request.user)
-    
     if request.method == 'POST':
-        
-       form = MyDetailsForm(request.POST, request.FILES, instance=my_profile)
+       
+       form = MyDetailsForm(request.POST, request.FILES)
        
        if form.is_valid():
-           my_profile = form.save()
-            
+           position = form.cleaned_data['position']
+           personality = form.cleaned_data['personality']
+           image = form.cleaned_data['image']
+           owner = request.user
+           
+           MyProfile.objects.create(
+               position = position,
+               personality = personality,
+               image = image,
+               owner = owner
+               ).save()
 
            return HttpResponseRedirect('/')
        
     else:
        form = MyDetailsForm()
         
-    return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions, 'my_profile': my_profile })
+    return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions })   
            
 
     

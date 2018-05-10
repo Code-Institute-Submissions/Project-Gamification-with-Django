@@ -14,9 +14,9 @@
     <div class="col-md-7 col-lg-7 text-center">
         <div class="row">
             <div class="col-md-3 col-lg-3 text-center" id="title">
-                
-                <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ my_profile.image }}')"></div>
-                
+                {% for field in my_profile %}
+                <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ field.image }}')"></div>
+                {% endfor %}
             </div>
             <div class="col-md-5 col-lg-5 text-left">
                 <div class="row" style="display:inline">
@@ -37,14 +37,14 @@
                     </div>
                 </div>
                 <div class="row"></div>
-                
+                {% for field in my_profile %}
                 <div class="row" style="display:inline">
                     <div class="col-md-3 col-lg-3 text-left">
                         <h4 style="display:inline">Position: </h4>
                     </div>
 
                     <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ my_profile.position }}</h3>
+                        <h3 style="display:inline">{{ field.position }}</h3>
                     </div>
                 </div>
                 <div class="row"></div>
@@ -53,10 +53,10 @@
                         <h4 style="display:inline">Personality: </h4>
                     </div>
                     <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ my_profile.personality }}</h3>
+                        <h3 style="display:inline">{{ field.personality }}</h3>
                     </div>
                 </div>
-                
+                {% endfor %}
             </div>
             <div class="col-md-3 col-lg-3 text-center" id="title" style="background-color:white"></div>
         </div>
@@ -122,8 +122,8 @@
                     </div>
                     <div class="row">
                         <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" >New Project</button></a>
-                        <a href="{% url 'my_details'  owner=request.user %}"><button type="submit" class="btn_login" >Add Details</button></a>
-                        <button class="btn_login modal-trigger" href="#detailsModal">Edit Profile</button>
+                        <a href="{% url 'my_details'  owner=request.user %}"><button type="submit" class="btn_login" >Edit Details</button></a>
+                        <button class="btn_login modal-trigger" href="#detailsModal">Add Details</button>
                     </div>
                     <div class="row" style="background-color:white"></div>
                     <div class="row" style="background-color:white"></div>
@@ -143,34 +143,39 @@
             </div>
 <div id="detailsModal" class="modal">
     
-   <h1>Add Details </h1>
-{{ my_profile.personality }}
-<div class="container form-group">
-
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="row">
-        <select id="type_of_algorithm" name="personality">
-          <option value="" disabled selected>{{ my_profile.personality }}</option>
-          {% for type in personalities %}
-              <option value={{type.name}}>{{type.name}}</option>
-          {% endfor %}
-        </select>
-        </div>
-        <div class="row">
-        <select id="type_of_algorithm" name="position">
-          <option value="" disabled selected>{{ my_profile.position }}</option>
-          {% for type in positions %}
-              <option value={{type.name}}>{{type.name}}</option>
-          {% endfor %}
-        </select>
-        </div>
-        <label>image</label>
-        <input placeholder="image" type="file" class="form-control" name="image">
-        <div class=row></div>
-
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+    <h1>Add Details </h1>
+        <div class="container form-group">
+        
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <select id="type_of_algorithm" name="personality">
+                    <option value="" disabled selected>Choose type:</option>
+                    {% for type in personalities %}
+                    <option value={{type.name}}>{{type.name}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <div class="row"> </div>
+                <div class="row">
+                    <select id="type_of_algorithm" name="position">
+                    <option value="" disabled selected>Position:</option>
+                    {% for type in positions %}
+                    <option value={{type.name}}>{{type.name}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <div class="row">
+                    <label>image</label>
+                    <input placeholder="image" type="file" class="form-control" name="image">
+                </div>
+                <div class=row></div>
+                
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        
+    
+    </div>
 </div>
 
         </div>
