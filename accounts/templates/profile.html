@@ -122,6 +122,7 @@
                     </div>
                     <div class="row">
                         <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" >New Project</button></a>
+                        <a href="{% url 'my_details'  owner=request.user %}"><button type="submit" class="btn_login" >Edit Details</button></a>
                         <button class="btn_login modal-trigger" href="#detailsModal">Add Details</button>
                     </div>
                     <div class="row" style="background-color:white"></div>
@@ -141,8 +142,6 @@
                 {% endfor%}
             </div>
 <div id="detailsModal" class="modal">
-    
-    
     
     <h1>Add Details </h1>
         <div class="container form-group">
@@ -178,6 +177,7 @@
     
     </div>
 </div>
+
         </div>
         <!-- /. PAGE INNER  -->
     </div>

@@ -98,7 +98,15 @@
     <!-- Bootstrap Js -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     
+    <script src="{% static 'materialize/js/materialize.min.js' %}"></script>
     
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $('select').material_select();
+            $(".button-collapse").sideNav();
+        });
+    </script>
     
     
 

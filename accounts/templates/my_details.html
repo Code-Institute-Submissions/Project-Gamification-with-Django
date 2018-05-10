@@ -1,12 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Add Details </h1>
+{{ my_profile.personality }}
 <div class="container form-group">
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row">
         <select id="type_of_algorithm" name="personality">
-          <option value="" disabled selected>Choose type:</option>
+          <option value="" disabled selected>{{ my_profile.personality }}</option>
           {% for type in personalities %}
               <option value={{type.name}}>{{type.name}}</option>
           {% endfor %}
@@ -14,7 +15,7 @@
         </div>
         <div class="row">
         <select id="type_of_algorithm" name="position">
-          <option value="" disabled selected>Choose type:</option>
+          <option value="" disabled selected>{{ my_profile.position }}</option>
           {% for type in positions %}
               <option value={{type.name}}>{{type.name}}</option>
           {% endfor %}
@@ -27,8 +28,6 @@
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
 </div>
-
-
 
 
 {% endblock %}

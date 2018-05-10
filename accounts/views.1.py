@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import messages, auth
 from django.urls import reverse
 from .forms import UserLoginForm, UserRegistrationForm, MyDetailsForm
@@ -62,6 +62,10 @@ def profile(request):
 
 
 
+
+
+
+
 def user_login(request):
     """A view that manages the registration form"""
     if request.method == 'POST':
@@ -101,30 +105,37 @@ def user_login(request):
 
     args = {'user_form': user_form, 'login_form': login_form, 'next': request.GET.get('next', '')}
     return render(request, 'user_login.html', args)
-    
 
-@login_required
-def my_details(request, owner):
-    personalities = Personality.objects.all()
-    positions = Position.objects.all()
-    my_profile = get_object_or_404(MyProfile, owner=request.user)
+# @login_required
+# def my_details(request):
     
-    if request.method == 'POST':
-        
-       form = MyDetailsForm(request.POST, request.FILES, instance=my_profile)
+#     personalities = Personality.objects.all()
+#     positions = Position.objects.all()
+#     if request.method == 'POST':
        
-       if form.is_valid():
-           my_profile = form.save()
-            
-
-           return HttpResponseRedirect('/')
+#       form = MyDetailsForm(request.POST, request.FILES)
        
-    else:
-       form = MyDetailsForm()
-        
-    return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions, 'my_profile': my_profile })
+#       if form.is_valid():
+#           position = form.cleaned_data['position']
+#           personality = form.cleaned_data['personality']
+#           image = form.cleaned_data['image']
+#           owner = request.user
            
+#           MyProfile.objects.create(
+#               position = position,
+#               personality = personality,
+#               image = image,
+#               owner = owner
+#               ).save()
 
+#           return redirect(reverse('profile'))
+       
+#     else:
+#       form = MyDetailsForm()
+        
+#     return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions })    
+    
+    
     
     
     
