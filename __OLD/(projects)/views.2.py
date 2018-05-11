@@ -4,24 +4,39 @@ from .models import Project, Issue
 from .forms import ProposeProjectForm, RaiseIssueForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-import collections
 
 
 
 def all_projects(request):
     projects = Project.objects.all()
     
-    status_list = []
+    status_proposed = 0
     for element in projects:
-        status = 
-        status_list.append(element.status)
-        return status_list
+        if element.status == 'proposed':
+            status_proposed += 1
+            
+    status_analysis = 0
+    for element in projects:
+        if element.status == 'analysis':
+            status_analysis += 1
+            
+    status_development = 0
+    for element in projects:
+        if element.status == 'development':
+            status_development += 1
+            
+    status_test = 0
+    for element in projects:
+        if element.status == 'test':
+            status_test += 1     
     
-    # count_them = collections.counter( projects)
-     
+    status_deployment = 0
+    for element in projects:
+        if element.status == 'deployment':
+            status_deployment += 1        
     
     
-    return render(request, "projects.html", {"projects": projects, "status_list": status_list})
+    return render(request, "projects.html", {"projects": projects, "status_proposed": status_proposed, 'status_analysis': status_analysis, 'status_development': status_development , 'status_test': status_test, 'status_deployment': status_deployment })
 
  
 def project_details(request, pk):
