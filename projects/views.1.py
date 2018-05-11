@@ -9,14 +9,7 @@ from django.http import HttpResponseRedirect
 
 def all_projects(request):
     projects = Project.objects.all()
-    
-    status_proposed = 0
-    for element in projects:
-        if element.status == 'proposed':
-            status_proposed += 1
-    
-    
-    return render(request, "projects.html", {"projects": projects, "status_proposed": status_proposed })
+    return render(request, "projects.html", {"projects": projects})
 
  
 def project_details(request, pk):

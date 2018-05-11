@@ -29,13 +29,25 @@ def profile(request, user):
     user = request.user
     issues = Issue.objects.filter(proposed_by=request.user)
     projects = Project.objects.filter(proposed_by=request.user)
+    
+    project_count = 0
+    for element in projects:
+        project_count += 1
+        
+    issue_count = 0
+    for element in issues:
+        issue_count +=1
+    
+    
+    
+    
     personalities = Personality.objects.all()
     positions = Position.objects.all()
     my_profile = get_object_or_404(MyProfile, owner=request.user)
     
     if request.method == 'GET':
  
-        return render(request, 'profile.html', {'user': user, 'projects': projects, 'issues': issues, 'my_profile': my_profile, 'personalities': personalities, 'positions': positions })
+        return render(request, 'profile.html', {'user': user, 'projects': projects, 'issues': issues, 'my_profile': my_profile, 'personalities': personalities, 'positions': positions, 'project_count': project_count, 'issue_count': issue_count })
     
     if request.method == 'POST':
        my_profile = get_object_or_404(MyProfile, owner=request.user)
