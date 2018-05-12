@@ -12,7 +12,7 @@ class RaiseIssueForm(forms.ModelForm):
     
     class Meta:
         model = Issue
-        fields = ['name','description']   
+        fields = ['name','description', 'cost']   
    
    
    

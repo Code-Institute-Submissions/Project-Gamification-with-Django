@@ -25,11 +25,8 @@ def project_details(request, pk):
     project = Project.objects.get(id=pk)
     issues = Issue.objects.filter(project=project)
     
-    issue_counter = len(issues)
-   
-    
     if request.method == 'GET':
-        return render(request, 'project_details.html', {'project': project, 'issues': issues, 'issue_counter': issue_counter })
+        return render(request, 'project_details.html', {'project': project, 'issues': issues })
         
     elif request.method == 'POST':
         
@@ -51,7 +48,7 @@ def project_details(request, pk):
                ).save()
            
 
-    return render(request, 'project_details.html', {'project': project, 'issues': issues, 'issue_counter': issue_counter })   
+    return render(request, 'project_details.html', {'project': project, 'issues': issues })   
 
 
 @login_required

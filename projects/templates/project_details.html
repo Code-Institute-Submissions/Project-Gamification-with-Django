@@ -28,12 +28,20 @@
                             <h3>Issues</h3>
                         </div>
                         <div class="col-md-7 col-lg-7 text-left" id="details-right">
-                            <h3>{{ project.issues }}</h3>
+                            <h3>{{ issue_counter }}</h3>
                         </div>
                     </div>
                     <div class="row" id="row-table">
                         <div class="col-md-5 col-lg-5 text-left" id="details-left">
                             <h3>Budget</h3>
+                        </div>
+                        <div class="col-md-7 col-lg-7 text-left" id="details-right">
+                            <h3>{{ project.budget }}</h3>
+                        </div>
+                    </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>Budget Left</h3>
                         </div>
                         <div class="col-md-7 col-lg-7 text-left" id="details-right">
                             <h3>{{ project.budget }}</h3>
@@ -73,6 +81,7 @@
                     {% for issue in issues %}
                     <h3 style="color:blue">{{issue.name}}</h3>
                     <h4>{{ issue.description }}</h4>
+                    <h4>{{ issue.cost }}</h4>
                     <h1>--------</h1>
                     {% endfor %}
 
@@ -123,7 +132,7 @@
         <div class="col-md-6 col-lg-6 text-left">
             <div class="row">
                 <div class="col-md-12 col-lg-12 text-center" id="title">
-                    <img src="/assets/img/plan.png" height="420" width="450">
+                    <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
                 </div>
             </div>
 
@@ -134,11 +143,30 @@
         <div class="modal-content">
             <form method="POST">
                 {% csrf_token %}
-                <label for="name"></label>
-                <input placeholder="name" name="name">
-                <label for="description"></label>
-                <input placeholder="description" name="description">
-                <button type="submit" class="btn btn-success">Submit</button>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="name" name="name" type="text" class="validate">
+                        <label for="icon_prefix">Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="name" name="description" type="text" class="validate">
+                        <label for="icon_prefix">Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12" id="field">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="name" name="cost" type="number" class="validate">
+                        <label for="icon_prefix">Cost</label>
+                    </div>
+                </div>
+                <div class="row">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" id="add">Raise an Issue</button>
+                </div>
             </form>
         </div>
     </div>
