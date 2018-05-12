@@ -10,18 +10,15 @@ import collections
 
 def all_projects(request):
     projects = Project.objects.all()
-    
+
     status_list = []
     for element in projects:
-        status = 
-        status_list.append(element.status)
-        return status_list
-    
-    # count_them = collections.counter( projects)
-     
-    
-    
-    return render(request, "projects.html", {"projects": projects, "status_list": status_list})
+        status = element.status
+        status_list.append(status)
+        
+    count_them = collections.Counter( status_list )
+   
+    return render(request, "projects.html", {"projects": projects, "count_them": count_them  })
 
  
 def project_details(request, pk):

@@ -34,25 +34,23 @@
 
         <div class="col-md-2 col-lg-2 text-center" id="title">
             <h2>Proposed</h2>
-            {% for element in status_list %}
-            <h1>{{ element }}</h1>
-            {% endfor %}
+            <h1>{{ count_them.proposed }}</h1>
         </div>
         <div class="col-md-2 col-lg-2 text-center" id="title">
             <h2>Analysis</h2>
-            <h1>{{ status_analysis }}</h1>
+            <h1>{{ count_them.analysis }}</h1>
         </div>
         <div class="col-md-2 col-lg-2 text-center" id="title">
             <h2>Development</h2>
-            <h1>{{ status_development }}</h1>
+            <h1>{{ count_them.development }}</h1>
         </div>
         <div class="col-md-2 col-lg-2 text-center" id="title">
             <h2>Test</h2>
-            <h1>{{ status_test }}</h1>
+            <h1>{{ count_them.test }}</h1>
         </div>
         <div class="col-md-2 col-lg-2 text-center" id="title">
             <h2>Deployment</h2>
-            <h1>{{ status_deployment }}</h1>
+            <h1>{{ count_them.deployment }}</h1>
         </div>
         <div class="col-md-1 col-lg-1 text-left">
         </div>
