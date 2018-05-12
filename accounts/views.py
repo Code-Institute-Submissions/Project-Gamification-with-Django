@@ -47,7 +47,7 @@ def profile(request, user):
     context = {'user': user, 'projects': projects, 'issues': issues, 
                 'my_profile': my_profile, 'personalities': personalities, 
                 'positions': positions, 'project_count': project_count, 
-                'issue_count': issue_count, 'form': form }
+                'issue_count': issue_count, }
     
     if request.method == 'GET':
  
@@ -63,7 +63,7 @@ def profile(request, user):
        else:
            form = MyDetailsForm()       
 
-    return render(request, 'profile.html', context)
+    return render(request, 'profile.html', { 'form': form } , context)
    
 
 

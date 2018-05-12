@@ -6,5 +6,4 @@ urlpatterns = [
     path('project_details/<int:pk>', project_details, name='project_details'),
     path('propose_project/', propose_project, name='propose_project'),
     path('delete_project/<int:pk>', delete_project, name='delete_project'),
-    # path('project_details/<int:pk>/raise_issue', raise_issue, name='raise_issue')
     ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Project, Issue
+from .models import Project, Issue, Skill
 from .forms import ProposeProjectForm, RaiseIssueForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -85,6 +85,12 @@ def propose_project(request):
                image = image,
                proposed_by = proposed_by
                ).save()
+               
+            # Skill.objects.create(
+            #     name = name,
+                
+                
+            #     ).save()   
 
            return redirect(reverse('projects'))
        

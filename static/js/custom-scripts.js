@@ -225,6 +225,9 @@
 }(jQuery));
 
 
+/* ################################################################################### */
+
+
 function deleteProject(project){
   var $project = $(project)
   $project.parent().remove()
@@ -238,6 +241,10 @@ function deleteProject(project){
     }
   })
 }
+
+
+
+
 
 
 

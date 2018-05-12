@@ -1,8 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
 <h1>Propose a Project </h1>
 <div class="container form-group">
     <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %} {% for field in form %} {{ field.errors }}
+        {% csrf_token %} 
+        {% for field in form %} {{ field.errors }}
         {% if field.name != 'image' %}
         <label>{{field.label}}</label>
         <input placeholder= "{{field.label}}" name="{{field.name}}" class="form-control" />
@@ -12,7 +13,21 @@
         {% endif %}
         <div class=row></div>
         {% endfor %}
-        <button type="submit" class="btn btn-success">Submit</button>
+        <label for="skillInput"> Skills Needed (press Enter) </label>
+        <input type="text" name="skillInput" id="skillInput">
+        <input type="hidden" name="skillsString">
+        
+        <ul id="skillsContainer">
+            
+            
+        </ul>
+        
+        
+        <button type="submit" class="btn btn-success">Suggest Project</button>
     </form>
 </div>
+
+
+<script src="{% static 'js/required_skills.js' %}"></script>
+
 {% endblock %}

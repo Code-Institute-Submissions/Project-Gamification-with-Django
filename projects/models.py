@@ -32,6 +32,15 @@ class Project(models.Model):
     def __str__(self):
         return self.name
         
+        
+class Skill(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    name = models.CharField(max_length=254)
+    
+    def __str__(self):
+        return self.name
+    
+        
 class Issue(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
