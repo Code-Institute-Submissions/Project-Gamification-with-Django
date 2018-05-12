@@ -14,18 +14,6 @@ class Project(models.Model):
     issues = models.DecimalField(max_digits=2, decimal_places = 0, default = 0)
     image = models.ImageField(upload_to='images')
     
-    
-    def budget_left(self):
-        issues = Issue.objects.filter(project=self)
-        total_cost_amount = 0
-        for issue in issues:
-            total_cost_amount += issue.cost
-        
-        return self.budget - total_cost_amount    
-    
-    
-    
-    
     def get_absolute_url(self):
         return reverse('project_details', kwargs={'pk': self.pk})
     

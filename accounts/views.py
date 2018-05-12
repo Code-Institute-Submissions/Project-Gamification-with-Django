@@ -38,16 +38,20 @@ def profile(request, user):
     for element in issues:
         issue_count +=1
     
-    
-    
-    
+
     personalities = Personality.objects.all()
     positions = Position.objects.all()
     my_profile = get_object_or_404(MyProfile, owner=request.user)
     
+    
+    context = {'user': user, 'projects': projects, 'issues': issues, 
+                'my_profile': my_profile, 'personalities': personalities, 
+                'positions': positions, 'project_count': project_count, 
+                'issue_count': issue_count, 'form': form }
+    
     if request.method == 'GET':
  
-        return render(request, 'profile.html', {'user': user, 'projects': projects, 'issues': issues, 'my_profile': my_profile, 'personalities': personalities, 'positions': positions, 'project_count': project_count, 'issue_count': issue_count })
+        return render(request, 'profile.html', context)
     
     if request.method == 'POST':
        my_profile = get_object_or_404(MyProfile, owner=request.user)
@@ -59,7 +63,7 @@ def profile(request, user):
        else:
            form = MyDetailsForm()       
 
-    return render(request, 'profile.html', {'form': form, 'personalities': personalities, 'positions': positions, 'my_profile': my_profile, 'projects': projects, 'issues': issues, })
+    return render(request, 'profile.html', context)
    
 
 
@@ -109,8 +113,11 @@ def user_login(request):
         user_form = UserRegistrationForm()
         login_form = UserLoginForm()
 
-    args = {'user_form': user_form, 'login_form': login_form, 'next': request.GET.get('next', '')}
-    return render(request, 'user_login.html', args)
+    context = {'user_form': user_form, 
+                'login_form': login_form, 
+                'next': request.GET.get('next', '')}
+                
+    return render(request, 'user_login.html', context)
     
 
 @login_required

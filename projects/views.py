@@ -17,8 +17,12 @@ def all_projects(request):
         status_list.append(status)
         
     count_them = collections.Counter( status_list )
+    
+    context = {"projects": projects, 
+                "count_them": count_them  }
+    
    
-    return render(request, "projects.html", {"projects": projects, "count_them": count_them  })
+    return render(request, "projects.html", context)
 
  
 def project_details(request, pk):
@@ -26,10 +30,14 @@ def project_details(request, pk):
     issues = Issue.objects.filter(project=project)
     
     issue_counter = len(issues)
+    
+    context = {'project': project, 
+                'issues': issues, 
+                'issue_counter': issue_counter }
    
     
     if request.method == 'GET':
-        return render(request, 'project_details.html', {'project': project, 'issues': issues, 'issue_counter': issue_counter })
+        return render(request, 'project_details.html', context )
         
     elif request.method == 'POST':
         
@@ -51,7 +59,7 @@ def project_details(request, pk):
                ).save()
            
 
-    return render(request, 'project_details.html', {'project': project, 'issues': issues, 'issue_counter': issue_counter })   
+    return render(request, 'project_details.html', context)   
 
 
 @login_required
@@ -94,32 +102,3 @@ def delete_project(request, pk):
         
     return HttpResponseRedirect('/')
     
-
-# @login_required
-# def raise_issue(request, pk):
-    
-#     project = Project.objects.get(id=pk)
-    
-#     if request.method == 'POST':
-       
-#       form = RaiseIssueForm(request.POST)
-       
-#       if form.is_valid():
-#           name = form.cleaned_data['name']
-#           description = form.cleaned_data['description']
-#           project = project
-#           proposed_by = request.user
-           
-#           Issue.objects.create(
-#               name = name,
-#               description = description,
-#               project = project,
-#               proposed_by = proposed_by
-#               ).save()
-
-#           return HttpResponseRedirect('/')
-       
-#     else:
-#         form = RaiseIssueForm()
-        
-#     return render (request, 'raise_issue.html', {'form': form })        
