@@ -1,5 +1,5 @@
 from django import forms
-from .models import Project, Issue
+from .models import Project, Issue, RequiredSkills
 
 class ProposeProjectForm(forms.ModelForm):
     
@@ -15,8 +15,11 @@ class RaiseIssueForm(forms.ModelForm):
         fields = ['name','description', 'cost']   
    
    
-   
-   
+class RequiredSkillsForm(forms.ModelForm):
+    
+    class Meta:
+        model = RequiredSkills
+        exclude = ['project']
    
    
    

@@ -2,7 +2,8 @@
 <div class="header">
     <h1 class="page-header">
         {{ project.name }}
-    <button class="btn_login modal-trigger" href="#issueModal">Issue</button>    
+        <button class="btn_login modal-trigger" href="#issueModal">Issue</button>
+        <button class="btn_login modal-trigger" href="#skillsetModal">Skillset</button>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
@@ -71,10 +72,25 @@
                             <h3>Stachu</h3>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
-        <div class="col-md-1 col-lg-1 text-left"></div>
+        <div class="col-md-1 col-lg-1 text-left">
+            <h3>Python</h3>
+            <h4>{{requiredskills.python}}</h4>
+            <h3>HTML</h3>
+            <h4>{{requiredskills.html}}</h4>
+            <h3>CSS</h3>
+            <h4>{{requiredskills.css}}</h4>
+            <h3>MySQL</h3>
+            <h4>{{requiredskills.mysql}}</h4>
+            <h3>MongoDB</h3>
+            <h4>{{requiredskills.mongodb}}</h4>
+            <h3>JS</h3>
+            <h4>{{requiredskills.js}}</h4>
+        </div>
         <div class="col-md-6 col-lg-6 text-left">
             <div class="row">
                 <div class="col-md-12 col-lg-12 text-center" id="title">
@@ -136,41 +152,96 @@
                 </div>
             </div>
 
+            <div id="skillsetModal" class="modal">
 
-<div id="issueModal" class="modal">
-    
-        <h1>Raise an issue</h1>
-        <div class="modal-content">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="input-field col s12" id="field">
-                        <i class="material-icons prefix">assignment</i>
-                        <input id="name" name="name" type="text" class="validate">
-                        <label for="icon_prefix">Name</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12" id="field">
-                        <i class="material-icons prefix">assignment</i>
-                        <input id="name" name="description" type="text" class="validate">
-                        <label for="icon_prefix">Description</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12" id="field">
-                        <i class="material-icons prefix">assignment</i>
-                        <input id="name" name="cost" type="number" class="validate">
-                        <label for="icon_prefix">Cost</label>
-                    </div>
-                </div>
-                <div class="row">
-                        <button class="btn waves-effect waves-light" type="submit" name="action" id="add">Raise an Issue</button>
-                </div>
-            </form>
-        </div>
-    </div>
+                <h1>Skillset</h1>
+                <div class="modal-content">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">HTML</i>
+                                <input id="name" name="html" type="number" class="validate">
+                                <label for="icon_prefix">Cost</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">CSS</i>
+                                <input id="name" name="css" type="number" class="validate">
+                                <label for="icon_prefix">Cost</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">JS</i>
+                                <input id="name" name="js" type="number" class="validate">
+                                <label for="icon_prefix">Cost</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">PYTHON</i>
+                                <input id="name" name="python" type="number" class="validate">
+                                <label for="icon_prefix">Cost</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">MySQL</i>
+                                <input id="name" name="mysql" type="number" class="validate">
+                                <label for="icon_prefix">Cost</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">MongoDB</i>
+                                <input id="name" name="mongodb" type="number" class="validate">
+                                <label for="icon_prefix">Cost</label>
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <button class="btn waves-effect waves-light" type="submit" name="action" id="add">Skillify</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div id="issueModal" class="modal">
+
+                <h1>Raise an issue</h1>
+                <div class="modal-content">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">assignment</i>
+                                <input id="name" name="name" type="text" class="validate">
+                                <label for="icon_prefix">Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">assignment</i>
+                                <input id="name" name="description" type="text" class="validate">
+                                <label for="icon_prefix">Description</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12" id="field">
+                                <i class="material-icons prefix">assignment</i>
+                                <input id="name" name="cost" type="number" class="validate">
+                                <label for="icon_prefix">Cost</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn waves-effect waves-light" type="submit" name="action" id="add">Raise an Issue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
         </div>
         <!-- /. PAGE INNER  -->
@@ -179,8 +250,9 @@
 </div>
 
 <script>
-    var elem = document.querySelector('.modal')
+    var elem = document.querySelectorAll('.modal')
     var instance = M.Modal.init(elem)
 </script>
+
 
 {% endblock %}

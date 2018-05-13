@@ -11,12 +11,16 @@
         <label>{{field.label}}</label>
         <input placeholder= "{{field.label}}" type="file" class="form-control" name="image">
         {% endif %}
-        
         <div class=row></div>
         {% endfor %}
+        <label for="skillInput"> Skills Needed (press Enter) </label>
+        <input type="text" name="skillInput" id="skillInput">
+        <input type="hidden" name="skillsString">
         
-        
-        
+        <ul id="skillsContainer">
+            
+            
+        </ul>
         
         
         <button type="submit" class="btn btn-success">Suggest Project</button>
@@ -24,9 +28,6 @@
 </div>
 
 
-
-
-
-
+<script src="{% static 'js/required_skills.js' %}"></script>
 
 {% endblock %}

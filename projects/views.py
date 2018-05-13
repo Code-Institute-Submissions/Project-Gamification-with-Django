@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Project, Issue, Skill
-from .forms import ProposeProjectForm, RaiseIssueForm
+from .models import Project, Issue, Skill, RequiredSkills
+from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 import collections
@@ -28,18 +28,21 @@ def all_projects(request):
 def project_details(request, pk):
     project = Project.objects.get(id=pk)
     issues = Issue.objects.filter(project=project)
+    requiredskills = get_object_or_404(RequiredSkills, project=project)
     
     issue_counter = len(issues)
     
     context = {'project': project, 
                 'issues': issues, 
-                'issue_counter': issue_counter }
+                'issue_counter': issue_counter, 
+                'requiredskills': requiredskills }
    
     
     if request.method == 'GET':
         return render(request, 'project_details.html', context )
         
     elif request.method == 'POST':
+        requiredskills = get_object_or_404(RequiredSkills, project=project)
         
         form = RaiseIssueForm(request.POST)
        
@@ -57,9 +60,16 @@ def project_details(request, pk):
                project = project,
                proposed_by = proposed_by
                ).save()
-           
+      
+               
+        requiredskillsform = RequiredSkillsForm(request.POST, instance = requiredskills)
+        
+        if requiredskillsform.is_valid():
+            requiredskills = requiredskillsform.save()
+            
 
-    return render(request, 'project_details.html', context)   
+
+    return render(request, 'project_details.html', context, { 'form': form, 'requiredskillsform': requiredskillsform } )   
 
 
 @login_required
@@ -77,20 +87,21 @@ def propose_project(request):
            image = form.cleaned_data['image']
            proposed_by = request.user
            
-           Project.objects.create(
-               name = name,
-               description = description,
-               project_manager = project_manager,
-               budget = budget,
-               image = image,
-               proposed_by = proposed_by
+           new_project = Project.objects.create(
+                                               name = name,
+                                               description = description,
+                                               project_manager = project_manager,
+                                               budget = budget,
+                                               image = image,
+                                               proposed_by = proposed_by
+                                               )
+           new_project.save()
+           
+           RequiredSkills.objects.create(
+                project = new_project
                ).save()
-               
-            # Skill.objects.create(
-            #     name = name,
-                
-                
-            #     ).save()   
+     
+ 
 
            return redirect(reverse('projects'))
        

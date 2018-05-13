@@ -15,7 +15,7 @@ class MyProfile(models.Model):
         return reverse('profile', kwargs={'pk': self.pk})
     
     def __str__(self):
-        return self.position
+        return self.owner
         
         
 class Position(models.Model):
