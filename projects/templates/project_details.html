@@ -4,6 +4,8 @@
         {{ project.name }}
         <button class="btn_login modal-trigger" href="#issueModal">Issue</button>
         <button class="btn_login modal-trigger" href="#skillsetModal">Skillset</button>
+        <a href="{% url 'join_team' pk=project.id %}"><button type="submit" class="btn_login" >Join</button></a>
+        <a href="{% url 'leave_team' pk=project.id %}"><button type="submit" class="btn_login" >Leave</button></a>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#">Home</a></li>

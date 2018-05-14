@@ -5,7 +5,7 @@ from .forms import UserLoginForm, UserRegistrationForm, MyDetailsForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from .models import MyProfile, Personality, Position
-from projects.models import Project, Issue
+from projects.models import Project, Issue, Team
 from django.utils.text import slugify
 
 
@@ -29,6 +29,9 @@ def profile(request, user):
     user = request.user
     issues = Issue.objects.filter(proposed_by=request.user)
     projects = Project.objects.filter(proposed_by=request.user)
+    joined_teams = Team.objects.get(current_user = request.user)
+    joined_projects = joined_teams.projects.all()
+    
     
     project_count = 0
     for element in projects:
@@ -47,7 +50,7 @@ def profile(request, user):
     context = {'user': user, 'projects': projects, 'issues': issues, 
                 'my_profile': my_profile, 'personalities': personalities, 
                 'positions': positions, 'project_count': project_count, 
-                'issue_count': issue_count, }
+                'issue_count': issue_count, 'joined_projects' : joined_projects }
     
     if request.method == 'GET':
  

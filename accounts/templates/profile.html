@@ -82,7 +82,7 @@
     <div class="col-md-4 col-lg-4 text-center">
         <div class="row">
             <div class="col-md-12 col-lg-12 text-center" id="title">
-                <div class="col-md-4 col-lg-4 text-center">
+                <div class="col-md-3 col-lg-3 text-center">
                     <div class="row">
                         <h1>143</h1>
                     </div>
@@ -91,21 +91,32 @@
                     </div>
                     <div class="row" style="background-color:white"></div>
                 </div>
-                <div class="col-md-4 col-lg-4 text-center">
+                <div class="col-md-3 col-lg-3 text-center">
                     <div class="row">
                         <h1>{{ project_count }}</h1>
                     </div>
                     <div class="row">
-                        <h3>Projects</h3>
+                        <h3>Started Projects</h3>
                     </div>
                     <div class="row" style="background-color:white"></div>
                 </div>
-                <div class="col-md-4 col-lg-4 text-center">
+                <div class="col-md-3 col-lg-3 text-center">
                     <div class="row">
                         <h1>{{ issue_count }}</h1>
                     </div>
                     <div class="row">
                         <h3>Issues</h3>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                </div>
+                <div class="col-md-3 col-lg-3 text-center">
+                    <div class="row">
+                        {% for element in joined_projects %}
+                        <h4>{{ element.name }}</h4>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <h3>Joined Teams</h3>
                     </div>
                     <div class="row" style="background-color:white"></div>
                 </div>

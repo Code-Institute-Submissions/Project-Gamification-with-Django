@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Project, Issue, Skill, RequiredSkills
+from .models import Project, Issue, Skill, RequiredSkills, Team
 from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 import collections
 
@@ -29,6 +29,8 @@ def project_details(request, pk):
     project = Project.objects.get(id=pk)
     issues = Issue.objects.filter(project=project)
     requiredskills = get_object_or_404(RequiredSkills, project=project)
+    project_team = Team.objects.filter(projects = project)
+    # team_members = project_team.current_user.all()  LATER
     
     issue_counter = len(issues)
     
@@ -119,3 +121,15 @@ def delete_project(request, pk):
         
     return HttpResponseRedirect('/')
     
+    
+def join_team(request, pk):
+    project = Project.objects.get(pk=pk)
+    Team.join_team(request.user, project)
+    
+    return redirect(reverse('project_details', kwargs={'pk': pk }))
+    
+def leave_team(request, pk):
+    project = Project.objects.get(pk=pk)
+    Team.leave_team(request.user, project)
+    
+    return redirect(reverse('project_details', kwargs={'pk': pk }))
