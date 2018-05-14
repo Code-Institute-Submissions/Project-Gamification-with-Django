@@ -64,3 +64,26 @@ class RequiredSkills(models.Model):
     
     def __str__(self):
         return str(self.project)    
+        
+        
+        
+        
+class Team(models.Model):
+    projects = models.ManyToManyField(Project)
+    current_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    
+    @classmethod
+    def join_team(cls, current_user, new_project):
+        team, created = cls.objects.get_or_create(
+            current_user=current_user
+        )
+        team.projects.add(new_project)
+        
+    @classmethod
+    def leave_team(cls, current_user, new_project):
+        team, created = cls.objects.get_or_create(
+            current_user=current_user
+        )
+        team.projects.remove(new_project)    
+            
+        

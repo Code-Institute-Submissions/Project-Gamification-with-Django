@@ -32,7 +32,7 @@
 
             </div>
             <div class="nav navbar-top-links navbar-left">
-                <strong style="font-weight: bold">Big Game Hunters</strong>
+                <a href="{% url 'index' %}"><strong style="font-weight: bold">Big Game Hunters</strong></a>
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 {% if user.is_authenticated %}
