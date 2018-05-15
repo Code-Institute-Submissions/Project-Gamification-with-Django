@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Project, Issue, Skill, RequiredSkills, Team
-from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm
-from django.urls import reverse, reverse_lazy
+from .models import Project, Issue, Skill, RequiredSkills, Team, CommitSkill
+from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 import collections
 
@@ -30,6 +30,7 @@ def project_details(request, pk):
     issues = Issue.objects.filter(project=project)
     requiredskills = get_object_or_404(RequiredSkills, project=project)
     project_team = Team.objects.filter(projects = project)
+    skill_coverage = CommitSkill.objects.filter(project = project)
     
     issue_counter = len(issues)
     
@@ -37,7 +38,8 @@ def project_details(request, pk):
                 'issues': issues, 
                 'issue_counter': issue_counter, 
                 'requiredskills' : requiredskills,
-                'project_team': project_team }
+                'project_team': project_team,
+                'skill_coverage': skill_coverage}
    
     
     if request.method == 'GET':
@@ -69,6 +71,8 @@ def project_details(request, pk):
         if requiredskillsform.is_valid():
             requiredskills = requiredskillsform.save()
             
+        return redirect(reverse('project_details', kwargs={'pk': pk }))    
+          
 
 
     return render(request, 'project_details.html', context, { 'form': form, 'requiredskillsform': requiredskillsform } )   
@@ -126,13 +130,21 @@ def join_team(request, pk):
     project = Project.objects.get(pk=pk)
     Team.join_team(request.user, project)
     requiredskills = get_object_or_404(RequiredSkills, project=project)
-    form = RequiredSkillsForm(request.POST, instance = requiredskills)
+    
+    form = CommitSkillForm(request.POST)
     
     if request.method == 'POST':
-        skill_choice = request.form
-    
-    
-    ### DO NOT SHOW IF SKILL < 0    
+        
+        if form.is_valid():
+            skill = form.cleaned_data['skill']
+            CommitSkill.objects.create(
+                    project = project,
+                    user = request.user,
+                    skill = skill
+                    ).save()
+      
+        return redirect(reverse('project_details', kwargs={'pk': pk }))
+       
     
     return render (request, 'join_team.html', {'form': form, 'requiredskills' : requiredskills })
     
@@ -141,3 +153,10 @@ def leave_team(request, pk):
     Team.leave_team(request.user, project)
     
     return redirect(reverse('project_details', kwargs={'pk': pk }))
+    
+## BUILT    
+def reject_candidate(request, pk):
+    project = Project.objects.get(pk=pk)
+    Team.leave_team(request.user, project)
+    
+    return redirect(reverse('project_details', kwargs={'pk': pk }))    

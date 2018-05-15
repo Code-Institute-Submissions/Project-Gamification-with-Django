@@ -68,26 +68,85 @@
                             {% endfor %}
                         </div>
                     </div>
-                    
-
-
+                   <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>HTML</h3>
+                        </div>
+                        <div class="col-md-2 col-lg-2 text-left" id="details-right">
+                            <h3>{{requiredskills.html}}</h3>
+                        </div>
+                        <div class="col-md-5 col-lg-5 text-left" id="details-right">
+                            {% for element in skill_coverage %}
+                            {% if element.skill == 'html' %}
+                            <h3>{{ element.user }}</h3>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>CSS</h3>
+                        </div>
+                        <div class="col-md-2 col-lg-2 text-left" id="details-right">
+                            <h3>{{requiredskills.css}}</h3>
+                        </div>
+                        <div class="col-md-5 col-lg-5 text-left" id="details-right">
+                            {% for element in skill_coverage %}
+                            {% if element.skill == 'css' %}
+                            <h3>{{ element.user }}</h3>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>JS</h3>
+                        </div>
+                        <div class="col-md-2 col-lg-2 text-left" id="details-right">
+                            <h3>{{requiredskills.js}}</h3>
+                        </div>
+                        <div class="col-md-5 col-lg-5 text-left" id="details-right">
+                            {% for element in skill_coverage %}
+                            {% if element.skill == 'js' %}
+                            <h3>{{ element.user }}</h3>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>Python</h3>
+                        </div>
+                        <div class="col-md-2 col-lg-2 text-left" id="details-right">
+                            <h3>{{requiredskills.python}}</h3>
+                        </div>
+                        <div class="col-md-5 col-lg-5 text-left" id="details-right">
+                            {% for element in skill_coverage %}
+                            {% if element.skill == 'python' %}
+                            <h3>{{ element.user }}</h3>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row" id="row-table">
+                        <div class="col-md-5 col-lg-5 text-left" id="details-left">
+                            <h3>DB</h3>
+                        </div>
+                        <div class="col-md-2 col-lg-2 text-left" id="details-right">
+                            <h3>{{requiredskills.db}}</h3>
+                        </div>
+                        <div class="col-md-5 col-lg-5 text-left" id="details-right">
+                            {% for element in skill_coverage %}
+                            {% if element.skill == 'db' %}
+                            <h3>{{ element.user }}</h3>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-1 col-lg-1 text-left">
-            <h3>Python</h3>
-            <h4>{{requiredskills.python}}</h4>
-            <h3>HTML</h3>
-            <h4>{{requiredskills.html}}</h4>
-            <h3>CSS</h3>
-            <h4>{{requiredskills.css}}</h4>
-            <h3>MySQL</h3>
-            <h4>{{requiredskills.mysql}}</h4>
-            <h3>MongoDB</h3>
-            <h4>{{requiredskills.mongodb}}</h4>
-            <h3>JS</h3>
-            <h4>{{requiredskills.js}}</h4>
-        </div>
+
         <div class="col-md-6 col-lg-6 text-left">
             <div class="row">
                 <div class="col-md-12 col-lg-12 text-center" id="title">
@@ -158,46 +217,38 @@
                         <div class="row">
                             <div class="input-field col s12" id="field">
                                 <i class="material-icons prefix">HTML</i>
-                                <input id="name" name="html" type="number" class="validate">
+                                <input id="name" name="html" type="number" class="validate" value="{{requiredskills.html}}" >
                                 <label for="icon_prefix">{{requiredskills.html}}</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12" id="field">
                                 <i class="material-icons prefix">CSS</i>
-                                <input id="name" name="css" type="number" class="validate">
+                                <input id="name" name="css" type="number" class="validate" value="{{requiredskills.css}}">
                                 <label for="icon_prefix">{{requiredskills.css}}</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12" id="field">
                                 <i class="material-icons prefix">JS</i>
-                                <input id="name" name="js" type="number" class="validate">
+                                <input id="name" name="js" type="number" class="validate" value="{{requiredskills.js}}">
                                 <label for="icon_prefix">{{requiredskills.js}}</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12" id="field">
                                 <i class="material-icons prefix">PYTHON</i>
-                                <input id="name" name="python" type="number" class="validate">
+                                <input id="name" name="python" type="number" class="validate" value="{{requiredskills.python}}">
                                 <label for="icon_prefix">{{requiredskills.python}}</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12" id="field">
-                                <i class="material-icons prefix">MySQL</i>
-                                <input id="name" name="mysql" type="number" class="validate">
-                                <label for="icon_prefix">{{requiredskills.mysql}}</label>
+                                <i class="material-icons prefix">DB</i>
+                                <input id="name" name="db" type="number" class="validate" value="{{requiredskills.db}}">
+                                <label for="icon_prefix">{{requiredskills.db}}</label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12" id="field">
-                                <i class="material-icons prefix">MongoDB</i>
-                                <input id="name" name="mongodb" type="number" class="validate">
-                                <label for="icon_prefix">{{requiredskills.mongodb}}</label>
-                            </div>
-                        </div>
-
                         <div class="row">
                             <button class="btn waves-effect waves-light" type="submit" name="action" id="add">Skillify</button>
                         </div>

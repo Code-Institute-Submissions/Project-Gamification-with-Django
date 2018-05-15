@@ -60,16 +60,13 @@ class RequiredSkills(models.Model):
     html = models.DecimalField(max_digits=1, decimal_places = 0, default = 0)
     js = models.DecimalField(max_digits=1, decimal_places = 0, default = 0)
     css = models.DecimalField(max_digits=1, decimal_places = 0, default = 0)
-    mongodb = models.DecimalField(max_digits=1, decimal_places = 0, default = 0)
-    mysql = models.DecimalField(max_digits=1, decimal_places = 0, default = 0)
+    db = models.DecimalField(max_digits=1, decimal_places = 0, default = 0)
+
     
     def __str__(self):
         return str(self.project)    
         
-        
-        
-        
-        
+      
         
 class Team(models.Model):
     projects = models.ManyToManyField(Project)
@@ -99,7 +96,7 @@ class Team(models.Model):
 ## MIGRATE         
 class CommitSkill(models.Model):  
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    team_member = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     skill = models.CharField(max_length=254, default='')
     
     def __str__(self):

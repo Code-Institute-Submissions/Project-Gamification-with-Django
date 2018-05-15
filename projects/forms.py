@@ -22,6 +22,15 @@ class RequiredSkillsForm(forms.ModelForm):
         exclude = ['project']
    
    
+class CommitSkillForm(forms.Form):
+ 
+    CHOICES=[('python','python'),
+             ('html','html'),
+             ('css','css'),
+             ('js','js'),
+             ('db','db')]
+
+    skill = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
    
    
    
