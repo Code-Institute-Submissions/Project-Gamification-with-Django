@@ -30,14 +30,13 @@ def project_details(request, pk):
     issues = Issue.objects.filter(project=project)
     requiredskills = get_object_or_404(RequiredSkills, project=project)
     project_team = Team.objects.filter(projects = project)
-    # team_members = project_team.current_user.all()  LATER
     
     issue_counter = len(issues)
     
     context = {'project': project, 
                 'issues': issues, 
                 'issue_counter': issue_counter, 
-                'requiredskills': requiredskills }
+                'project_team': project_team }
    
     
     if request.method == 'GET':
