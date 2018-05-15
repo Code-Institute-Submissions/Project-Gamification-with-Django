@@ -44,14 +44,15 @@ class Issue(models.Model):
     def __str__(self):
         return self.name        
         
-     
+## OBSOLETE      
 class Skill(models.Model):
     name = models.CharField(max_length=254)
     logo = models.ImageField(upload_to='logos', blank=True)
     
     def __str__(self):
         return self.name
-        
+## 
+
         
 class RequiredSkills(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -64,6 +65,8 @@ class RequiredSkills(models.Model):
     
     def __str__(self):
         return str(self.project)    
+        
+        
         
         
         
@@ -90,3 +93,15 @@ class Team(models.Model):
             
     def __str__(self):
         return str(self.current_user)       
+        
+        
+        
+## MIGRATE         
+class CommitSkill(models.Model):  
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    team_member = models.ForeignKey(User, on_delete=models.CASCADE)
+    skill = models.CharField(max_length=254, default='')
+    
+    def __str__(self):
+        return str(self.project)
+        

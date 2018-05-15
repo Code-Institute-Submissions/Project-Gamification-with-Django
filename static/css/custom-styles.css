@@ -1064,5 +1064,9 @@ strong {
 }
 
 
-
+[type="radio"]:not(:checked), [type="radio"]:checked {
+    position: absolute;
+    left: 0px;
+    opacity: 1;
+}
 

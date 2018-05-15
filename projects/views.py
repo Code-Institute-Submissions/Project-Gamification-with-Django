@@ -36,6 +36,7 @@ def project_details(request, pk):
     context = {'project': project, 
                 'issues': issues, 
                 'issue_counter': issue_counter, 
+                'requiredskills' : requiredskills,
                 'project_team': project_team }
    
     
@@ -124,8 +125,16 @@ def delete_project(request, pk):
 def join_team(request, pk):
     project = Project.objects.get(pk=pk)
     Team.join_team(request.user, project)
+    requiredskills = get_object_or_404(RequiredSkills, project=project)
+    form = RequiredSkillsForm(request.POST, instance = requiredskills)
     
-    return redirect(reverse('project_details', kwargs={'pk': pk }))
+    if request.method == 'POST':
+        skill_choice = request.form
+    
+    
+    ### DO NOT SHOW IF SKILL < 0    
+    
+    return render (request, 'join_team.html', {'form': form, 'requiredskills' : requiredskills })
     
 def leave_team(request, pk):
     project = Project.objects.get(pk=pk)
