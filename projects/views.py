@@ -150,13 +150,26 @@ def join_team(request, pk):
     
 def leave_team(request, pk):
     project = Project.objects.get(pk=pk)
+    commitskill = get_object_or_404(CommitSkill, project=project, user=request.user)
+    commitskill.delete() 
     Team.leave_team(request.user, project)
+    
+    
     
     return redirect(reverse('project_details', kwargs={'pk': pk }))
     
-## BUILT    
+## BUILD    
+
 def reject_candidate(request, pk):
-    project = Project.objects.get(pk=pk)
-    Team.leave_team(request.user, project)
+    
+    if request.method == 'DELETE':
+        commitskill = get_object_or_404(CommitSkill, pk=pk)
+        user = commitskill.user
+        project = commitskill.project
+        commitskill.delete()   
+        Team.leave_team(user, project)
+        
+        ## Z Teamu też
+        
     
     return redirect(reverse('project_details', kwargs={'pk': pk }))    

@@ -79,6 +79,7 @@
                             {% for element in skill_coverage %}
                             {% if element.skill == 'html' %}
                             <h3>{{ element.user }}</h3>
+                            <button data-id="{{ element.id }}" onclick="rejectCandidate(this)" class="btn btn-danger">Delete</button>
                             {% endif %}
                             {% endfor %}
                         </div>
@@ -94,6 +95,7 @@
                             {% for element in skill_coverage %}
                             {% if element.skill == 'css' %}
                             <h3>{{ element.user }}</h3>
+                            <button data-id="{{ element.id }}" onclick="rejectCandidate(this)" class="btn btn-danger">Delete</button>
                             {% endif %}
                             {% endfor %}
                         </div>
@@ -109,6 +111,7 @@
                             {% for element in skill_coverage %}
                             {% if element.skill == 'js' %}
                             <h3>{{ element.user }}</h3>
+                            <button data-id="{{ element.id }}" onclick="rejectCandidate(this)" class="btn btn-danger">Delete</button>
                             {% endif %}
                             {% endfor %}
                         </div>
@@ -124,6 +127,7 @@
                             {% for element in skill_coverage %}
                             {% if element.skill == 'python' %}
                             <h3>{{ element.user }}</h3>
+                            <button data-id="{{ element.id }}" onclick="rejectCandidate(this)" class="btn btn-danger">Delete</button>
                             {% endif %}
                             {% endfor %}
                         </div>
@@ -139,6 +143,7 @@
                             {% for element in skill_coverage %}
                             {% if element.skill == 'db' %}
                             <h3>{{ element.user }}</h3>
+                            <button data-id="{{ element.id }}" onclick="rejectCandidate(this)" class="btn btn-danger">Delete</button>
                             {% endif %}
                             {% endfor %}
                         </div>

@@ -242,7 +242,19 @@ function deleteProject(project){
   })
 }
 
+function rejectCandidate(commitskill){
+  var $commitskill = $(commitskill)
+  $commitskill.parent().remove()
+  var id = $commitskill.data('id')
 
+  $.ajax({
+    url: 'reject_candidate/' + id,
+    method: 'DELETE',
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRFToken', csrf_token)
+    }
+  })
+}
 
 
 
