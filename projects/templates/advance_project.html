@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
+<h1>Add Details </h1>
+<div class="container form-group">
+
+  <form method="POST">
+    {% csrf_token %}
+    <div class="row">
+      <select id="type_of_algorithm" name="status">
+          <option value="" disabled selected>{{ project.status }}</option>
+          {% for type in project_states %}
+              <option value={{type.name}}>{{type.name}}</option>
+          {% endfor %}
+        </select>
+    </div>
+    <div class=row></div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+
+<script>
+
+    var elem = document.querySelectorAll('select')
+    var instance = M.FormSelect.init(elem)
+    
+</script>
+
+
+
+
+{% endblock %}

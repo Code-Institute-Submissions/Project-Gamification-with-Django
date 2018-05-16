@@ -30,6 +30,11 @@ class Project(models.Model):
         return self.name
         
         
+class ProjectState(models.Model):
+    name = models.CharField(max_length=254, default='proposed')
+      
+    def __str__(self):
+        return self.name    
         
 class Issue(models.Model):
     name = models.CharField(max_length=254, default='')

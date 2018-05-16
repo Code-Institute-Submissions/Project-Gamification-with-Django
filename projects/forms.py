@@ -1,5 +1,5 @@
 from django import forms
-from .models import Project, Issue, RequiredSkills
+from .models import Project, Issue, RequiredSkills, ProjectState
 
 class ProposeProjectForm(forms.ModelForm):
     
@@ -31,7 +31,13 @@ class CommitSkillForm(forms.Form):
              ('db','db')]
 
     skill = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
-   
+    
+    
+class ChangeStateForm(forms.ModelForm):  
+    
+    class Meta:
+        model = Project
+        fields = ['status']
    
    
    

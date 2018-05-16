@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Project, Issue, Skill, RequiredSkills, Team, CommitSkill
-from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm
+from .models import Project, Issue, Skill, RequiredSkills, Team, CommitSkill, ProjectState
+from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 import collections
@@ -154,11 +154,9 @@ def leave_team(request, pk):
     commitskill.delete() 
     Team.leave_team(request.user, project)
     
-    
-    
     return redirect(reverse('project_details', kwargs={'pk': pk }))
     
-## BUILD    
+  
 
 def reject_candidate(request, pk):
     
@@ -168,8 +166,23 @@ def reject_candidate(request, pk):
         project = commitskill.project
         commitskill.delete()   
         Team.leave_team(user, project)
-        
-        ## Z Teamu też
-        
-    
+   
     return redirect(reverse('project_details', kwargs={'pk': pk }))    
+    
+
+def advance_project(request, pk):
+    
+    project = Project.objects.get(pk=pk)
+    project_states = ProjectState.objects.all()
+    
+    form = ChangeStateForm(request.POST, instance = project)
+    
+    if request.method == 'POST':
+        
+        if form.is_valid():
+            form.save()
+            
+            
+            return redirect(reverse('project_details', kwargs={'pk': pk }))
+        
+    return render (request, 'advance_project.html', {'form': form, 'project': project, 'project_states' : project_states })    
