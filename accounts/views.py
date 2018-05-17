@@ -61,8 +61,9 @@ def profile(request, user):
        form = MyDetailsForm(request.POST, request.FILES, instance=my_profile)
        
        if form.is_valid():
-           my_profile = form.save()
-              
+           form.save()
+            
+           return redirect(reverse('profile', kwargs={'user': user }))          
        else:
            form = MyDetailsForm()       
 
