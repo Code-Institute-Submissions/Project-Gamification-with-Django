@@ -9,6 +9,8 @@ class MyProfile(models.Model):
     personality = models.CharField(max_length=254, default='programmer')
     image = models.ImageField(upload_to='portraits', blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def 
 
 
     def get_absolute_url(self):

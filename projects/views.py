@@ -186,3 +186,20 @@ def advance_project(request, pk):
             return redirect(reverse('project_details', kwargs={'pk': pk }))
         
     return render (request, 'advance_project.html', {'form': form, 'project': project, 'project_states' : project_states })    
+    
+    
+## BUILD     
+
+def complete_project(request, pk):
+    
+    project = Project.objects.get(pk=pk)
+    project_team = Team.objects.filter(projects = project)
+    
+    team_members = 0
+    for element in project_team:
+        team_members += 1
+    
+    if request.method == 'POST':
+        pass
+    
+    return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members })

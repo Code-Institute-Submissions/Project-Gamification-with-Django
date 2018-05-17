@@ -20,7 +20,8 @@ class Project(models.Model):
         for issue in issues:
             total_cost_amount += issue.cost
         
-        return self.budget - total_cost_amount    
+        return self.budget - total_cost_amount 
+        
     
     
     def get_absolute_url(self):
