@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class MyProfile(models.Model):
-    position = models.CharField(max_length=254, default='Coder')
-    personality = models.CharField(max_length=254, default='geek')
+    position = models.CharField(max_length=254, default='Coder', blank=True)
+    personality = models.CharField(max_length=254, default='geek', blank=True)
     image = models.ImageField(upload_to='portraits', blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     my_wallet = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)

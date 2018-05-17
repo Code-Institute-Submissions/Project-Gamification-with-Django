@@ -49,7 +49,7 @@ class MyDetailsForm(forms.ModelForm):
     
     class Meta:
         model = MyProfile
-        exclude = ['owner', 'my_wallet']
+        fields = ['position','personality','image']
         
         
         

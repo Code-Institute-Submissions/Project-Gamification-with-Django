@@ -65,7 +65,6 @@ def profile(request, pk):
        
        if form.is_valid():
            form.save()
-                 
             
            return redirect(reverse('profile', kwargs={'pk': pk }))          
        else:
