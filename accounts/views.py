@@ -24,13 +24,16 @@ def logout(request):
 
 
 @login_required
-def profile(request, user):
+def profile(request, pk):
     
     user = request.user
     issues = Issue.objects.filter(proposed_by=request.user)
     projects = Project.objects.filter(proposed_by=request.user)
-    joined_teams = Team.objects.get(current_user = request.user)
-    joined_projects = joined_teams.projects.all()
+    try:
+        joined_teams = get_object_or_404(Team, current_user = request.user)
+        joined_projects = joined_teams.projects.all()
+    except:
+        joined_projects = [{'name' : 'None'}]
     
     
     project_count = 0
@@ -62,8 +65,9 @@ def profile(request, user):
        
        if form.is_valid():
            form.save()
+                 
             
-           return redirect(reverse('profile', kwargs={'user': user }))          
+           return redirect(reverse('profile', kwargs={'pk': pk }))          
        else:
            form = MyDetailsForm()       
 
@@ -107,6 +111,7 @@ def user_login(request):
                 MyProfile.objects.create(
                 position = "guest",
                 personality = "guest",
+                my_wallet = 0,
                 owner = request.user
                 ).save()
                 return redirect(reverse('index'))
@@ -123,10 +128,12 @@ def user_login(request):
                 
     return render(request, 'user_login.html', context)
     
+###### OBSOLETE    
 
 @login_required
-def my_details(request, owner):
+def my_details(request, pk):
     
+    user = request.user
     personalities = Personality.objects.all()
     positions = Position.objects.all()
     if request.method == 'POST':
@@ -138,12 +145,19 @@ def my_details(request, owner):
            personality = form.cleaned_data['personality']
            image = form.cleaned_data['image']
            owner = request.user
-           
+           if position == "PM":
+               my_wallet = 500
+           elif position == "Coder":
+               my_wallet = 100
+           else: 
+               my_wallet = 10
+               
            MyProfile.objects.create(
                position = position,
                personality = personality,
                image = image,
-               owner = owner
+               owner = owner,
+               my_wallet = my_wallet
                ).save()
 
            return HttpResponseRedirect('/')

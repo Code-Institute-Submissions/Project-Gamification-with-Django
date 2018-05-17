@@ -9,17 +9,7 @@ class MyProfile(models.Model):
     personality = models.CharField(max_length=254, default='geek')
     image = models.ImageField(upload_to='portraits', blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    
-    def my_wallet(self):
-        my_wallet = 0
-        if self.position == "PM":
-            my_wallet += 500
-        elif self.position == "Coder":
-            my_wallet += 100
-        else:
-            my_wallet += 10
-        return my_wallet  
-            
+    my_wallet = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)
 
 
     def get_absolute_url(self):

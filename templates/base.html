@@ -36,7 +36,7 @@
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'profile' user=request.user %}"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="{% url 'profile' pk=user.id %}"><i class="fa fa-user"></i> Profile</a></li>
                 <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 {% else %}
                 <li><a href="{% url 'user_login' %}"><i class="fa fa-user-plus"></i> Log In</a></li>

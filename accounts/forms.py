@@ -44,12 +44,12 @@ class UserRegistrationForm(UserCreationForm):
         return password2
     
     
-    
+####### REBUILD !!!!
 class MyDetailsForm(forms.ModelForm):
     
     class Meta:
         model = MyProfile
-        fields = ['position','personality','image']
+        exclude = ['owner', 'my_wallet']
         
         
         
