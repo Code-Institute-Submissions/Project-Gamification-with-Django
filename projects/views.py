@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .models import Project, Issue, Skill, RequiredSkills, Team, CommitSkill, ProjectState
+from accounts.models import MyProfile
 from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -200,12 +202,32 @@ def complete_project(request, pk):
     team_members = 0
     for element in project_team:
         team_members += 1
+
+    prize = project.budget_left() / team_members
     
+    projector = []
+    # for element in project_team:
+    #         user = element.current_user
+    #         winners = MyProfile.objects.filter(owner=user)
+    #         for element in winners:
+    #             element.my_wallet += prize
+    #             element.save()
+    
+
+
     if request.method == 'POST':
-        pass
-    ### CALCULATE REWARD
+        
+        for element in project_team:
+            user = element.current_user
+            winners = MyProfile.objects.filter(owner=user)
+            for element in winners:
+                element.my_wallet += prize
+                element.save()
+            
+        return HttpResponseRedirect('/')
+        
     
-    return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members })
+    return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members, 'prize' : prize, 'project_team' : project_team, 'projector' : projector })
     
    
-## RESOLVE BUG VIEW    
+## RESOLVE_ISSUE VIEW    

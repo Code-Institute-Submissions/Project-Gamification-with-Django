@@ -23,7 +23,6 @@ class Project(models.Model):
         return self.budget - total_cost_amount 
         
     
-    
     def get_absolute_url(self):
         return reverse('project_details', kwargs={'pk': self.pk})
     
