@@ -8,7 +8,6 @@ class Project(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
     status = models.CharField(max_length=254, default='proposed')
-    project_manager = models.CharField(max_length=254, default='')
     proposed_by = models.ForeignKey(User, on_delete=models.CASCADE)
     budget = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)
     image = models.ImageField(upload_to='images')

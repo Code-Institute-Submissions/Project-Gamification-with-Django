@@ -83,6 +83,8 @@ def project_details(request, pk):
 @login_required
 def propose_project(request):
     
+    my_profile = get_object_or_404(MyProfile, owner=request.user)
+    
     if request.method == 'POST':
        
        form = ProposeProjectForm(request.POST, request.FILES)
@@ -90,26 +92,28 @@ def propose_project(request):
        if form.is_valid():
            name = form.cleaned_data['name']
            description = form.cleaned_data['description']
-           project_manager = form.cleaned_data['project_manager']
-           budget = form.cleaned_data['budget']
+           budget = 450
            image = form.cleaned_data['image']
            proposed_by = request.user
            
            new_project = Project.objects.create(
                                                name = name,
                                                description = description,
-                                               project_manager = project_manager,
                                                budget = budget,
                                                image = image,
                                                proposed_by = proposed_by
                                                )
            new_project.save()
            
-           ## CALCULATE REMAINING WALLET
+           
+           my_profile.my_wallet = my_profile.my_wallet - 450
+           my_profile.save()
            
            RequiredSkills.objects.create(
                 project = new_project
                ).save()
+               
+            
      
  
 
@@ -206,13 +210,7 @@ def complete_project(request, pk):
     prize = project.budget_left() / team_members
     
     projector = []
-    # for element in project_team:
-    #         user = element.current_user
-    #         winners = MyProfile.objects.filter(owner=user)
-    #         for element in winners:
-    #             element.my_wallet += prize
-    #             element.save()
-    
+
 
 
     if request.method == 'POST':
@@ -223,6 +221,9 @@ def complete_project(request, pk):
             for element in winners:
                 element.my_wallet += prize
                 element.save()
+        
+        project.delete()        
+                
             
         return HttpResponseRedirect('/')
         
