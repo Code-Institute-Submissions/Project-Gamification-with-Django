@@ -64,7 +64,9 @@ def profile(request, pk):
        form = MyDetailsForm(request.POST, request.FILES, instance=my_profile)
        
        if form.is_valid():
-           form.save()
+           my_profile = form.save(commit=False)
+           my_profile.my_wallet = 500
+           my_profile.save()
             
            return redirect(reverse('profile', kwargs={'pk': pk }))          
        else:
