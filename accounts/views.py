@@ -65,7 +65,13 @@ def profile(request, pk):
        
        if form.is_valid():
            my_profile = form.save(commit=False)
-           my_profile.my_wallet = 500
+           if my_profile.position == "PM" and my_profile.my_wallet == 0:
+            my_profile.my_wallet = 500  ## BUILD with and statement for current wallet
+           elif my_profile.position == "Coder" and my_profile.my_wallet == 0:  
+            my_profile.my_wallet = 100  
+           else:
+            my_profile.my_wallet = my_profile.my_wallet    
+            
            my_profile.save()
             
            return redirect(reverse('profile', kwargs={'pk': pk }))          

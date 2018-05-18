@@ -103,6 +103,8 @@ def propose_project(request):
                                                )
            new_project.save()
            
+           ## CALCULATE REMAINING WALLET
+           
            RequiredSkills.objects.create(
                 project = new_project
                ).save()
@@ -201,5 +203,9 @@ def complete_project(request, pk):
     
     if request.method == 'POST':
         pass
+    ### CALCULATE REWARD
     
     return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members })
+    
+   
+## RESOLVE BUG VIEW    
