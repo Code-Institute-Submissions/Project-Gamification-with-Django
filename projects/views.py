@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Project, Issue, Skill, RequiredSkills, Team, CommitSkill, ProjectState
+from .models import Project, Issue, RequiredSkills, Team, CommitSkill, ProjectState
 from accounts.models import MyProfile
 from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm
 from django.urls import reverse
@@ -59,13 +59,19 @@ def project_details(request, pk):
            project = project
            assigned_to = request.user
            
-           Issue.objects.create(
-               name = name,
-               description = description,
-               cost = cost,
-               project = project,
-               assigned_to = assigned_to
-               ).save()
+           new_issue = Issue.objects.create(
+                                           name = name,
+                                           description = description,
+                                           cost = cost,
+                                           project = project,
+                                           assigned_to = assigned_to)
+           new_issue.save()
+               
+               
+           project.budget = project.budget - new_issue.cost
+           if project.budget < 0:
+               project.status = "On Hold"
+           project.save()
       
                
         requiredskillsform = RequiredSkillsForm(request.POST, instance = requiredskills)
@@ -85,42 +91,46 @@ def propose_project(request):
     
     my_profile = get_object_or_404(MyProfile, owner=request.user)
     
-    if request.method == 'POST':
-       
-       form = ProposeProjectForm(request.POST, request.FILES)
-       
-       if form.is_valid():
-           name = form.cleaned_data['name']
-           description = form.cleaned_data['description']
-           budget = 450
-           image = form.cleaned_data['image']
-           proposed_by = request.user
+    if my_profile.my_wallet < 450:
+        
+        return HttpResponseRedirect('/')
+        
+    else: 
+        
+        if request.method == 'POST':
+    
+           form = ProposeProjectForm(request.POST, request.FILES)
            
-           new_project = Project.objects.create(
-                                               name = name,
-                                               description = description,
-                                               budget = budget,
-                                               image = image,
-                                               proposed_by = proposed_by
-                                               )
-           new_project.save()
-           
-           
-           my_profile.my_wallet = my_profile.my_wallet - 450
-           my_profile.save()
-           
-           RequiredSkills.objects.create(
-                project = new_project
-               ).save()
+           if form.is_valid():
+               name = form.cleaned_data['name']
+               description = form.cleaned_data['description']
+               budget = 450
+               image = form.cleaned_data['image']
+               proposed_by = request.user
                
+               new_project = Project.objects.create(
+                                                   name = name,
+                                                   description = description,
+                                                   budget = budget,
+                                                   image = image,
+                                                   proposed_by = proposed_by
+                                                   )
+               new_project.save()
+               
+               
+               my_profile.my_wallet = my_profile.my_wallet - 450
+               my_profile.save()
+               
+               RequiredSkills.objects.create(
+                    project = new_project
+                   ).save()
+                   
+               return redirect(reverse('projects'))
+                   
             
-     
- 
-
-           return redirect(reverse('projects'))
        
-    else:
-        form = ProposeProjectForm()
+        else:
+            form = ProposeProjectForm()
         
     return render (request, 'propose_project.html', {'form': form })    
     
@@ -183,6 +193,8 @@ def advance_project(request, pk):
     project = Project.objects.get(pk=pk)
     project_states = ProjectState.objects.all()
     
+    my_profile = MyProfile.objects.get(owner=project.proposed_by)
+    
     form = ChangeStateForm(request.POST, instance = project)
     
     if request.method == 'POST':
@@ -193,7 +205,7 @@ def advance_project(request, pk):
             
             return redirect(reverse('project_details', kwargs={'pk': pk }))
         
-    return render (request, 'advance_project.html', {'form': form, 'project': project, 'project_states' : project_states })    
+    return render (request, 'advance_project.html', {'form': form, 'project': project, 'project_states' : project_states, 'my_profile' : my_profile })    
     
     
 ## BUILD     
@@ -202,14 +214,18 @@ def complete_project(request, pk):
     
     project = Project.objects.get(pk=pk)
     project_team = Team.objects.filter(projects = project)
+    project_manager = MyProfile.objects.get(owner=project.proposed_by)
     
     team_members = 0
     for element in project_team:
         team_members += 1
 
-    prize = project.budget_left() / team_members
+    prize = project.budget / team_members
     
     if request.method == 'POST':
+        
+        project_manager.my_wallet = project_manager.my_wallet + 450
+        project_manager.save()
         
         for element in project_team:
             user = element.current_user
@@ -217,6 +233,8 @@ def complete_project(request, pk):
             for element in winners:
                 element.my_wallet += prize
                 element.save()
+                
+                
         
         project.delete()        
                 

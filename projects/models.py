@@ -12,15 +12,7 @@ class Project(models.Model):
     budget = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)
     image = models.ImageField(upload_to='images')
     
-    
-    def budget_left(self):
-        issues = Issue.objects.filter(project=self)
-        total_cost_amount = 0
-        for issue in issues:
-            total_cost_amount += issue.cost
-        
-        return self.budget - total_cost_amount 
-        
+
     
     def get_absolute_url(self):
         return reverse('project_details', kwargs={'pk': self.pk})
@@ -48,14 +40,7 @@ class Issue(models.Model):
     def __str__(self):
         return self.name        
         
-## OBSOLETE #######################     
-class Skill(models.Model):
-    name = models.CharField(max_length=254)
-    logo = models.ImageField(upload_to='logos', blank=True)
-    
-    def __str__(self):
-        return self.name
-########################## 
+
 
         
 class RequiredSkills(models.Model):
