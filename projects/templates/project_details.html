@@ -161,6 +161,8 @@
                     <h3 style="color:blue">{{issue.name}}</h3>
                     <h4>{{ issue.description }}</h4>
                     <h4>{{ issue.cost }}</h4>
+                    <h4>{{ issue.assigned_to }}</h4>
+                    <a href="{% url 'assign_issue' pk=issue.id %}"><button type="submit" class="btn_login" >Assign to me</button></a>
                     <h1>--------</h1>
                     {% endfor %}
 

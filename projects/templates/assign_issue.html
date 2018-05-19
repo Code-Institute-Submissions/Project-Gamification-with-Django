@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
+<h1>Assign Issue </h1>
+<div class="container form-group">
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="col-md-12 col-lg-12 text-center" id="title">
+            <h3 style="color:blue">{{ user }}</h3>
+            <h3 style="color:blue">{{ issue.assigned_to }}</h3>
+            <h1>--------</h1>
+        </div>
+        <div class=row></div>
+        <button type="submit" class="btn btn-success">Assign</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

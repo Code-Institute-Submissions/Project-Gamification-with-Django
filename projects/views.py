@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Project, Issue, Skill, RequiredSkills, Team, CommitSkill, ProjectState
 from accounts.models import MyProfile
-from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm
+from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm, AssignIssueForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 import collections
@@ -57,14 +57,14 @@ def project_details(request, pk):
            description = form.cleaned_data['description']
            cost = form.cleaned_data['cost']
            project = project
-           proposed_by = request.user
+           assigned_to = request.user
            
            Issue.objects.create(
                name = name,
                description = description,
                cost = cost,
                project = project,
-               proposed_by = proposed_by
+               assigned_to = assigned_to
                ).save()
       
                
@@ -209,10 +209,6 @@ def complete_project(request, pk):
 
     prize = project.budget_left() / team_members
     
-    projector = []
-
-
-
     if request.method == 'POST':
         
         for element in project_team:
@@ -228,7 +224,25 @@ def complete_project(request, pk):
         return HttpResponseRedirect('/')
         
     
-    return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members, 'prize' : prize, 'project_team' : project_team, 'projector' : projector })
+    return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members, 'prize' : prize, 'project_team' : project_team })
     
    
-## RESOLVE_ISSUE VIEW    
+## RESOLVE_ISSUE VIEW 
+
+
+def assign_issue(request, pk):
+    
+    issue = Issue.objects.get(id=pk)
+    user = request.user
+    form = AssignIssueForm(request.POST)
+    
+    if request.method == 'POST':
+
+        issue = get_object_or_404(Issue, id=pk)
+        issue.assigned_to = request.user
+        issue.save()
+        return HttpResponseRedirect('/')
+        
+    return render (request, 'assign_issue.html',  {'issue' : issue, 'user' : user} ) 
+        
+    

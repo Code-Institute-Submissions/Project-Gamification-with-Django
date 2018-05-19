@@ -27,7 +27,7 @@ def logout(request):
 def profile(request, pk):
     
     user = request.user
-    issues = Issue.objects.filter(proposed_by=request.user)
+    issues = Issue.objects.filter(assigned_to=request.user)
     projects = Project.objects.filter(proposed_by=request.user)
     try:
         joined_teams = get_object_or_404(Team, current_user = request.user)

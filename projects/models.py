@@ -40,7 +40,7 @@ class Issue(models.Model):
     description = models.TextField()
     cost = models.DecimalField(max_digits=3, decimal_places = 0, default = 0)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    proposed_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    assigned_to = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def get_absolute_url(self):
         return reverse('project_details', kwargs={'pk': self.pk})
