@@ -149,7 +149,8 @@
                 {% for issue in issues %}
                 <h3 style="color:blue">{{ issue.name }}</h3>
                 <h4>{{ issue.description }}</h4>
-
+                <h4>{{ issue.cost }}</h4>
+                <a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login" >Fixed</button></a>
                 {% endfor%}
             </div>
 <div id="detailsModal" class="modal">

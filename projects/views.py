@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Project, Issue, Skill, RequiredSkills, Team, CommitSkill, ProjectState
 from accounts.models import MyProfile
-from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm, AssignIssueForm
+from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 import collections
@@ -232,17 +232,12 @@ def complete_project(request, pk):
 
 def assign_issue(request, pk):
     
-    issue = Issue.objects.get(id=pk)
     user = request.user
-    form = AssignIssueForm(request.POST)
+    issue = get_object_or_404(Issue, id=pk)
+    issue.assigned_to = request.user
+    issue.save()
     
-    if request.method == 'POST':
-
-        issue = get_object_or_404(Issue, id=pk)
-        issue.assigned_to = request.user
-        issue.save()
-        return HttpResponseRedirect('/')
         
-    return render (request, 'assign_issue.html',  {'issue' : issue, 'user' : user} ) 
+    return HttpResponseRedirect('/') 
         
     

@@ -40,11 +40,6 @@ class ChangeStateForm(forms.ModelForm):
         fields = ['status']
    
    
-class AssignIssueForm(forms.ModelForm):
-    
-    class Meta:
-        model = Issue
-        fields = ['assigned_to']
     
    
    

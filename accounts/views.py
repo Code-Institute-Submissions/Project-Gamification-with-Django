@@ -167,7 +167,7 @@ def my_details(request, pk):
                my_wallet = my_wallet
                ).save()
 
-           return HttpResponseRedirect('/')
+           return redirect(reverse('profile', kwargs={'pk': pk }))
        
     else:
        form = MyDetailsForm()
@@ -175,7 +175,17 @@ def my_details(request, pk):
     return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions })   
            
 
+def issue_fixed(request, pk):
     
+    issue = get_object_or_404(Issue, id=pk)
+    my_profile = get_object_or_404(MyProfile, owner=request.user)
+    
+    my_profile.my_wallet = my_profile.my_wallet + issue.cost
+    my_profile.save()
+    issue.delete()
+    
+  
+    return redirect(reverse('profile', kwargs={'pk': pk }))
     
     
     
