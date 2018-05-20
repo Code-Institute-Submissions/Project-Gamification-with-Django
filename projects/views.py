@@ -78,6 +78,10 @@ def project_details(request, pk):
            project.budget = project.budget - new_issue.cost
            if project.budget < 0:
                project.status = "On Hold"
+               ProjectMessage.objects.create(
+                   project = project,
+                   message = "Project {0} placed on hold.".format(project.name)
+                   ).save()
            project.save()
       
                
@@ -135,7 +139,7 @@ def propose_project(request):
                    
                ProjectMessage.objects.create(
                    project = new_project,
-                   message = "Project starts"
+                   message = "Project {0} proposed by {1}".format(new_project.name, new_project.proposed_by)
                    ).save()       
                    
                    
@@ -215,6 +219,11 @@ def advance_project(request, pk):
         
         if form.is_valid():
             form.save()
+        
+            ProjectMessage.objects.create(
+                       project = project,
+                       message = "Project {0} advanced to stage {1}".format(project.name, project.status)
+                       ).save()    
             
             
             return redirect(reverse('project_details', kwargs={'pk': pk }))
@@ -266,6 +275,11 @@ def assign_issue(request, pk):
     issue = get_object_or_404(Issue, id=pk)
     issue.assigned_to = request.user
     issue.save()
+    
+    ProjectMessage.objects.create(
+                   project = issue.project,
+                   message = "Issue {0} assigned to {1}".format(issue.name, issue.assigned_to)
+                   ).save()
     
         
     return HttpResponseRedirect('/') 
