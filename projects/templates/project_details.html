@@ -208,6 +208,14 @@
                     <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 text-center" id="title">
+                {% for element in project_log %}
+                <h3>{{ element.message }}</h3>
+                <h3>{{ element.message_date }}</h3>
+                {% endfor %}
+                </div>
+            </div>
 
             <div id="skillsetModal" class="modal">
 

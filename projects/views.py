@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Project, Issue, RequiredSkills, Team, CommitSkill, ProjectState
+from .models import Project, Issue, RequiredSkills, Team, CommitSkill, ProjectState, ProjectMessage
 from accounts.models import MyProfile
 from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.utils import timezone
 import collections
 
 
@@ -33,6 +34,7 @@ def project_details(request, pk):
     requiredskills = get_object_or_404(RequiredSkills, project=project)
     project_team = Team.objects.filter(projects = project)
     skill_coverage = CommitSkill.objects.filter(project = project)
+    project_log = ProjectMessage.objects.filter(project = project).order_by('-message_date')
     
     issue_counter = len(issues)
     
@@ -41,7 +43,8 @@ def project_details(request, pk):
                 'issue_counter': issue_counter, 
                 'requiredskills' : requiredskills,
                 'project_team': project_team,
-                'skill_coverage': skill_coverage}
+                'skill_coverage': skill_coverage,
+                'project_log': project_log }
    
     
     if request.method == 'GET':
@@ -66,6 +69,10 @@ def project_details(request, pk):
                                            project = project,
                                            assigned_to = assigned_to)
            new_issue.save()
+           
+           ProjectMessage.objects.create(project = project,
+                                         message = "Issue {0} raised by {1}".format(new_issue.name, new_issue.assigned_to)
+                                         ).save
                
                
            project.budget = project.budget - new_issue.cost
@@ -90,6 +97,7 @@ def project_details(request, pk):
 def propose_project(request):
     
     my_profile = get_object_or_404(MyProfile, owner=request.user)
+    current_time = timezone.now()
     
     if my_profile.my_wallet < 450:
         
@@ -124,6 +132,12 @@ def propose_project(request):
                RequiredSkills.objects.create(
                     project = new_project
                    ).save()
+                   
+               ProjectMessage.objects.create(
+                   project = new_project,
+                   message = "Project starts"
+                   ).save()       
+                   
                    
                return redirect(reverse('projects'))
                    
@@ -244,8 +258,6 @@ def complete_project(request, pk):
     
     return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members, 'prize' : prize, 'project_team' : project_team })
     
-   
-## RESOLVE_ISSUE VIEW 
 
 
 def assign_issue(request, pk):

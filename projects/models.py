@@ -90,3 +90,17 @@ class CommitSkill(models.Model):
     def __str__(self):
         return str(self.project)
         
+
+        
+class ProjectMessage(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    message = models.TextField()
+    message_date = models.DateField(auto_now=True)
+    
+    def __str__(self):
+        return str(self.project)
+    
+    
+## IDEA
+# def __str__(self):
+#         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
