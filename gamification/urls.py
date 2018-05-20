@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path, include
-from accounts.views import index
+from accounts.views import login_page
 from accounts import urls as accounts_urls
 from projects import urls as projects_urls
 from kickstart_project import urls as kickstart_project_urls
@@ -28,7 +28,7 @@ from .settings import MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', all_projects, name="index"),
+    path('', login_page, name="login_page"),
     path('accounts/', include(accounts_urls)),
     path('projects/', include(projects_urls)),
     path('kickstart/', include(kickstart_project_urls)),

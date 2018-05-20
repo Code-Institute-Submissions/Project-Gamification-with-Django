@@ -38,7 +38,7 @@
         </div>
         <div class="cont_form_login">
             <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons" id="form-arrow">&#xE5C4;</i></a>
-            <form method="post" action="{% url 'user_login' %}?next={{ next }}" class="accountform">
+            <form method="post" action="{% url 'login_page' %}?next={{ next }}" class="accountform">
                 <fieldset class="form-group">
                     {% csrf_token %} {{ login_form }}
 
@@ -51,7 +51,7 @@
 
         <div class="cont_form_sign_up">
             <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons" id="form-arrow">&#xE5C4;</i></a>
-            <form method="post" action="{% url 'user_login' %}" class="accountform">
+            <form method="post" action="{% url 'login_page' %}" class="accountform">
                 <fieldset class="form-group">
                     {% csrf_token %} {{ user_form }}
                     <button type="submit" class="btn_sign_up" onclick="cambiar_sign_up()">REGISTER</button>
@@ -63,4 +63,15 @@
 
 
 </div>
+
+<script src="{% static 'materialize/js/materialize.min.js' %}"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.collapsible').collapsible();
+        $('select').material_select();
+        $(".button-collapse").sideNav();
+    });
+</script>
 {% endblock %}

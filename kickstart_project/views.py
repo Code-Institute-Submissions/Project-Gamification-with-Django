@@ -12,7 +12,7 @@ def support_project(request, id):
     chosen_projects[id] = chosen_projects.get(id, quantity)
     
     request.session['chosen_projects'] = chosen_projects
-    return redirect(reverse('index'))
+    return redirect(reverse('login_page'))
     
 
 def adjust_backed_projects(request, id):

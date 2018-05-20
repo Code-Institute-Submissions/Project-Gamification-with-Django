@@ -10,7 +10,7 @@ from django.utils import timezone
 import collections
 
 
-
+@login_required
 def all_projects(request):
     projects = Project.objects.all()
 
@@ -27,7 +27,7 @@ def all_projects(request):
    
     return render(request, "projects.html", context)
 
- 
+@login_required
 def project_details(request, pk):
     project = Project.objects.get(id=pk)
     issues = Issue.objects.filter(project=project)

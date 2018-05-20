@@ -7,19 +7,68 @@ from django.contrib.auth.decorators import login_required
 from .models import MyProfile, Personality, Position
 from projects.models import Project, Issue, Team
 from django.utils.text import slugify
+from projects.views import all_projects
 
 
-# Create your views here.
-def index(request):
-    """A view that displays the index page"""
-    return render(request, "index.html")
+
+def login_page(request):
+    """A view that manages the registration form"""
+    if request.method == 'POST':
+        login_form = UserLoginForm(request.POST)
+        if login_form.is_valid():
+            user = auth.authenticate(request.POST['username_or_email'],
+                                     password=request.POST['password'])
+
+            if user:
+                auth.login(request, user)
+                messages.error(request, "You have successfully logged in")
+
+                if request.GET and request.GET['next'] !='':
+                    next = request.GET['next']
+                    return HttpResponseRedirect(next)
+                else:
+                    return redirect(reverse('login_page'))
+            else:
+                login_form.add_error(None, "Your username or password are incorrect")
+                
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            
+            
+            user = auth.authenticate(request.POST.get('email'),
+                                     password=request.POST.get('password1'))
+
+            if user:
+                auth.login(request, user)
+                messages.success(request, "You have successfully registered")
+                
+                MyProfile.objects.create(
+                position = "guest",
+                personality = "guest",
+                my_wallet = 0,
+                owner = request.user
+                ).save()
+                return redirect('projects/')
+
+            else:
+                messages.error(request, "unable to log you in at this time!")
+    else:
+        user_form = UserRegistrationForm()
+        login_form = UserLoginForm()
+
+    context = {'user_form': user_form, 
+                'login_form': login_form, 
+                'next': request.GET.get('next', 'projects/' )}
+                
+    return render(request, 'user_login.html', context)
 
 
 def logout(request):
-    """A view that logs the user out and redirects back to the index page"""
+    """A view that logs the user out and redirects back to the login_page page"""
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
-    return redirect(reverse('index'))
+    return redirect(reverse('login_page'))
 
 
 
@@ -83,57 +132,7 @@ def profile(request, pk):
 
 
 
-def user_login(request):
-    """A view that manages the registration form"""
-    if request.method == 'POST':
-        login_form = UserLoginForm(request.POST)
-        if login_form.is_valid():
-            user = auth.authenticate(request.POST['username_or_email'],
-                                     password=request.POST['password'])
 
-            if user:
-                auth.login(request, user)
-                messages.error(request, "You have successfully logged in")
-
-                if request.GET and request.GET['next'] !='':
-                    next = request.GET['next']
-                    return HttpResponseRedirect(next)
-                else:
-                    return redirect(reverse('index'))
-            else:
-                login_form.add_error(None, "Your username or password are incorrect")
-                
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            user_form.save()
-            
-            
-            user = auth.authenticate(request.POST.get('email'),
-                                     password=request.POST.get('password1'))
-
-            if user:
-                auth.login(request, user)
-                messages.success(request, "You have successfully registered")
-                
-                MyProfile.objects.create(
-                position = "guest",
-                personality = "guest",
-                my_wallet = 0,
-                owner = request.user
-                ).save()
-                return redirect(reverse('index'))
-
-            else:
-                messages.error(request, "unable to log you in at this time!")
-    else:
-        user_form = UserRegistrationForm()
-        login_form = UserLoginForm()
-
-    context = {'user_form': user_form, 
-                'login_form': login_form, 
-                'next': request.GET.get('next', '')}
-                
-    return render(request, 'user_login.html', context)
     
 ###### OBSOLETE    
 

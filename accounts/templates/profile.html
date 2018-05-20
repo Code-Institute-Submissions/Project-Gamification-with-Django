@@ -14,9 +14,9 @@
     <div class="col-md-7 col-lg-7 text-center">
         <div class="row">
             <div class="col-md-3 col-lg-3 text-center" id="title">
-                
+
                 <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ my_profile.image }}')"></div>
-                
+
             </div>
             <div class="col-md-5 col-lg-5 text-left">
                 <div class="row" style="display:inline">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="row"></div>
-                
+
                 <div class="row" style="display:inline">
                     <div class="col-md-3 col-lg-3 text-left">
                         <h4 style="display:inline">Position: </h4>
@@ -56,7 +56,7 @@
                         <h3 style="display:inline">{{ my_profile.personality }}</h3>
                     </div>
                 </div>
-                
+
             </div>
             <div class="col-md-3 col-lg-3 text-center" id="title" style="background-color:white"></div>
         </div>
@@ -135,6 +135,13 @@
                         <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" >New Project</button></a>
                         <a href="{% url 'my_details'  pk=user.id %}"><button type="submit" class="btn_login" >Add Details</button></a>
                         <button class="btn_login modal-trigger" href="#detailsModal">Edit Details</button>
+
+                            <a href="{% url 'view_backed_projects' %}">
+                            <i class="fa fa-shipping-cart"></i> Donate!
+                            {% if project_count > 0 %}
+                            <label class="badge badge-warning">{{ project_count }}</label>
+                            {% endif %}
+                    </a>
                     </div>
                     <div class="row" style="background-color:white"></div>
                     <div class="row" style="background-color:white"></div>
@@ -150,56 +157,54 @@
                 <h3 style="color:blue">{{ issue.name }}</h3>
                 <h4>{{ issue.description }}</h4>
                 <h4>{{ issue.cost }}</h4>
-                <a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login" >Fixed</button></a>
-                {% endfor%}
+                <a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login" >Fixed</button></a> {% endfor%}
             </div>
-<div id="detailsModal" class="modal">
-    
-   <h1>Edit Details </h1>
-<div class="container form-group">
+            <div id="detailsModal" class="modal">
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="row">
-        <select id="type_of_algorithm" name="personality">
+                <h1>Edit Details </h1>
+                <div class="container form-group">
+
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <select id="type_of_algorithm" name="personality">
           <option value="{{ my_profile.personality }}" disabled selected>{{ my_profile.personality }}</option>
           {% for type in personalities %}
               <option value={{type.name}}>{{type.name}}</option>
           {% endfor %}
         </select>
-        </div>
-        <div class="row">
-        <select id="type_of_algorithm" name="position">
+                        </div>
+                        <div class="row">
+                            <select id="type_of_algorithm" name="position">
           <option value="{{ my_profile.position }}" disabled selected>{{ my_profile.position }}</option>
           {% for type in positions %}
               <option value={{type.name}}>{{type.name}}</option>
           {% endfor %}
         </select>
-        </div>
-        <label>image</label>
-        <input placeholder="image" type="file" class="form-control" name="image">
-        <div class=row></div>
+                        </div>
+                        <label>image</label>
+                        <input placeholder="image" type="file" class="form-control" name="image">
+                        <div class=row></div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-</div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
 
+            </div>
+            <!-- /. PAGE INNER  -->
         </div>
-        <!-- /. PAGE INNER  -->
+        <!-- /. PAGE WRAPPER  -->
     </div>
-    <!-- /. PAGE WRAPPER  -->
-</div>
 
 
 
 
-<script>
-    var elem = document.querySelector('.modal')
-    var instance = M.Modal.init(elem)
+    <script>
+        var elem = document.querySelector('.modal')
+        var instance = M.Modal.init(elem)
 
-    var elem = document.querySelectorAll('select')
-    var instance = M.FormSelect.init(elem)
-    
-</script>
+        var elem = document.querySelectorAll('select')
+        var instance = M.FormSelect.init(elem)
+    </script>
 
-{% endblock %}
+    {% endblock %}

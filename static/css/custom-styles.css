@@ -134,11 +134,16 @@ label {
     /* -webkit-box-shadow: 0 0 10px #757575; */
 }
 
+.nav a:hover {
+    color:  #ADD8E6;
+    text-decoration: none;
+}
+
 .top-navbar .nav>li>a:hover,
 .top-navbar .nav>li>a:focus {
     text-decoration: none;
     background-color: #e0e8f5;
-    color: #fff;
+    
 }
 
 .nav .open>a,
@@ -146,6 +151,7 @@ label {
 .nav .open>a:focus {
     background-color: #075CB3;
     border-color: #075CB3;
+    color:red;
 }
 
 .breadcrumb {
@@ -563,6 +569,7 @@ div#sideNav:hover {
     padding: 17px;
     color: white;
     margin: 0px;
+    font-size: 16px;
 }
 
 .top-navbar .nav>li>a:hover,
@@ -1039,7 +1046,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 }
 
 strong {
-    font-size: 36px;
+    font-size: 40px;
     margin-left: 3px;
     margin-top: 5px;
 }
