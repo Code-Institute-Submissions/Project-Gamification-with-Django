@@ -13,6 +13,7 @@ import collections
 @login_required
 def all_projects(request):
     projects = Project.objects.all()
+    profiles = MyProfile.objects.all()
 
     status_list = []
     for element in projects:
@@ -22,7 +23,8 @@ def all_projects(request):
     count_them = collections.Counter( status_list )
     
     context = {"projects": projects, 
-                "count_them": count_them  }
+                "count_them": count_them,
+                "profiles": profiles}
     
    
     return render(request, "projects.html", context)
