@@ -21,8 +21,8 @@ body {
     padding: 15px 15px;
     min-height: 600px;
     background: #ececec;
-    overflow:auto;
-    
+    overflow: auto;
+
 }
 
 #page-inner {
@@ -30,11 +30,11 @@ body {
     margin: 10px 20px 10px 0px;
     padding: 15px 30px;
     min-height: 1200px;
-    
+
     background-image: url('../../static/img/nice.png');
     background-size: cover;
-    
-    
+
+
 }
 
 .header .container-fluid {
@@ -135,7 +135,7 @@ label {
 }
 
 .nav a:hover {
-    color:  #ADD8E6;
+    color: #D3D3D3;
     text-decoration: none;
 }
 
@@ -143,7 +143,7 @@ label {
 .top-navbar .nav>li>a:focus {
     text-decoration: none;
     background-color: #e0e8f5;
-    
+
 }
 
 .nav .open>a,
@@ -151,8 +151,8 @@ label {
 .nav .open>a:focus {
     background-color: #075CB3;
     border-color: #075CB3;
-    color:red;
-}
+    color: red;
+} 
 
 .breadcrumb {
     padding: 10px 10px 10px 20px;
@@ -552,6 +552,7 @@ div#sideNav:hover {
     padding-top: 10px;
 }
 
+
 .navbar-brand b {
     color: #4BD28C;
 }
@@ -575,7 +576,7 @@ div#sideNav:hover {
 .top-navbar .nav>li>a:hover,
 .top-navbar .nav>li>a:focus {
     text-decoration: none;
-    color: white !important;
+    color: #D3D3D3;
     background: transparent;
 }
 
@@ -769,7 +770,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 
 #page-wrapper {
     background: white;
-    border: 2px solid #C0C0C0;
+    border: 2px solid #D3D3D3;
 }
 
 .dashboard-cards .card-stacked {
@@ -879,7 +880,7 @@ ul.dropdown-menu.dropdown-messages li a div {
     min-width: 0 !important;
     left: -38px !important;
     top: 60px !important;
-    
+
 }
 
 .w250 {
@@ -928,6 +929,10 @@ ul.dropdown-menu.dropdown-messages li a div {
     font-size: 36px;
     margin-right: 15px;
 }
+.navbar-brand i.large.material-icons:hover {
+    color: #D3D3D3
+}
+
 
 .clearBoth {
     clear: both;
@@ -958,10 +963,10 @@ ul.dropdown-menu.dropdown-messages li a div {
 }
 
 .dropdown-content li {
-    
+
     border: 1px solid #f0f0f0;
     padding: 15px;
-    
+
     color: #233342;
 
     font-size: 13px;
@@ -1071,7 +1076,8 @@ strong {
 }
 
 
-[type="radio"]:not(:checked), [type="radio"]:checked {
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
     position: absolute;
     left: 0px;
     opacity: 1;
@@ -1083,17 +1089,45 @@ strong {
 }
 
 #searchbox input[type="text"] {
-     max-width: 160px; 
-     max-height: 30px;
+    width: 200px;
+    height: 36px;
+    padding-right: 0px;
+    background-color: #234a66;
+    border-bottom: 1px solid #234a66;
+    border-radius: 5px;
+    margin-right: -5px;
+    margin-bottom: 0px;
 }
 
 
+.navbar-right {
+    width: 800px;
+    margin-right: -100px;
+}
 
+.navbar-right ::placeholder {
+    color: #D3D3D3;
+}
 
+#searchbox button {
+    width: 40px;
+    height: 44px;
+    padding-top: 0px;
+    padding-right: 5px;
+    background-color: #234a66;
+    color: #D3D3D3;
+    font-size: 28px;
+    border: none;
+    border-radius: 5px;
+    border-left: none;
 
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: -4px;
+}
 
+.fa-2x {
 
-
-
-
-
+    font-size: 38px;
+    vertical-align: top;
+}

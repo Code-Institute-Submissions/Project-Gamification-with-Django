@@ -44,22 +44,20 @@
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 {% if user.is_authenticated %}
-                <li style="display:inline">
+                
                     <form action="{% url 'find_project' %}" method="get" id="searchbox">
-                    <input type="text" name="query">
-                    <button type="submit"><i class="material-icons">search</i></button>
+                    <input type="text" placeholder="Search.." name="query">
+                    <button type="submit"><i class="fas fa-search"></i></button>
                     </form>
-                </li>
+                
                 <li><a href="{% url 'projects' %}"><i class="fas fa-object-group"></i> Dashboard</a></li>
                
                 <li><a href="{% url 'profile' pk=user.id %}"><i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                
-                {% else %}
-                <li><a href="{% url 'login_page' %}"><i class="fa fa-user-plus"></i> Log In</a></li>
+                <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
                 {% endif %}
-                
             </ul>
+            
+            
         </nav>
         <!-- Dropdown Structure -->
         {% if user.is_authenticated %}
