@@ -44,6 +44,12 @@
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 {% if user.is_authenticated %}
+                <li style="display:inline">
+                    <form action="{% url 'find_project' %}" method="get" id="searchbox">
+                    <input type="text" name="query">
+                    <button type="submit"><i class="material-icons">search</i></button>
+                    </form>
+                </li>
                 <li><a href="{% url 'projects' %}"><i class="fas fa-object-group"></i> Dashboard</a></li>
                
                 <li><a href="{% url 'profile' pk=user.id %}"><i class="fa fa-user"></i> Profile</a></li>

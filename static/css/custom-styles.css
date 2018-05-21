@@ -1077,3 +1077,23 @@ strong {
     opacity: 1;
 }
 
+
+#searchbox {
+    display: inline;
+}
+
+#searchbox input[type="text"] {
+     max-width: 160px; 
+     max-height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+

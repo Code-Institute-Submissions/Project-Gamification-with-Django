@@ -1,13 +1,11 @@
-{% extends 'base.html' %} {% block content %}
-
+{% extends "base.html" %} {% load staticfiles %} {% load bootstrap_tags %} {% block content %}
 <div class="header">
     <h1 class="page-header">
         Project Gamification
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Dashboard</a></li>
-        <li class="active">Data</li>
+    <ol class="breadcrumb text-left">
+        <li><a href="{% url 'login_page' %}">Home</a></li>
+        <li><a href="{% url 'projects' %}">Dashboard</a></li>
     </ol>
     {% if messages %}
     <div class="alert alert-success">
@@ -16,15 +14,6 @@
         </div>
     </div>
     {% endif %}
-
-</div>
-<div class="container">
-    <div class="display">
-        <form action="{% url 'find_project' %}" method="get">
-            <input type="text" name="query">
-            <button type="submit">Search</button>
-        </form>
-    </div>
 
 </div>
 

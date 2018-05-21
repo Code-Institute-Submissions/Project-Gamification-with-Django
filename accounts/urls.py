@@ -1,9 +1,9 @@
 from django.urls import path, include
 from . import urls_reset
-from .views import login_page, profile, logout, my_details, issue_fixed
+from .views import login_page, profile, logout, my_details, issue_fixed, login_page
 
 urlpatterns = [
-
+    path('', login_page, name='login_page'),
     path('profile/<int:pk>', profile, name='profile'),
     path('issue_fixed/<int:pk>', issue_fixed, name='issue_fixed'),
     path('my_details/<int:pk>', my_details, name='my_details'),
