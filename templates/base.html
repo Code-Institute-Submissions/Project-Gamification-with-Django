@@ -11,8 +11,8 @@
     <!-- Bootstrap Styles-->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
     <!-- FontAwesome Styles-->
-    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link href="{% static 'font-awesome/css/fontawesome-all.css' %}" rel="stylesheet" />
+    <script src="{% static 'font-awesome/js/fontawesome-all.min.js' %}"></script>
     <!-- Morris Chart Styles-->
     <link href="{% static 'js/morris/morris-0.4.3.min.css' %}" rel="stylesheet" />
     <!-- Custom Styles-->
@@ -46,7 +46,7 @@
                 {% if user.is_authenticated %}
                 
                     <form action="{% url 'find_project' %}" method="get" id="searchbox">
-                    <input type="text" placeholder="Search.." name="query">
+                    <input type="text" placeholder="Find Project..." name="query">
                     <button type="submit"><i class="fas fa-search"></i></button>
                     </form>
                 

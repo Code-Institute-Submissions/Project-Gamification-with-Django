@@ -33,6 +33,7 @@ def all_projects(request):
 def project_details(request, pk):
     project = Project.objects.get(id=pk)
     issues = Issue.objects.filter(project=project)
+    profiles = MyProfile.objects.all()
     requiredskills = get_object_or_404(RequiredSkills, project=project)
     project_team = Team.objects.filter(projects = project)
     skill_coverage = CommitSkill.objects.filter(project = project)
@@ -42,6 +43,7 @@ def project_details(request, pk):
     
     context = {'project': project, 
                 'issues': issues, 
+                'profiles': profiles,
                 'issue_counter': issue_counter, 
                 'requiredskills' : requiredskills,
                 'project_team': project_team,
