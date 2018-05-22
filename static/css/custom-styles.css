@@ -1105,7 +1105,7 @@ strong {
 
 .navbar-right {
     width: 800px;
-    margin-right: -100px;
+    margin-right: -200px;
 }
 
 .navbar-right ::placeholder {
@@ -1140,6 +1140,7 @@ strong {
     height: 160px;
     padding-right: 0px;
     border-left: 6px solid #ff5722;
+    margin-bottom: 20px;
 }
 
 #project-card2 p {
@@ -1175,7 +1176,7 @@ strong {
     width: 42px;
     margin-right: 15px;
     border: none;
-    background-color: #2a5776;
+    background-color: green;
     font-size: 18px
 }
 

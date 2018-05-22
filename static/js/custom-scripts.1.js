@@ -201,6 +201,27 @@
     }
     // Initializing ///
 
+    $(document).ready(function () {
+		$(".dropdown-button").dropdown();
+		$("#sideNav").click(function(){
+			if($(this).hasClass('closed')){
+				$('.navbar-side').animate({left: '0px'});
+				$(this).removeClass('closed');
+				$('#page-wrapper').animate({'margin-left' : '60px'});
+				
+			}
+			else{
+			    $(this).addClass('closed');
+				$('.navbar-side').animate({left: '-60px'});
+				$('#page-wrapper').animate({'margin-left' : '0px'}); 
+			}
+		});
+		
+        mainApp.initFunction(); 
+    });
+
+	$(".dropdown-button").dropdown();
+	
 }(jQuery));
 
 
