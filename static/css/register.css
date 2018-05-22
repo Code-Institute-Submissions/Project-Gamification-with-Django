@@ -197,9 +197,11 @@
   cursor: pointer;
 }
 
-.btn_login:active .btn_sign_up:focus {
+.btn_login:hover {
   background-color: #006800;
 }
+
+
 
 .col_md_sign_up {
   position: relative;

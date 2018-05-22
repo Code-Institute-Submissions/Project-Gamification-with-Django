@@ -48,6 +48,7 @@
                         </div>
                         <div class="row"></div>
                         <div class="row text-right" id="card-row-lower">
+                            <div class="row"></div>
                             <div class="row">
                                 <button onclick="window.location='{% url 'project_details' pk=project.id %}'" class="btn btn-success" type="submit" id="btn-card"><i class="fas fa-sign-in-alt"></i></button>
                             </div>
@@ -66,7 +67,7 @@
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
                 {% for project in projects %} {% if project.status == 'analysis' %}
-                <div class="card" id="project-card2">
+                <div class="card" id="project-card2"  style="border-color:purple">
                     <div class="col-md-8 col-lg-8 text-left">
                         <div class="row text-left" id="card-row-upper">
                             <h3>{{ project.name }}</h3>
@@ -85,6 +86,7 @@
                         </div>
                         <div class="row"></div>
                         <div class="row text-right" id="card-row-lower">
+                            <div class="row"></div>
                             <div class="row">
                                 <button onclick="window.location='{% url 'project_details' pk=project.id %}'" class="btn btn-success" type="submit" id="btn-card"><i class="fas fa-sign-in-alt"></i></button>
                             </div>
@@ -102,7 +104,7 @@
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
                 {% for project in projects %} {% if project.status == 'development' %}
-               <div class="card" id="project-card2">
+               <div class="card" id="project-card2" style="border-color:green">
                     <div class="col-md-8 col-lg-8 text-left">
                         <div class="row text-left" id="card-row-upper">
                             <h3>{{ project.name }}</h3>
@@ -121,6 +123,7 @@
                         </div>
                         <div class="row"></div>
                         <div class="row text-right" id="card-row-lower">
+                            <div class="row"></div>
                             <div class="row">
                                 <button onclick="window.location='{% url 'project_details' pk=project.id %}'" class="btn btn-success" type="submit" id="btn-card"><i class="fas fa-sign-in-alt"></i></button>
                             </div>
@@ -138,7 +141,7 @@
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
                 {% for project in projects %} {% if project.status == 'test' %}
-                <div class="card" id="project-card2">
+                <div class="card" id="project-card2" style="border-color:teal">
                     <div class="col-md-8 col-lg-8 text-left">
                         <div class="row text-left" id="card-row-upper">
                             <h3>{{ project.name }}</h3>
@@ -157,6 +160,7 @@
                         </div>
                         <div class="row"></div>
                         <div class="row text-right" id="card-row-lower">
+                            <div class="row"></div>
                             <div class="row">
                                 <button onclick="window.location='{% url 'project_details' pk=project.id %}'" class="btn btn-success" type="submit" id="btn-card"><i class="fas fa-sign-in-alt"></i></button>
                             </div>
@@ -174,7 +178,7 @@
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
                 {% for project in projects %} {% if project.status == 'deployment' %}
-                <div class="card" id="project-card2">
+                <div class="card" id="project-card2" style="border-color:gold">
                     <div class="col-md-8 col-lg-8 text-left">
                         <div class="row text-left" id="card-row-upper">
                             <h3>{{ project.name }}</h3>
@@ -193,6 +197,7 @@
                         </div>
                         <div class="row"></div>
                         <div class="row text-right" id="card-row-lower">
+                            <div class="row"></div>
                             <div class="row">
                                 <button onclick="window.location='{% url 'project_details' pk=project.id %}'" class="btn btn-success" type="submit" id="btn-card"><i class="fas fa-sign-in-alt"></i></button>
                             </div>
