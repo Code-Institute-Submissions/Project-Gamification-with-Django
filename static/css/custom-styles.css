@@ -1151,7 +1151,7 @@ strong {
 }
 
 #project-card2 p {
-    color:  #2F4F4F;
+    color: #2F4F4F;
 }
 
 
@@ -1197,28 +1197,32 @@ strong {
     border: 1px solid #D3D3D3;
     margin: 0px;
     background-color: white;
-    
+
 }
 
 
 #details-left {
     background-color: #f0f0f0;
     min-height: 60px;
-    
+
+
 }
 
 #details-right {
     max-height: 60px;
     margin-top: 5px;
-    
+    position: relative;
+    vertical-align: middle;
+
 }
 
 #details-right h3 {
-    margin-top: 16px;
+    margin-top: 12px;
+    position: relative;
+    vertical-align: middle;
 }
 
 #details-portrait {
-    margin-top: 0px;
     max-height: 60px;
 }
 
@@ -1246,4 +1250,51 @@ strong {
 #skill-detail {
     min-height: 100px;
     background-color: #f0f0f0;
+}
+
+
+#name-card {
+    margin-top: 5px;
+    padding-left: 5px;
+    background-color: #f0f0f0;
+}
+
+#name-card b {
+    position: relative;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+#reject-icon {
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    color: red;
+}
+
+#row-action {
+    position: relative;
+    vertical-align: middle;
+    padding: 5px
+}
+
+#btn-action {
+    margin: 0px;
+    border-radius: 5px;
+}
+
+#btn-status {
+    margin: 0px;
+    width: 140px;
+    border-radius: 5px;
+}
+
+#row-description {
+    border: 1px solid #D3D3D3;
+    margin: 0px;
+    background-color: white;
+    min-height: 120px;
+    position: relative;
+    vertical-align: middle;
+    padding: 5px
 }

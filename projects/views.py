@@ -38,12 +38,14 @@ def project_details(request, pk):
     project_team = Team.objects.filter(projects = project)
     skill_coverage = CommitSkill.objects.filter(project = project)
     project_log = ProjectMessage.objects.filter(project = project).order_by('-message_date')
+    my_profile = get_object_or_404(MyProfile, owner=request.user)
     
     issue_counter = len(issues)
     
     context = {'project': project, 
                 'issues': issues, 
                 'profiles': profiles,
+                'my_profile': my_profile,
                 'issue_counter': issue_counter, 
                 'requiredskills' : requiredskills,
                 'project_team': project_team,
