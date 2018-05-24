@@ -1220,7 +1220,7 @@ strong {
     margin-top: 12px;
     position: relative;
     vertical-align: middle;
-    
+
 }
 
 #details-portrait {
@@ -1303,10 +1303,10 @@ strong {
 
 
 #member-card {
-    
+
     max-width: 110px;
     box-shadow: none;
-    
+
 }
 
 #member-card p {
@@ -1316,10 +1316,10 @@ strong {
 }
 
 .card .card-content {
-   max-height: 40px;
-   max-width: 80px; 
-   padding: 10px;
-   
+    max-height: 40px;
+    max-width: 80px;
+    padding: 10px;
+
 }
 
 #row-skill {
@@ -1344,4 +1344,20 @@ strong {
 
 #team-portrait {
     max-height: 40px
+}
+
+
+#issue-title {
+    background-color: #f0f0f0;
+    min-height: 65px;
+    padding: 10px;
+}
+
+#issue-details {
+    min-height: 60px;
+    position: relative;
+    vertical-align: middle;
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    
 }

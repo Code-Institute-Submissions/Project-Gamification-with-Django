@@ -1,8 +1,7 @@
 {% extends "base.html" %} {% load staticfiles %} {% load bootstrap_tags %} {% block content %}
 <div class="header">
     <h1 class="page-header">
-        {{ project.name }} Startup Page
-
+        {% if project.status == 'proposed' %} {{ project.name }} Startup Dashboard {% else %} {{ project.name }} Project Dashboard {% endif %}
     </h1>
     <ol class="breadcrumb">
         <li><a href="{% url 'login_page' %}">Home</a></li>
@@ -53,7 +52,7 @@
                             <div class="col-md-6 col-lg-6 text-left">
                                 {% if my_profile.position == "admin" and project.status != 'deployment' %}
                                 <a href="{% url 'advance_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status">Advance Project</button></a> {% endif %} {% if my_profile.position == "admin" and project.status == 'deployment'%}
-                                <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#efb523">Finish Project!</button></a> {% endif %}
+                                <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a> {% endif %}
                             </div>
                         </div>
                     </div>
@@ -70,8 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    {% endif %}
-                    {% if project.status != 'proposed'%}
+                    {% endif %} {% if project.status != 'proposed'%}
                     <div class="row" id="row-skill">
                         <div class="col-md-4 col-lg-4 text-left" id="skills-left">
                             <h4>HTML</h4>
@@ -85,7 +83,7 @@
                                         <img src='{{ MEDIA_URL }}{{ profile.image }}' class="img-responsive" id="team-portrait" />
                                     </div>{% endif %} {% endfor %}
                                     <div class="card-content">
-                                        <p>{{ element.user }}</p>
+                                        <p>{{ element.user|truncatechars:10 }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +103,7 @@
                                         <img src='{{ MEDIA_URL }}{{ profile.image }}' class="img-responsive" id="team-portrait" />
                                     </div>{% endif %} {% endfor %}
                                     <div class="card-content">
-                                        <p>{{ element.user }}</p>
+                                        <p>{{ element.user|truncatechars:10 }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +123,7 @@
                                         <img src='{{ MEDIA_URL }}{{ profile.image }}' class="img-responsive" id="team-portrait" />
                                     </div>{% endif %} {% endfor %}
                                     <div class="card-content">
-                                        <p>{{ element.user }}</p>
+                                        <p>{{ element.user|truncatechars:10 }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +143,7 @@
                                         <img src='{{ MEDIA_URL }}{{ profile.image }}' class="img-responsive" id="team-portrait" />
                                     </div>{% endif %} {% endfor %}
                                     <div class="card-content">
-                                        <p>{{ element.user }}</p>
+                                        <p>{{ element.user|truncatechars:10 }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +163,7 @@
                                         <img src='{{ MEDIA_URL }}{{ profile.image }}' class="img-responsive" id="team-portrait" />
                                     </div>{% endif %} {% endfor %}
                                     <div class="card-content">
-                                        <p>{{ element.user }}</p>
+                                        <p>{{ element.user|truncatechars:10 }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -294,8 +292,53 @@
 
             </div>
         </div>
+        {% endif %} {% if project.status != 'proposed' %}
+        <div class="col-md-1 col-lg-1 text-left">
+        </div>
+        <div class="col-md-6 col-lg-6 text-left">
+           
+            <div class="row" id="row-table">
+                <div class="col-md-2 col-lg-2 text-center" id="issue-title">
+                    <h3>Issue</h3>
+                </div>
+                <div class="col-md-6 col-lg-6 text-center" id="issue-title">
+                    <h3>Description</h3>
+                </div>
+                <div class="col-md-2 col-lg-2 text-center" id="issue-title">
+                    <h3>Reward</h3>
+                </div>    
+                 <div class="col-md-2 col-lg-2 text-center" id="issue-title">
+                    <h3>Assigned to</h3>
+                </div>
+            </div>
+            {% for issue in issues %}
+            <div class="row" id="row-table">
+                <div class="col-md-2 col-lg-2 text-center" id="issue-details">
+                    <h4 style="color:red">{{issue.name|truncatechars:20}}</h4>
+                </div>
+                <div class="col-md-6 col-lg-6 text-left" id="issue-details">
+                    <h5>{{ issue.description|truncatechars:100 }}</h5>
+                </div>
+                <div class="col-md-2 col-lg-2 text-left" id="issue-details">
+                    <div class="col-md-3 col-lg-3 text-left">
+                    <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
+                    </div> 
+                    <div class="col-md-1 col-lg-1 text-left">
+                        </div> 
+                    <div class="col-md-6 col-lg-6 text-left">
+                        <h4>{{ issue.cost}}</h4>
+                    </div>
+                </div>    
+                 <div class="col-md-2 col-lg-2 text-center" id="issue-details">
+                    <h4>{{ issue.assigned_to }}</h4>
+                    <a href="{% url 'assign_issue' pk=issue.id %}"><button type="submit" class="btn_login" id="btn-assign">Assign to me</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
         {% endif %}
     </div>
+
 
 
     <div class="row"></div>
