@@ -292,11 +292,12 @@
 
             </div>
         </div>
-        {% endif %} {% if project.status != 'proposed' %}
+        {% endif %} 
+        {% if project.status != 'proposed' %}
         <div class="col-md-1 col-lg-1 text-left">
         </div>
         <div class="col-md-6 col-lg-6 text-left">
-           
+
             <div class="row" id="row-table">
                 <div class="col-md-2 col-lg-2 text-center" id="issue-title">
                     <h3>Issue</h3>
@@ -306,8 +307,8 @@
                 </div>
                 <div class="col-md-2 col-lg-2 text-center" id="issue-title">
                     <h3>Reward</h3>
-                </div>    
-                 <div class="col-md-2 col-lg-2 text-center" id="issue-title">
+                </div>
+                <div class="col-md-2 col-lg-2 text-center" id="issue-title">
                     <h3>Assigned to</h3>
                 </div>
             </div>
@@ -321,31 +322,37 @@
                 </div>
                 <div class="col-md-2 col-lg-2 text-left" id="issue-details">
                     <div class="col-md-3 col-lg-3 text-left">
-                    <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
-                    </div> 
+                        <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
+                    </div>
                     <div class="col-md-1 col-lg-1 text-left">
-                        </div> 
+                    </div>
                     <div class="col-md-6 col-lg-6 text-left">
                         <h4>{{ issue.cost}}</h4>
                     </div>
-                </div>    
-                 <div class="col-md-2 col-lg-2 text-center" id="issue-details">
-                    <h4>{{ issue.assigned_to }}</h4>
-                    <a href="{% url 'assign_issue' pk=issue.id %}"><button type="submit" class="btn_login" id="btn-assign">Assign to me</button></a>
                 </div>
+                <div class="col-md-2 col-lg-2 text-center" id="issue-details">
+                    {% if issue.assigned_to == project.proposed_by and issue.assigned_to != request.user %}
+                    <a href="{% url 'assign_issue' pk=issue.id %}"><button type="submit" class="btn_login" id="btn-assign">Assign to me</button></a> {% else %}
+                    <h4>{{ issue.assigned_to }}</h4>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row text-right" id="row-table">
+                
+                    <button class="btn_login modal-trigger" href="#issueModal" id="btn-issue" style="background-color:#d9534f">Raise an Issue</button>
+                
             </div>
             {% endfor %}
         </div>
         {% endif %}
     </div>
 
-
-
     <div class="row"></div>
     <div class="row"></div>
     <div class="row"></div>
 
     <div class="row">
+        {% if project.status == 'proposed' %}
         <div class="col-md-5 col-lg-5 text-left">
             <div class="row">
                 <div class="row" id="row-table">
@@ -358,6 +365,27 @@
                 </div>
             </div>
         </div>
+        {% else %}
+        <div class="col-md-5 col-lg-5 text-left">
+            <div class="row">
+                <div class="row" id="row-table">
+                    <div class="col-md-12 col-lg-12 text-center" id="details-left">
+                        <h2>Project Log</h2>
+                    </div>
+                </div>
+                {% for element in project_log %}
+                <div class="row" id="row-table">
+                    <div class="col-md-2 col-lg-2 text-center" id="row-action">
+                        <h5 style="color:blue">{{ element.message_date }}</h5>
+                    </div>
+                    <div class="col-md-10 col-lg-10 text-left" id="row-action">
+                        <h5>{{ element.message }}</h5>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
         <div class="col-md-1 col-lg-1 text-left"></div>
         <div class="col-md-5 col-lg-5 text-left">
             <div class="row" id="row-table">

@@ -1351,6 +1351,7 @@ strong {
     background-color: #f0f0f0;
     min-height: 65px;
     padding: 10px;
+    border: 1px solid #D3D3D3;
 }
 
 #issue-details {
@@ -1358,6 +1359,18 @@ strong {
     position: relative;
     vertical-align: middle;
     background-color: white;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #D3D3D3;
     
+}
+
+#btn-assign {
+    margin: 6px;
+    width: 120px;
+    border-radius: 5px;
+}
+
+#btn-issue {
+    margin: 6px;
+    width: 180px;
+    border-radius: 5px;
 }
