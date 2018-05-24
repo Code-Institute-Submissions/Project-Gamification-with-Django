@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% load staticfiles %} {% load bootstrap_tags %} {% block content %}
+<div class="header">
+    <h1 class="page-header">
+        User Profile
+    </h1>
+    <ol class="breadcrumb text-left">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li class="active">Profile</li>
+    </ol>
+
+</div>
+<div id="page-inner">
+    <div class="col-md-7 col-lg-7 text-center">
+        <div class="row">
+           
+            <div class="col-md-5 col-lg-5 text-left">
+               
+
+        <div class="row">
+            <div class="col-md-12 col-lg-12 text-center" id="title">
+                {% for project in projects %}
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
+                    </div>
+                    <div class="col-md-9 col-lg-9 text-left">
+                        <h3 style="display:inline">{{ project.name }}</h3>
+                        <h4>{{ project.description }}</h4>
+                    </div>
+                </div>
+                {% endfor%}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4 text-center">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 text-center" id="title">
+
+                <div class="col-md-3 col-lg-3 text-center">
+                    <div class="row">
+                        {% for element in joined_projects %}
+                        <h4>{{ element.name }}</h4>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <h3>Joined Teams</h3>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color:white"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-lg-12 text-center" id="title">
+                <div class="col-md-12 col-lg-12 text-center">
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row">
+                        <h2>Propose Project:</h2>
+                    </div>
+                    <div class="row">
+                        <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" >New Project</button></a>
+
+                            <a href="{% url 'view_backed_projects' %}">
+                            <i class="fa fa-shipping-cart"></i> Donate!
+                            {% if project_count > 0 %}
+                            <label class="badge badge-warning">{{ project_count }}</label>
+                            {% endif %}
+                    </a>
+                    </div>
+                    <div class="row" style="background-color:white"></div>
+                    <div class="row" style="background-color:white"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row" style="background-color:white"></div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 text-center" id="title">
+                {% for issue in issues %}
+                <h3 style="color:blue">{{ issue.name }}</h3>
+                <h4>{{ issue.description }}</h4>
+                <h4>{{ issue.cost }}</h4>
+                <a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login" >Fixed</button></a> {% endfor%}
+            </div>
+          
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+
+
+
+
+    <script>
+        var elem = document.querySelector('.modal')
+        var instance = M.Modal.init(elem)
+
+        var elem = document.querySelectorAll('select')
+        var instance = M.FormSelect.init(elem)
+    </script>
+
+    {% endblock %}

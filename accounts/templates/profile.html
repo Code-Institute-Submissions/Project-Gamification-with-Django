@@ -4,200 +4,137 @@
         User Profile
     </h1>
     <ol class="breadcrumb text-left">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Dashboard</a></li>
+        <li><a href="{% url 'login_page' %}">Home</a></li>
+        <li><a href="{% url 'projects' %}">Dashboard</a></li>
         <li class="active">Profile</li>
     </ol>
 
 </div>
 <div id="page-inner">
-    <div class="col-md-7 col-lg-7 text-center">
-        <div class="row">
-            <div class="col-md-3 col-lg-3 text-center" id="title">
-
-                <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ my_profile.image }}')"></div>
-
+    <div class="row">
+        <div class="col-md-4 col-lg-4 text-left" id="col-mydetails">
+            <div class="col-md-4 col-lg-4 text-left">
+                <img src='{{ MEDIA_URL }}{{ my_profile.image }}' class="img-responsive" id="profile-img" />
             </div>
-            <div class="col-md-5 col-lg-5 text-left">
-                <div class="row" style="display:inline">
-                    <div class="col-md-3 col-lg-3 text-left">
-                        <h4 style="display:inline">Username:</h4>
-                    </div>
-                    <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ user.username }}</h3>
-                    </div>
-                </div>
-                <div class="row"></div>
-                <div class="row" style="display:inline">
-                    <div class="col-md-3 col-lg-3 text-left">
-                        <h4 style="display:inline">Email: </h4>
-                    </div>
-                    <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ user.email }}</h3>
-                    </div>
-                </div>
-                <div class="row"></div>
-
-                <div class="row" style="display:inline">
-                    <div class="col-md-3 col-lg-3 text-left">
-                        <h4 style="display:inline">Position: </h4>
-                    </div>
-
-                    <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ my_profile.position }}</h3>
-                    </div>
-                </div>
-                <div class="row"></div>
-                <div class="row" style="display:inline">
-                    <div class="col-md-3 col-lg-3 text-left">
-                        <h4 style="display:inline">Personality: </h4>
-                    </div>
-                    <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ my_profile.personality }}</h3>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 col-lg-3 text-center" id="title" style="background-color:white"></div>
-        </div>
-        <div class="row" style="background-color:white"></div>
-        <div class="row" style="background-color:white"></div>
-        <div class="row" style="background-color:white"></div>
-        <div class="row">
-            <div class="col-md-12 col-lg-12 text-center" id="title">
-                {% for project in projects %}
+            <div class="col-md-8 col-lg-8 text-left">
                 <div class="row">
-                    <div class="col-md-3 col-lg-3 text-left">
-                        <img src="{% static 'img/quest.jpg' %}" height="100" width="120">
+                    <div class="col-md-8 col-lg-8" id="personal-details">
+                        <h1>{{ user.username }}</h1>
+                        {% if my_profile.position == 'PM' %}
+                        <h4 style="font-style:italic;color:#234a66;margin-top:10px;">Project Manager</h4>
+                        {% else %}
+                        <h4 style="font-style:italic; color:#234a66;margin-top:10px;">{{ my_profile.position }}</h4>
+                        {% endif %}
                     </div>
-                    <div class="col-md-9 col-lg-9 text-left">
-                        <h3 style="display:inline">{{ project.name }}</h3>
-                        <h4>{{ project.description }}</h4>
+                    <div class="col-md-4 col-lg-4 text-right" id="personal-details">
+                        <button class="btn_login modal-trigger" href="#detailsModal" id="btn-mydetails">Edit</button>
                     </div>
                 </div>
-                {% endfor%}
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" id="personal-details">
+                        <h4>Email:</h4>
+                    </div>
+                    <div class="col-md-1 col-lg-1">
+                    </div>
+                    <div class="col-md-5 col-lg-5" id="my-details">
+                        <h4>{{ user.email }}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" id="personal-details">
+                        <h4>Personality:</h4>
+                    </div>
+                    <div class="col-md-1 col-lg-1">
+                    </div>
+                    <div class="col-md-5 col-lg-5" id="my-details">
+                        <h4>{{ my_profile.personality }}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" id="personal-details">
+                        <h4>LeanCoins:</h4>
+                    </div>
+                    <div class="col-md-1 col-lg-1">
+                    </div>
+                    <div class="col-md-5 col-lg-5" id="my-details">
+                        <div class="col-md-2 col-lg-2" style="padding:0px;">
+                            <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
+                        </div>
+                        <h4>{{ my_profile.my_wallet }}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" id="personal-details">
+                        <h4>Started Projects:</h4>
+                    </div>
+                    <div class="col-md-1 col-lg-1">
+                    </div>
+                    <div class="col-md-5 col-lg-5" id="my-details">
+                        <h4>{{ project_count }}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" id="personal-details">
+                        <h4>Assigned Issues:</h4>
+                    </div>
+                    <div class="col-md-1 col-lg-1">
+                    </div>
+                    <div class="col-md-5 col-lg-5" id="my-details">
+                        <h4>{{ issue_count }}</h4>
+                    </div>
+                </div>
+
+
             </div>
+        </div>
+        <div class="col-md-2 col-lg-2 text-left"></div>
+        <div class="col-md-5 col-lg-5 text-left" id="col-mydetails"></div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-4 col-lg-4 text-left" id="col-mydetails">
+            <h1> Joined Teams:</h1>
+            {% for element in joined_projects %}
+            <h4>{{ element.name }}</h4>
+            {% endfor %}
         </div>
     </div>
-    <div class="col-md-4 col-lg-4 text-center">
-        <div class="row">
-            <div class="col-md-12 col-lg-12 text-center" id="title">
-                <div class="col-md-3 col-lg-3 text-center">
-                    <div class="row">
-                        <h1>{{ my_profile.my_wallet }}</h1>
-                    </div>
-                    <div class="row">
-                        <h3>Wallet</h3>
-                    </div>
-                    <div class="row" style="background-color:white"></div>
-                </div>
-                <div class="col-md-3 col-lg-3 text-center">
-                    <div class="row">
-                        <h1>{{ project_count }}</h1>
-                    </div>
-                    <div class="row">
-                        <h3>Started Projects</h3>
-                    </div>
-                    <div class="row" style="background-color:white"></div>
-                </div>
-                <div class="col-md-3 col-lg-3 text-center">
-                    <div class="row">
-                        <h1>{{ issue_count }}</h1>
-                    </div>
-                    <div class="row">
-                        <h3>Issues</h3>
-                    </div>
-                    <div class="row" style="background-color:white"></div>
-                </div>
-                <div class="col-md-3 col-lg-3 text-center">
-                    <div class="row">
-                        {% for element in joined_projects %}
-                        <h4>{{ element.name }}</h4>
-                        {% endfor %}
-                    </div>
-                    <div class="row">
-                        <h3>Joined Teams</h3>
-                    </div>
-                    <div class="row" style="background-color:white"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="background-color:white"></div>
 
-        <div class="row">
-            <div class="col-md-12 col-lg-12 text-center" id="title">
-                <div class="col-md-12 col-lg-12 text-center">
-                    <div class="row" style="background-color:white"></div>
-                    <div class="row">
-                        <h2>Propose Project:</h2>
-                    </div>
-                    <div class="row">
-                        <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" >New Project</button></a>
-                        <a href="{% url 'my_details'  pk=user.id %}"><button type="submit" class="btn_login" >Add Details</button></a>
-                        <button class="btn_login modal-trigger" href="#detailsModal">Edit Details</button>
 
-                            <a href="{% url 'view_backed_projects' %}">
-                            <i class="fa fa-shipping-cart"></i> Donate!
-                            {% if project_count > 0 %}
-                            <label class="badge badge-warning">{{ project_count }}</label>
-                            {% endif %}
-                    </a>
-                    </div>
-                    <div class="row" style="background-color:white"></div>
-                    <div class="row" style="background-color:white"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="background-color:white"></div>
-        <div class="row" style="background-color:white"></div>
-        <div class="row" style="background-color:white"></div>
-        <div class="row">
-            <div class="col-md-12 col-lg-12 text-center" id="title">
-                {% for issue in issues %}
-                <h3 style="color:blue">{{ issue.name }}</h3>
-                <h4>{{ issue.description }}</h4>
-                <h4>{{ issue.cost }}</h4>
-                <a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login" >Fixed</button></a> {% endfor%}
-            </div>
-            <div id="detailsModal" class="modal">
 
-                <h1>Edit Details </h1>
-                <div class="container form-group">
+    <div id="detailsModal" class="modal">
 
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="row">
-                            <select id="type_of_algorithm" name="personality">
+        <h1>Edit Details </h1>
+        <div class="container form-group">
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <select id="type_of_algorithm" name="personality">
           <option value="{{ my_profile.personality }}" disabled selected>{{ my_profile.personality }}</option>
           {% for type in personalities %}
               <option value={{type.name}}>{{type.name}}</option>
           {% endfor %}
         </select>
-                        </div>
-                        <div class="row">
-                            <select id="type_of_algorithm" name="position">
+                </div>
+                <div class="row">
+                    <select id="type_of_algorithm" name="position">
           <option value="{{ my_profile.position }}" disabled selected>{{ my_profile.position }}</option>
           {% for type in positions %}
               <option value={{type.name}}>{{type.name}}</option>
           {% endfor %}
         </select>
-                        </div>
-                        <label>image</label>
-                        <input placeholder="image" type="file" class="form-control" name="image">
-                        <div class=row></div>
-
-                        <button type="submit" class="btn btn-success">Submit</button>
-                    </form>
                 </div>
+                <label>image</label>
+                <input placeholder="image" type="file" class="form-control" name="image">
+                <div class=row></div>
 
-            </div>
-            <!-- /. PAGE INNER  -->
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
         </div>
-        <!-- /. PAGE WRAPPER  -->
+
     </div>
-
-
-
 
     <script>
         var elem = document.querySelector('.modal')
