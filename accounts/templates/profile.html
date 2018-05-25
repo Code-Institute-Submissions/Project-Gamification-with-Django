@@ -12,7 +12,7 @@
 </div>
 <div id="page-inner">
     <div class="row">
-        <div class="col-md-4 col-lg-4 text-left" id="col-mydetails">
+        <div class="col-md-5 col-lg-5 text-left" id="col-mydetails">
             <div class="col-md-4 col-lg-4 text-left">
                 <img src='{{ MEDIA_URL }}{{ my_profile.image }}' class="img-responsive" id="profile-img" />
             </div>
@@ -63,6 +63,7 @@
                         <h4>{{ my_profile.my_wallet }}</h4>
                     </div>
                 </div>
+                {% if my_profile.position == 'PM' %}
                 <div class="row">
                     <div class="col-md-4 col-lg-4" id="personal-details">
                         <h4>Started Projects:</h4>
@@ -73,6 +74,7 @@
                         <h4>{{ project_count }}</h4>
                     </div>
                 </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-md-4 col-lg-4" id="personal-details">
                         <h4>Assigned Issues:</h4>
@@ -83,17 +85,30 @@
                         <h4>{{ issue_count }}</h4>
                     </div>
                 </div>
-
-
+                {% if my_profile.position == 'Coder' %}
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" id="personal-details">
+                        <h4>Joined Teams:</h4>
+                    </div>
+                    <div class="col-md-1 col-lg-1">
+                    </div>
+                    <div class="col-md-5 col-lg-5" id="my-details">
+                        {% for element in joined_projects %}
+                        <h4 id="project-team">{{ element.name }}</h4>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
             </div>
+        <div class="col-md-1 col-lg-1 text-left"></div>
+        <div class="col-md-5 col-lg-5 text-left" id="col-mydetails"></div>    
         </div>
-        <div class="col-md-2 col-lg-2 text-left"></div>
-        <div class="col-md-5 col-lg-5 text-left" id="col-mydetails"></div>
+        
     </div>
     <div class="row"></div>
     <div class="row"></div>
     <div class="row">
-        <div class="col-md-4 col-lg-4 text-left" id="col-mydetails">
+        <div class="col-md-5 col-lg-5 text-left" id="col-mydetails">
             <h1> Joined Teams:</h1>
             {% for element in joined_projects %}
             <h4>{{ element.name }}</h4>

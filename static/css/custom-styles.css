@@ -1408,13 +1408,14 @@ strong {
 
 #my-details h4, #personal-details h4 {
     padding: 0px;
-    margin: 0px;
+    margin: 2px;
 }
 
 
 #my-details h4 {
     color: #234a66;
 }
+
 
 #btn-mydetails {
     width: 60px;
