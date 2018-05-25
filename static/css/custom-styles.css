@@ -1382,10 +1382,8 @@ strong {
 
 /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
-
 #col-mydetails {
     background-color: #f0f0f0;
-
     margin: 0px;
     padding: 10px;
 }
@@ -1406,7 +1404,8 @@ strong {
     margin-top: 0px;
 }
 
-#my-details h4, #personal-details h4 {
+#my-details h4,
+#personal-details h4 {
     padding: 0px;
     margin: 2px;
 }
@@ -1425,10 +1424,24 @@ strong {
     background-color: #234a66;
 }
 
-#myproject-details {
+#mydetails-table {
     min-height: 60px;
     margin: 0px;
     position: relative;
     vertical-align: middle;
     background-color: white;
+}
+
+#col-assignedissues {
+    background-color: #f0f0f0;
+    margin: 0px;
+    padding: 0px;
+}
+
+#btn-fixed {
+    width: 80px;
+    height: 40px;
+    font-size: 12px;
+    padding: 1px;
+    background-color: green;
 }

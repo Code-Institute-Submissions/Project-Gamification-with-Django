@@ -337,13 +337,13 @@
                     {% endif %}
                 </div>
             </div>
+            {% endfor %}
             {% if project.proposed_by == request.user %}
             <div class="row text-right" id="issue-btn-row">
-                <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" id="btn-issue" >New Project</button></a>
-                    
+                <button class="btn_login modal-trigger" href="#issueModal" id="btn-issue">Raise an Issue</button>
             </div>
             {% endif %}
-            {% endfor %}
+            
         </div>
         {% endif %}
     </div>

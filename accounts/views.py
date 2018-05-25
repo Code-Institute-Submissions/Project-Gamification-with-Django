@@ -134,44 +134,44 @@ def profile(request, pk):
 
 
     
-###### OBSOLETE    
+# ###### OBSOLETE    
 
-@login_required
-def my_details(request, pk):
+# @login_required
+# def my_details(request, pk):
     
-    user = request.user
-    personalities = Personality.objects.all()
-    positions = Position.objects.all()
-    if request.method == 'POST':
+#     user = request.user
+#     personalities = Personality.objects.all()
+#     positions = Position.objects.all()
+#     if request.method == 'POST':
        
-       form = MyDetailsForm(request.POST, request.FILES)
+#       form = MyDetailsForm(request.POST, request.FILES)
        
-       if form.is_valid():
-           position = form.cleaned_data['position']
-           personality = form.cleaned_data['personality']
-           image = form.cleaned_data['image']
-           owner = request.user
-           if position == "PM":
-               my_wallet = 500
-           elif position == "Coder":
-               my_wallet = 100
-           else: 
-               my_wallet = 10
+#       if form.is_valid():
+#           position = form.cleaned_data['position']
+#           personality = form.cleaned_data['personality']
+#           image = form.cleaned_data['image']
+#           owner = request.user
+#           if position == "PM":
+#               my_wallet = 500
+#           elif position == "Coder":
+#               my_wallet = 100
+#           else: 
+#               my_wallet = 10
                
-           MyProfile.objects.create(
-               position = position,
-               personality = personality,
-               image = image,
-               owner = owner,
-               my_wallet = my_wallet
-               ).save()
+#           MyProfile.objects.create(
+#               position = position,
+#               personality = personality,
+#               image = image,
+#               owner = owner,
+#               my_wallet = my_wallet
+#               ).save()
 
-           return redirect(reverse('profile', kwargs={'pk': pk }))
+#           return redirect(reverse('profile', kwargs={'pk': pk }))
        
-    else:
-       form = MyDetailsForm()
+#     else:
+#       form = MyDetailsForm()
         
-    return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions })   
+#     return render (request, 'my_details.html', {'form': form, 'personalities': personalities, 'positions': positions })   
            
 
 def issue_fixed(request, pk):
