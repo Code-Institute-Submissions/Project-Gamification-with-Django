@@ -1424,3 +1424,11 @@ strong {
     padding: 1px;
     background-color: #234a66;
 }
+
+#myproject-details {
+    min-height: 60px;
+    margin: 0px;
+    position: relative;
+    vertical-align: middle;
+    background-color: white;
+}

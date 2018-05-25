@@ -339,7 +339,8 @@
             </div>
             {% if project.proposed_by == request.user %}
             <div class="row text-right" id="issue-btn-row">
-                    <button class="btn_login modal-trigger" href="#issueModal" id="btn-issue" style="background-color:#d9534f">Raise an Issue</button>
+                <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" id="btn-issue" >New Project</button></a>
+                    
             </div>
             {% endif %}
             {% endfor %}
