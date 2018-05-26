@@ -198,10 +198,9 @@
   font-weight: bold;
 }
 
-.btn_login:hover {
+.btn_login:hover, .btn_login:focus {
   background-color: #006800;
 }
-
 
 
 .col_md_sign_up {

@@ -29,11 +29,12 @@ body {
     margin: 10px 20px 10px 15px;
     padding: 15px 30px;
     min-height: 1400px;
-
     background-image: url('../../static/img/nice.png');
     background-size: cover;
+}
 
-
+a:hover, a:active, a:focus {
+   outline: 0;
 }
 
 .header .container-fluid {
@@ -134,14 +135,16 @@ label {
 }
 
 .nav a:hover {
-    color: #D3D3D3;
+    color: white;
+    background-color: #234a66;
     text-decoration: none;
 }
 
 .top-navbar .nav>li>a:hover,
 .top-navbar .nav>li>a:focus {
     text-decoration: none;
-    background-color: #e0e8f5;
+    background-color: #234a66;
+    
 
 }
 
@@ -151,6 +154,7 @@ label {
     background-color: #075CB3;
     border-color: #075CB3;
     color: red;
+    
 }
 
 .breadcrumb {
@@ -573,23 +577,17 @@ div#sideNav:hover {
     font-size: 16px;
 }
 
-.top-navbar .nav>li>a:hover,
-.top-navbar .nav>li>a:focus {
-    text-decoration: none;
-    color: #D3D3D3#d1d1d1 background: transparent;
-}
-
 .top-navbar .dropdown-menu {
     min-width: 230px;
     border-radius: 0 0 4px 4px;
     border: 0;
 }
 
-.top-navbar .dropdown-menu>li>a:hover,
-.top-navbar .dropdown-menu>li>a:focus {
-    color: #225081;
-    background: none;
-}
+/*.top-navbar .dropdown-menu>li>a:hover,*/
+/*.top-navbar .dropdown-menu>li>a:focus {*/
+/*    color: #225081;*/
+/*    background: none;*/
+/*}*/
 
 .dropdown-tasks {
     width: 255px;
@@ -680,7 +678,7 @@ ul.nav.nav-second-level.collapse.in {
 
 .sidebar-collapse .nav>li>a:hover,
 .sidebar-collapse .nav>li>a:focus {
-
+    border: 1px solid #234a66;
     outline: 0;
 }
 
@@ -700,8 +698,9 @@ ul.nav.nav-second-level.collapse.in {
 }
 
 .top-navbar .navbar-brand:hover {
-    color: #FFFFFF;
-    background-color: #2a5776;
+    color: white;
+    background-color: #234a66;
+    border: 1px solid #234a66;
 }
 
 .dropdown-user li {
@@ -716,18 +715,6 @@ ul.nav.nav-second-level.collapse.in {
     background: transparent;
 }
 
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: #f44336;
-}
-
-.navbar-default .navbar-toggle {
-    border-color: #ffffff;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #ffffff;
-}
 
 .nav>li>a>i {
     margin-right: 10px;
@@ -934,9 +921,6 @@ ul.dropdown-menu.dropdown-messages li a div {
     margin-right: 15px;
 }
 
-.navbar-brand i.large.material-icons:hover {
-    color: #D3D3D3
-}
 
 
 .clearBoth {
@@ -1199,6 +1183,9 @@ strong {
     background-color: white;
 }
 
+#row-table h2 {
+    margin: 1.78rem 0 1.424rem 0;
+}
 
 #details-left {
     background-color: #f0f0f0;

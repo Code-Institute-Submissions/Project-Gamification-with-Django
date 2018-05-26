@@ -51,8 +51,17 @@
                             </div>
                             <div class="col-md-6 col-lg-6 text-left">
                                 {% if my_profile.position == "admin" and project.status != 'deployment' %}
-                                <a href="{% url 'advance_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status">Advance Project</button></a> {% endif %} {% if my_profile.position == "admin" and project.status == 'deployment'%}
-                                <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a> {% endif %}
+                                    
+                                <a href="{% url 'advance_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status">
+                                    {%  if project.status == 'proposed' %}
+                                    Launch Project
+                                    {% else %}
+                                    Advance Project
+                                    {% endif %}
+                                    </button></a> {% endif %} 
+                                {% if my_profile.position == "admin" and project.status == 'deployment'%}
+                                <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a> 
+                                {% endif %}
                             </div>
                         </div>
                     </div>
