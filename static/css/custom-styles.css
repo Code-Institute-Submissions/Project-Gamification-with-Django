@@ -1,10 +1,4 @@
 /*----------------------------------------------
-Author : www.webthemez.com
-License: Commons Attribution 3.0
-http://creativecommons.org/licenses/by/3.0/
-------------------------------------------------*/
-
-/*----------------------------------------------
     COMMON  STYLES    
 ------------------------------------------------*/
 
@@ -39,8 +33,11 @@ a:hover, a:active, a:focus {
    outline: 0;
 }
 
-input[type="text"]:focus:not([readonly]) {
+input[type="text"]:focus:not([readonly]),
+input[type="number"]:focus:not([readonly]),
+input[type="number"].valid{
     box-shadow: 0 0px 0 0 blue;
+    border-bottom: 1px solid white;
 }
 
 
@@ -1085,31 +1082,6 @@ strong {
 }
 
 
-[type="radio"]:not(:checked),
-[type="radio"]:checked {
-    position: absolute;
-    left: 0px;
-    opacity: 1;
-}
-
-
-#searchbox {
-    display: inline;
-}
-
-#searchbox input[type="text"] {
-    width: 200px;
-    height: 36px;
-    padding-right: 0px;
-    background-color: #234a66;
-    border-bottom: 1px solid #234a66;
-    border-radius: 5px;
-    margin-right: -5px;
-    margin-bottom: 0px;
-}
-
-
-
 .navbar-right {
     width: 800px;
     margin-right: -200px;
@@ -1450,4 +1422,129 @@ strong {
     font-size: 12px;
     padding: 1px;
     background-color: green;
+}
+
+
+/*$$$$$$$$$$$$$$$$$$$$$$         DETAILS MODAL        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
+#detailsModal {
+    text-align: center;
+    background-image: url('../../static/img/backg-modal.gif');
+    background-size: cover;
+    color: white;
+    border-radius: 10px;
+
+}
+
+#form-card {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #234a66;
+    background-color:  #969696;
+    color: #969696;
+}
+
+#form-card h2, #form-card h4 {
+    color: white;
+    padding-top: 0px;
+}
+
+#form-card .row {
+    margin: 10px;
+}
+
+#form-card .select-wrapper input.select-dropdown {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: grey;
+}
+
+.form-control {
+
+    height: 90%;
+    color: black;
+}
+
+
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+    position: absolute;
+    left: 0px;
+    opacity: 1;
+}
+
+
+#searchbox {
+    display: inline;
+}
+
+#searchbox input[type="text"] {
+    width: 200px;
+    height: 36px;
+    padding-right: 0px;
+    background-color: #234a66;
+    border-bottom: 1px solid #234a66;
+    border-radius: 5px;
+    margin-right: -5px;
+    margin-bottom: 0px;
+}
+
+
+/*$$$$$$$$$$$$$$$$$$$$$$         SKILLSET MODAL        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
+
+#skillsetModal {
+    text-align: center;
+    background-image: url('../../static/img/backg-modal.gif');
+    background-size: cover;
+    color: white;
+    border-radius: 10px;
+
+}
+
+#skillsetModal label {
+    color: white;
+    font-size: 20px;
+}
+
+#name {
+    text-align: center;
+    color: white;
+    background-color: grey;
+}
+
+#field {
+    margin-top: 0px;
+}
+
+
+/*$$$$$$$$$$$$$$$$$$$$$$        ISSUE MODAL        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
+
+#issueModal {
+    text-align: center;
+    background-image: url('../../static/img/backg-modal.gif');
+    background-size: cover;
+    color: white;
+    border-radius: 10px;
+}
+
+#issue-field {
+    padding:  0px;
+    margin-left: -5px;
+}
+
+input[type="text"]:focus:not([readonly]) + label {
+    color: white;
+}
+
+input[type="number"]:focus:not([readonly]) + label {
+    color: white;
+}
+
+input[type="text"].valid {
+    border-bottom: none;
+    box-shadow: none;
 }

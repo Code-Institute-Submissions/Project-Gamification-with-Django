@@ -219,88 +219,65 @@
         {% endif %}
         <div class="col-md-1 col-lg-1 text-left"></div>
         <div class="col-md-5 col-lg-5 text-right" id="col-mydetails">
-            <!--<a href="{% url 'view_backed_projects' %}">-->
-            <!--<i class="fa fa-shipping-cart"></i> Donate!-->
-            <!--{% if project_count > 0 %}-->
-            <!--<label class="badge badge-warning">{{ project_count }}</label>-->
-            <!--{% endif %}-->
+            <a href="{% url 'view_backed_projects' %}">
+            <i class="fa fa-shipping-cart"></i> Donate!
+            {% if project_count > 0 %}
+            <label class="badge badge-warning">{{ project_count }}</label>
+            {% endif %}
         </div>
     </div>
 
-    <div id="detailsModal" class="modal">
-        <div class="row"></div>
-        <div class="row">
-            <div class="col-md-4 col-lg-4 text-right"></div>
-
-            <div class="col-md-4 col-lg-4 text-center">
-                <h1>Edit Personal Details</h1>
-            </div>
-            <div class="col-md-4 col-lg-4 text-right"></div>
+<div id="detailsModal" class="modal">
+        <div class="row"></div>  
+        <div class="row">   
+        <div class="col-md-4 col-lg-4 text-right"></div>
+            
+        <div class="col-md-4 col-lg-4 text-right">
+        <h1>Edit Personal Details</h1>
         </div>
-        <div class="row">
-            <div class="row"></div>
-            <div class="row"></div>
-            <div class="col-md-3 col-lg-3 text-right"></div>
-
-            <div class="col-md-6 col-lg-6 text-center">
-                <div class="card" id="form-card">
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="row text-left">
-                            <h2>My Position:</h2>
-                        </div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <div class="row">
-                            <select id="type_of_algorithm" name="position">
-                              <option value="{{ my_profile.position }}" disabled selected>{{ my_profile.position }}</option>
-                              {% for type in positions %}
-                                  <option value={{type.name}}>{{type.name}}</option>
-                              {% endfor %}
-                            </select>
-                        </div>
-                        <div class="row text-left">
-                            <h2>My Personality:</h2>
-                        </div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <div class="row">
-                            <select id="type_of_algorithm" name="personality">
-                              <option value="{{ my_profile.personality }}" disabled selected>{{ my_profile.personality }}</option>
-                              {% for type in personalities %}
-                                  <option value={{type.name}}>{{type.name}}</option>
-                              {% endfor %}
-                            </select>
-                        </div>
-
-                        <div class="row"></div>
-                        <div class="row text-left">
-                            <h2>My Portrait:</h2>
-                        </div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <div class="row">
-                            <input placeholder="image" type="file" class="form-control" name="image">
-                        </div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <button type="submit" class="btn btn-success">Submit</button>
-                    </form>
+        <div class="col-md-4 col-lg-4 text-right"></div>
+        </div>
+        <div class="row">   
+        <div class="col-md-4 col-lg-4 text-right"></div>
+            
+        <div class="col-md-4 col-lg-4 text-right">
+        <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <select id="type_of_algorithm" name="personality">
+                      <option value="{{ my_profile.personality }}" disabled selected>{{ my_profile.personality }}</option>
+                      {% for type in personalities %}
+                          <option value={{type.name}}>{{type.name}}</option>
+                      {% endfor %}
+                </select>
                 </div>
-            </div>
+                <div class="row">
+                    <select id="type_of_algorithm" name="position">
+                      <option value="{{ my_profile.position }}" disabled selected>{{ my_profile.position }}</option>
+                      {% for type in positions %}
+                          <option value={{type.name}}>{{type.name}}</option>
+                      {% endfor %}
+                    </select>
+                </div>
+                <label>image</label>
+                <input placeholder="image" type="file" class="form-control" name="image">
+                <div class=row></div>
 
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
         </div>
+        <div class="col-md-4 col-lg-4 text-right"></div>
+        </div>
+        
+
     </div>
 </div>
-<script>
-    var elem = document.querySelector('.modal')
-    var instance = M.Modal.init(elem)
+    <script>
+        var elem = document.querySelector('.modal')
+        var instance = M.Modal.init(elem)
 
-    var elem = document.querySelectorAll('select')
-    var instance = M.FormSelect.init(elem)
-</script>
+        var elem = document.querySelectorAll('select')
+        var instance = M.FormSelect.init(elem)
+    </script>
 
-{% endblock %}
+    {% endblock %}

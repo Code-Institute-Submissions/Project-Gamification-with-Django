@@ -51,17 +51,15 @@
                             </div>
                             <div class="col-md-6 col-lg-6 text-left">
                                 {% if my_profile.position == "admin" and project.status != 'deployment' %}
-                                    
+
                                 <a href="{% url 'advance_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status">
                                     {%  if project.status == 'proposed' %}
                                     Launch Project
                                     {% else %}
                                     Advance Project
                                     {% endif %}
-                                    </button></a> {% endif %} 
-                                {% if my_profile.position == "admin" and project.status == 'deployment'%}
-                                <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a> 
-                                {% endif %}
+                                    </button></a> {% endif %} {% if my_profile.position == "admin" and project.status == 'deployment'%}
+                                <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a> {% endif %}
                             </div>
                         </div>
                     </div>
@@ -301,8 +299,7 @@
 
             </div>
         </div>
-        {% endif %} 
-        {% if project.status != 'proposed' %}
+        {% endif %} {% if project.status != 'proposed' %}
         <div class="col-md-1 col-lg-1 text-left">
         </div>
         <div class="col-md-6 col-lg-6 text-left">
@@ -346,13 +343,12 @@
                     {% endif %}
                 </div>
             </div>
-            {% endfor %}
-            {% if project.proposed_by == request.user %}
+            {% endfor %} {% if project.proposed_by == request.user %}
             <div class="row text-right" id="issue-btn-row">
-                <button class="btn_login modal-trigger" href="#issueModal" id="btn-issue">Raise an Issue</button>
+                <button class="btn_login modal-trigger" href="#issueModal" id="btn-issue" style="background-color:#d9534f">Raise an Issue</button>
             </div>
             {% endif %}
-            
+
         </div>
         {% endif %}
     </div>
@@ -411,84 +407,119 @@
 
         <div id="skillsetModal" class="modal">
 
-            <h1>Skillset</h1>
-            <div class="modal-content">
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="input-field col s12" id="field">
-                            <i class="material-icons prefix">HTML</i>
-                            <input id="name" name="html" type="number" class="validate" value="{{requiredskills.html}}">
-                            <label for="icon_prefix">{{requiredskills.html}}</label>
-                        </div>
+            <div class="row"></div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 text-right"></div>
+                <div class="col-md-4 col-lg-4 text-center">
+                    <h1>We Need:</h1>
+                </div>
+                <div class="col-md-4 col-lg-4 text-right"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-lg-3 text-right"></div>
+
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="card" id="form-card">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row text-left">
+                                <h4>HTML:</h4>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12" id="field">
+                                    <input id="name" name="html" type="number" class="validate" value="{{requiredskills.html}}">
+
+                                </div>
+                            </div>
+                            <div class="row text-left">
+                                <h4>CSS:</h4>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12" id="field">
+                                    <input id="name" name="css" type="number" class="validate" value="{{requiredskills.css}}">
+
+                                </div>
+                            </div>
+                            <div class="row text-left">
+                                <h4>JS:</h4>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12" id="field">
+                                    <input id="name" name="js" type="number" class="validate" value="{{requiredskills.js}}">
+
+                                </div>
+                            </div>
+                            <div class="row text-left">
+                                <h4>DB:</h4>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12" id="field">
+
+                                    <input id="name" name="db" type="number" class="validate" value="{{requiredskills.db}}">
+                                </div>
+                            </div>
+                            <div class="row text-left">
+                                <h4>PYTHON:</h4>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12" id="field">
+                                    <input id="name" name="python" type="number" class="validate" value="{{requiredskills.python}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12" id="field">
-                            <i class="material-icons prefix">CSS</i>
-                            <input id="name" name="css" type="number" class="validate" value="{{requiredskills.css}}">
-                            <label for="icon_prefix">{{requiredskills.css}}</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12" id="field">
-                            <i class="material-icons prefix">JS</i>
-                            <input id="name" name="js" type="number" class="validate" value="{{requiredskills.js}}">
-                            <label for="icon_prefix">{{requiredskills.js}}</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12" id="field">
-                            <i class="material-icons prefix">PYTHON</i>
-                            <input id="name" name="python" type="number" class="validate" value="{{requiredskills.python}}">
-                            <label for="icon_prefix">{{requiredskills.python}}</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12" id="field">
-                            <i class="material-icons prefix">DB</i>
-                            <input id="name" name="db" type="number" class="validate" value="{{requiredskills.db}}">
-                            <label for="icon_prefix">{{requiredskills.db}}</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <button class="btn waves-effect waves-light" type="submit" name="action" id="add">Skillify</button>
-                    </div>
-                </form>
+                </div>
+                <div class="col-md-3 col-lg-3 text-right"></div>
             </div>
         </div>
 
 
         <div id="issueModal" class="modal">
 
-            <h1>Raise an issue</h1>
-            <div class="modal-content">
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="input-field col s12" id="field">
-                            <i class="material-icons prefix">assignment</i>
-                            <input id="name" name="name" type="text" class="validate">
-                            <label for="icon_prefix">Name</label>
-                        </div>
+            <div class="row"></div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 text-right"></div>
+                <div class="col-md-4 col-lg-4 text-center">
+                    <h1>New Issue:</h1>
+                </div>
+                <div class="col-md-4 col-lg-4 text-right"></div>
+            </div>
+            <div class="row">
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="col-md-3 col-lg-3 text-right"></div>
+
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="card" id="form-card">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row text-center">
+                                <div class="input-field col s12" id="issue-field">
+                                    <input id="name" name="name" type="text" class="validate">
+                                    <label for="icon_prefix">Name</label>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="input-field col s12" id="issue-field">
+                                    <input id="name" name="description" type="text" class="validate">
+                                    <label for="icon_prefix">Description</label>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="input-field col s12" id="issue-field">
+                                    <input id="name" name="cost" type="number" class="validate">
+                                    <label for="icon_prefix">Cost</label>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <button type="submit" class="btn btn-success" style="background-color:#d9534f; border:none">New Issue</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12" id="field">
-                            <i class="material-icons prefix">assignment</i>
-                            <input id="name" name="description" type="text" class="validate">
-                            <label for="icon_prefix">Description</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12" id="field">
-                            <i class="material-icons prefix">assignment</i>
-                            <input id="name" name="cost" type="number" class="validate">
-                            <label for="icon_prefix">Cost</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <button class="btn waves-effect waves-light" type="submit" name="action" id="add">Raise an Issue</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
         <!-- /. MODALS  -->
