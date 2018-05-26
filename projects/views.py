@@ -14,6 +14,7 @@ import collections
 def all_projects(request):
     projects = Project.objects.all()
     profiles = MyProfile.objects.all()
+    my_profile = get_object_or_404(MyProfile, owner=request.user)
 
     status_list = []
     for element in projects:
@@ -24,7 +25,8 @@ def all_projects(request):
     
     context = {"projects": projects, 
                 "count_them": count_them,
-                "profiles": profiles}
+                "profiles": profiles,
+                "my_profile": my_profile,}
     
    
     return render(request, "projects.html", context)
@@ -83,7 +85,7 @@ def project_details(request, pk):
                
            project.budget = project.budget - new_issue.cost
            if project.budget < 0:
-               project.status = "On Hold"
+               project.status = "hold"
                ProjectMessage.objects.create(
                    project = project,
                    message = "Project {0} placed on hold.".format(project.name)

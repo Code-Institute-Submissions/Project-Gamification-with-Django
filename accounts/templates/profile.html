@@ -10,6 +10,7 @@
     </ol>
 
 </div>
+
 <div id="page-inner">
     <div class="row">
         <div class="col-md-5 col-lg-5 text-left" id="col-mydetails">
@@ -92,131 +93,133 @@
                     <div class="col-md-4 col-lg-4" id="personal-details">
                         <h4>Joined Teams:</h4>
                     </div>
-                    <div class="col-md-1 col-lg-1">
+                    <div class="col-md-1 col-lg-1"> 
                     </div>
                     <div class="col-md-5 col-lg-5" id="my-details">
                         {% for element in joined_projects %}
                         <h4 id="project-team">{{ element.name }}</h4>
                         {% endfor %}
                     </div>
-                    {% endif %}
-                </div>
-            </div>
-
-            <div class="col-md-1 col-lg-1 text-left"></div>
-            {% if my_profile.position == 'PM' %}
-            <div class="col-md-5 col-lg-5 text-left">
-                <div class="row" id="row-table">
-                    <div class="col-md-12 col-lg-12 text-center" id="details-left">
-                        <h2>My Projects</h2>
-                    </div>
-                </div>
-                {% for project in projects %}
-                <div class="row" id="row-table">
-                    <div class="col-md-3 col-lg-3 text-center" id="mydetails-table">
-                        <h4 style="color:#234a66; padding-top:0px;">{{ project.name }}</h4>
-                    </div>
-                    <div class="col-md-5 col-lg-5 text-left" id="mydetails-table">
-                        <h5>{{ project.description|truncatechars:80 }}</h5>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-left" id="mydetails-table">
-                        <div class="col-md-3 col-lg-3 text-left">
-                            <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
-                        </div>
-                        <div class="col-md-1 col-lg-1 text-left">
-                        </div>
-                        <div class="col-md-6 col-lg-6 text-left">
-                            <h4 style="margin-left:10px">{{ project.budget }}</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
-                        <h4>{{ project.status }}</h4>
-                    </div>
-                </div>
-                {% endfor%}
-                {% if my_profile.my_wallet > 450 %}
-                <div class="row text-right" id="issue-btn-row">
-                    <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" id="btn-issue">New Project</button></a>
                 </div>
                 {% endif %}
             </div>
-            {% endif %} {% if my_profile.position == 'Coder' %}
-            <div class="col-md-5 col-lg-5 text-left">
-                <div class="row" id="row-table">
-                    <div class="col-md-12 col-lg-12 text-center" id="details-left">
-                        <h2>Joined Teams</h2>
-                    </div>
+        </div>    
+        <div class="col-md-1 col-lg-1 text-left"></div>
+        <div class="col-md-5 col-lg-5 text-left">
+            {% if my_profile.position == 'PM' %}
+            <div class="row" id="row-table">
+                <div class="col-md-12 col-lg-12 text-center" id="details-left">
+                    <h2>My Projects</h2>
                 </div>
-                {% for project in joined_projects %}
-                <div class="row" id="row-table">
-                    <div class="col-md-3 col-lg-3 text-center" id="mydetails-table">
+            </div>
+            {% for project in projects %}
+            <div class="row" id="row-table">
+                <div class="col-md-3 col-lg-3 text-center" id="mydetails-table">
+                    <a href="{% url 'project_details' pk=project.id %}">
                         <h4 style="color:#234a66; padding-top:0px;">{{ project.name }}</h4>
-                    </div>
-                    <div class="col-md-5 col-lg-5 text-left" id="mydetails-table">
-                        <h5>{{ project.description|truncatechars:80 }}</h5>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-left" id="mydetails-table">
-                        <div class="col-md-3 col-lg-3 text-left">
-                            <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
-                        </div>
-                        <div class="col-md-1 col-lg-1 text-left">
-                        </div>
-                        <div class="col-md-6 col-lg-6 text-left">
-                            <h4 style="margin-left:10px">{{ project.budget }}</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
-                        <h4>{{ project.status }}</h4>
-                    </div>
-                </div>
-                {% endfor%}
-            </div>
-            {% endif %}
-        </div>
+                    </a>
 
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row">
-            {% if my_profile.position == 'Coder' %}
-            <div class="col-md-5 col-lg-5 text-left" id="col-assignedissues">
-                <div class="row" id="row-table">
-                    <div class="col-md-12 col-lg-12 text-center" id="details-left">
-                        <h2>Assigned Issues</h2>
+                </div>
+                <div class="col-md-5 col-lg-5 text-left" id="mydetails-table">
+                    <h5>{{ project.description|truncatechars:80 }}</h5>
+                </div>
+                <div class="col-md-2 col-lg-2 text-left" id="mydetails-table">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
+                    </div>
+                    <div class="col-md-1 col-lg-1 text-left">
+                    </div>
+                    <div class="col-md-6 col-lg-6 text-left">
+                        <h4 style="margin-left:10px">{{ project.budget }}</h4>
                     </div>
                 </div>
-                {% for issue in issues %}
-                <div class="row" id="row-table">
-                    <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
-                        <h4 style="color:red; padding-top:0px;">{{issue.name|truncatechars:20}}</h4>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
-                        <h4 style="color:#234a66; padding-top:0px;">{{issue.project}}</h4>
-                    </div>
-                    <div class="col-md-4 col-lg-4 text-left" id="mydetails-table">
-                        <h5>{{ issue.description|truncatechars:80 }}</h5>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-left" id="mydetails-table">
-                        <div class="col-md-3 col-lg-3 text-left">
-                            <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
-                        </div>
-                        <div class="col-md-1 col-lg-1 text-left">
-                        </div>
-                        <div class="col-md-6 col-lg-6 text-left">
-                            <h4 style="margin-left:10px">{{ issue.cost}}</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
-                        <a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login" id="btn-fixed">Fixed</button></a>
-                    </div>
+                <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
+                    <h4>{{ project.status }}</h4>
                 </div>
-                {% endfor%}
             </div>
-            {% else %}
+            {% endfor%} {% if my_profile.my_wallet > 450 %}
+            <div class="row text-right" id="issue-btn-row">
+                <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" id="btn-issue">New Project</button></a>
+            </div>
+            {% endif %} {% elif my_profile.position == 'Coder' %}
+            <div class="row" id="row-table">
+                <div class="col-md-12 col-lg-12 text-center" id="details-left">
+                    <h2>Joined Teams</h2>
+                </div>
+            </div>
+            {% for project in joined_projects %}
+            <div class="row" id="row-table">
+                <div class="col-md-3 col-lg-3 text-center" id="mydetails-table">
+                    <a href="{% url 'project_details' pk=project.id %}">
+                        <h4 style="color:#234a66; padding-top:0px;">{{ project.name }}</h4>
+                    </a>
+                </div>
+                <div class="col-md-5 col-lg-5 text-left" id="mydetails-table">
+                    <h5>{{ project.description|truncatechars:80 }}</h5>
+                </div>
+                <div class="col-md-2 col-lg-2 text-left" id="mydetails-table">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
+                    </div>
+                    <div class="col-md-1 col-lg-1 text-left">
+                    </div>
+                    <div class="col-md-6 col-lg-6 text-left">
+                        <h4 style="margin-left:10px">{{ project.budget }}</h4>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
+                    <h4>{{ project.status }}</h4>
+                </div>
+            </div>
+            {% endfor%} {% else %}
             <div class="col-md-5 col-lg-5 text-left" id="col-assignedissues"></div>
             {% endif %}
-            <div class="col-md-1 col-lg-1 text-left"></div>
-            <div class="col-md-5 col-lg-5 text-right" id="col-mydetails">
-                <a href="{% url 'view_backed_projects' %}">
+        </div>
+    </div>
+
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+        {% if my_profile.position == 'Coder' %}
+        <div class="col-md-5 col-lg-5 text-left" id="col-assignedissues">
+            <div class="row" id="row-table">
+                <div class="col-md-12 col-lg-12 text-center" id="details-left">
+                    <h2>Assigned Issues</h2>
+                </div>
+            </div>
+            {% for issue in issues %}
+            <div class="row" id="row-table">
+                <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
+                    <h4 style="color:red; padding-top:0px;">{{issue.name|truncatechars:20}}</h4>
+                </div>
+                <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
+                    <h4 style="color:#234a66; padding-top:0px;">{{issue.project}}</h4>
+                </div>
+                <div class="col-md-4 col-lg-4 text-left" id="mydetails-table">
+                    <h5>{{ issue.description|truncatechars:80 }}</h5>
+                </div>
+                <div class="col-md-2 col-lg-2 text-left" id="mydetails-table">
+                    <div class="col-md-3 col-lg-3 text-left">
+                        <i class="fab fa-trade-federation fa-2x fa-rotate-180 fa-flip-vertical" id="lean-coin"></i>
+                    </div>
+                    <div class="col-md-1 col-lg-1 text-left">
+                    </div>
+                    <div class="col-md-6 col-lg-6 text-left">
+                        <h4 style="margin-left:10px">{{ issue.cost}}</h4>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
+                    <a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login" id="btn-fixed">Fixed</button></a>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+        {% else %}
+        <div class="col-md-5 col-lg-5 text-left" id="col-assignedissues"></div>
+        {% endif %}
+        <div class="col-md-1 col-lg-1 text-left"></div>
+        <div class="col-md-5 col-lg-5 text-right" id="col-mydetails">
+            <a href="{% url 'view_backed_projects' %}">
             <i class="fa fa-shipping-cart"></i> Donate!
             {% if project_count > 0 %}
             <label class="badge badge-warning">{{ project_count }}</label>
