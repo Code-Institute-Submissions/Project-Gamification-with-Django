@@ -82,7 +82,7 @@ def profile(request, pk):
         joined_teams = get_object_or_404(Team, current_user = request.user)
         joined_projects = joined_teams.projects.all()
     except:
-        joined_projects = [{'name' : 'None'}]
+        joined_projects = []
     
     
     project_count = 0

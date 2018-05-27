@@ -99,6 +99,9 @@ def project_details(request, pk):
             requiredskills = requiredskillsform.save()
             
         return redirect(reverse('project_details', kwargs={'pk': pk }))    
+        
+        
+        
           
 
 
@@ -113,7 +116,7 @@ def propose_project(request):
     
     if my_profile.my_wallet < 450:
         
-        return HttpResponseRedirect('/')
+        return redirect(reverse('projects'))
         
     else: 
         
@@ -162,12 +165,12 @@ def propose_project(request):
     
     
 def delete_project(request, pk):
-    
-    if request.method == 'DELETE':
-        project = get_object_or_404(Project, pk=pk)
-        project.delete()
+    ## change post to delete for charities
+    # if request.method == 'POST':
+    project = get_object_or_404(Project, pk=pk)
+    project.delete()
         
-    return HttpResponseRedirect('/')
+    return redirect(reverse('projects'))
     
     
 def join_team(request, pk):
@@ -270,7 +273,7 @@ def complete_project(request, pk):
         project.delete()        
                 
             
-        return HttpResponseRedirect('/')
+        return redirect(reverse('projects'))
         
     
     return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members, 'prize' : prize, 'project_team' : project_team })
@@ -290,6 +293,6 @@ def assign_issue(request, pk):
                    ).save()
     
         
-    return HttpResponseRedirect('/') 
+    return redirect(reverse('projects'))
         
     

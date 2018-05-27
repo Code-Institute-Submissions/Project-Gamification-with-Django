@@ -1250,12 +1250,13 @@ strong {
 
 #row-action {
     position: relative;
+    min-height: 65px;
     vertical-align: middle;
     padding: 5px
 }
 
 #btn-action {
-    margin: 0px;
+    margin: 4px 0px 4px 0px;
     border-radius: 5px;
 }
 
@@ -1425,6 +1426,10 @@ strong {
 }
 
 
+.backdrop {
+    background-color:  #234a66;
+}
+
 /*$$$$$$$$$$$$$$$$$$$$$$         DETAILS MODAL        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
 #detailsModal {
@@ -1547,4 +1552,23 @@ input[type="number"]:focus:not([readonly]) + label {
 input[type="text"].valid {
     border-bottom: none;
     box-shadow: none;
+}
+
+
+/*$$$$$$$$$$$$$$$$$$$$$$        CANCEL & FINISH MODAL        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
+#cancelModal, #finishModal {
+    text-align: center;
+    background-image: url('../../static/img/backg-modal.gif');
+    background-size: cover;
+    color: white;
+    border-radius: 10px;
+}
+
+#btn-cancel {
+    position: absolute;
+    right: 180px;
+    max-height: 80px;
+    font-size: 16px;
+    background-color:#d9534f
 }

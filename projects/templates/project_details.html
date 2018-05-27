@@ -1,13 +1,17 @@
 {% extends "base.html" %} {% load staticfiles %} {% load bootstrap_tags %} {% block content %}
 <div class="header">
     <h1 class="page-header">
-        {% if project.status == 'proposed' %} {{ project.name }} Startup Dashboard {% else %} {{ project.name }} Project Dashboard {% endif %}
+        {% if project.status == 'proposed' %} {{ project.name }} Startup Dashboard {% else %} {{ project.name }} Project Dashboard {% endif %} 
+        {% if my_profile.position == "admin" and project.status == 'hold'%}
+        <button class="btn_login modal-trigger" id="btn-cancel" href="#cancelModal">Cancel Project</button>
+        {% endif %}
     </h1>
     <ol class="breadcrumb">
         <li><a href="{% url 'login_page' %}">Home</a></li>
         <li><a href="{% url 'projects' %}">Dashboard</a></li>
         <li class="active">{{ project.name }}</li>
     </ol>
+    
 </div>
 <div id="page-inner">
     <div class="row">
@@ -17,6 +21,7 @@
                     <div class="row" id="row-table">
                         <div class="col-md-4 col-lg-4 text-left" id="details-left">
                             <h4>Project Manager</h4>
+
                         </div>
                         <div class="col-md-8 col-lg-8 text-left" id="details-right">
                             <div class="col-md-3 col-lg-3 text-center" style="margin:0px">
@@ -59,7 +64,8 @@
                                     Advance Project
                                     {% endif %}
                                     </button></a> {% endif %} {% if my_profile.position == "admin" and project.status == 'deployment'%}
-                                <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a> {% endif %}
+                                    <button class="btn_login modal-trigger" id="btn-status" style="background-color:#cea007" href="#finishModal">Finish Project!</button>
+                                 {% endif %}
                             </div>
                         </div>
                     </div>
@@ -236,7 +242,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'html' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -244,7 +250,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'css' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -252,7 +258,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'js' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -260,7 +266,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'db' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -268,7 +274,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'python' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -522,6 +528,58 @@
                 </div>
             </div>
         </div>
+         <div id="cancelModal" class="modal">
+            <div class="row"></div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 text-right"></div>
+                <div class="col-md-4 col-lg-4 text-center">
+                    <h1>Do you want to cancel this Project?</h1>
+                </div>
+                <div class="col-md-4 col-lg-4 text-right"></div>
+            </div>
+            <div class="row">
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="col-md-3 col-lg-3 text-right"></div>
+
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="card" id="form-card">
+                        <div class="row"></div>
+                        <h2> Yes, I want to scrap this Project:</h2>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <a href="{% url 'delete_project' pk=project.id %}"><button type="submit" class="btn btn-danger" id="btn-issue" style="background-color:#d9534f">Cancel Project</button></a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 text-right"></div>
+            </div>
+        </div>   
+         <div id="finishModal" class="modal">
+            <div class="row"></div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 text-right"></div>
+                <div class="col-md-4 col-lg-4 text-center">
+                    <h1>Is Project completed?</h1>
+                </div>
+                <div class="col-md-4 col-lg-4 text-right"></div>
+            </div>
+            <div class="row">
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="col-md-3 col-lg-3 text-right"></div>
+
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="card" id="form-card">
+                        <div class="row"></div>
+                        <h2> Yes, this Project is completed:</h2>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 text-right"></div>
+            </div>
+        </div>     
         <!-- /. MODALS  -->
     </div>
     <!-- /. PAGE INNER  -->
@@ -534,5 +592,10 @@
     var instance = M.Modal.init(elem)
 </script>
 
+<script>
+    $(document).ready(function() {
+        $('.tooltipped').tooltip();
+    });
+</script>
 
 {% endblock %}

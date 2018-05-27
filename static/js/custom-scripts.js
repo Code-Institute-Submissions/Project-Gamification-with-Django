@@ -206,7 +206,7 @@
 
 /* ################################################################################### */
 
-
+/* CHARITIES */
 function deleteProject(project){
   var $project = $(project)
   $project.parent().remove()
@@ -220,6 +220,10 @@ function deleteProject(project){
     }
   })
 }
+/* CHARITIES */
+
+
+
 
 function rejectCandidate(commitskill){
   var $commitskill = $(commitskill)
