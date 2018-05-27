@@ -1,29 +1,46 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block content %}
-<h1>Add Details </h1>
-<div class="container form-group">
 
-  <form method="POST">
-    {% csrf_token %}
-    <div class="row">
-      <select id="type_of_algorithm" name="status">
+<div id="page-inner">
+  <div class=row></div>
+  <div class=row></div>
+
+  <div class="col-md-4 col-lg-4 text-right"></div>
+  <div class="col-md-4 col-lg-4 text-center" id="col-form">
+    <div class="col-md-2 col-lg-2 text-right"></div>
+    <div class="col-md-8 col-lg-8 text-center">
+      <div class=row></div>
+      <div class=row></div>
+      <h1>Choose Project stage:</h1>
+      <div class=row></div>
+      <div class=row></div>
+      <div class="card" id="form-card">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <select id="type_of_algorithm" name="status">
           <option value="" disabled selected>{{ project.status }}</option>
           {% for type in project_states %}
               <option value={{type.name}}>{{type.name}}</option>
           {% endfor %}
         </select>
+          </div>
+          {{ my_profile.owner }}
+          <div class=row></div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+      <div class=row></div>
+        <div class=row></div>
+         <div class=row></div>
     </div>
-    {{ my_profile.owner }}
-    <div class=row></div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+    <div class="col-md-2 col-lg-2 text-right"></div>
+  </div>
+  <div class="col-md-4 col-lg-4 text-right"></div>
+
 </div>
-
-
 <script>
-
-    var elem = document.querySelectorAll('select')
-    var instance = M.FormSelect.init(elem)
-    
+  var elem = document.querySelectorAll('select')
+  var instance = M.FormSelect.init(elem)
 </script>
 
 

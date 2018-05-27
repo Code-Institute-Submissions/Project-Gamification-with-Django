@@ -282,6 +282,7 @@ def complete_project(request, pk):
 
 def assign_issue(request, pk):
     
+    
     user = request.user
     issue = get_object_or_404(Issue, id=pk)
     issue.assigned_to = request.user
@@ -293,6 +294,6 @@ def assign_issue(request, pk):
                    ).save()
     
         
-    return redirect(reverse('projects'))
+    return redirect(reverse('project_details', kwargs={'pk': pk }))   
         
     

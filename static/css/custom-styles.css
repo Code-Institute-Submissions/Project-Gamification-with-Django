@@ -1473,14 +1473,6 @@ strong {
 }
 
 
-[type="radio"]:not(:checked),
-[type="radio"]:checked {
-    position: absolute;
-    left: 0px;
-    opacity: 1;
-}
-
-
 #searchbox {
     display: inline;
 }
@@ -1571,4 +1563,47 @@ input[type="text"].valid {
     max-height: 80px;
     font-size: 16px;
     background-color:#d9534f
+}
+
+
+/*$$$$$$$$$$$$$$$$$$$$$$        FORM        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
+#col-form {
+    text-align: center;
+    background-image: url('../../static/img/backg-modal.gif');
+    background-size: cover;
+    color: white;
+    border-radius: 10px;
+}
+
+#skill-form {
+    padding: 10px 10px 10px 30px;
+}
+
+#skill-form label {
+    color: white;
+    font-size: 18px;
+}
+
+#skill-form li {
+    padding-bottom: 5px
+}
+
+#skill-form input:not([type]) {
+    padding-bottom: 15px;
+    color: white;
+    font-size: 18px;
+}
+
+input:not([type]):focus:not([readonly]) {
+    border-bottom: 1px solid white;
+    box-shadow: 0 1px 0 0 white;
+    
+}
+
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+    position: absolute;
+    left: 20px;
+    opacity: 1;
 }
