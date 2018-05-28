@@ -19,9 +19,9 @@ from django.urls import path, include
 from accounts.views import login_page
 from accounts import urls as accounts_urls
 from projects import urls as projects_urls
-from kickstart_project import urls as kickstart_project_urls
+from charity_choice import urls as charity_choice_urls
 from project_search import urls as project_search_urls
-from commit_resources import urls as commit_resources_urls
+from donate import urls as donate_urls
 from projects.views import all_projects
 from django.views import static
 from .settings import MEDIA_ROOT
@@ -31,9 +31,9 @@ urlpatterns = [
     path('', login_page, name="login_page"),
     path('accounts/', include(accounts_urls)),
     path('projects/', include(projects_urls)),
-    path('kickstart/', include(kickstart_project_urls)),
+    path('charity_choice/', include(charity_choice_urls)),
     path('find_project/', include(project_search_urls)),
-    path('finalize_donation/', include(commit_resources_urls)),
+    path('finalize_donation/', include(donate_urls)),
     url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
 
 ]

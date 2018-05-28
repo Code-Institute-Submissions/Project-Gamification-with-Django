@@ -36,8 +36,8 @@ ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
 INSTALLED_APPS = [
     'projects',
     'accounts',
-    'kickstart_project',
-    'commit_resources',
+    'charity_choice',
+    'donate',
     'django_forms_bootstrap',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'kickstart_project.contexts.support_project'
+                'charity_choice.contexts.support_project'
             ],
         },
     },

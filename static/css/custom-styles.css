@@ -1621,3 +1621,32 @@ input:not([type]):focus:not([readonly]) {
 .errorlist {
     color: #d64440;
 }
+
+
+
+/*$$$$$$$$$$$$$$$$$$$$$$        CHARITY & DONATION        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
+#col-charity {
+    margin-bottom: 60px;
+}
+
+
+
+#card-charity {
+    height: 80%;
+    padding: 5px 5px 5px 5px;
+}
+
+#card-charity h2 {
+    color: #234a66;
+    
+}
+
+
+#donation-link {
+    color: red;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    color: green;
+}

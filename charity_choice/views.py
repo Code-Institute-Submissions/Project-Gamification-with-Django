@@ -2,8 +2,17 @@ from django.shortcuts import render, redirect, reverse
 
 # Create your views here.
 
+def charities(request):
+    return render(request, "charities.html")
+    
+
+
+
+
+
+
 def view_backed_projects(request):
-    return render(request, "kickstart_project.html")
+    return render(request, "charity_choice.html")
     
 def support_project(request, id):
     quantity=int(request.POST.get('quantity'))
