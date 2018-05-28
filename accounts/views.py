@@ -124,8 +124,8 @@ def profile(request, pk):
            my_profile.save()
             
            return redirect(reverse('profile', kwargs={'pk': pk }))          
-       else:
-           form = MyDetailsForm()       
+    else:
+        form = MyDetailsForm()       
 
     return render(request, 'profile.html', { 'form': form } , context)
    

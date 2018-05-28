@@ -385,6 +385,7 @@
                         <h2>Project Log</h2>
                     </div>
                 </div>
+                <div id="message-log">
                 {% for element in project_log %}
                 <div class="row" id="row-table">
                     <div class="col-md-2 col-lg-2 text-center" id="row-action">
@@ -395,6 +396,7 @@
                     </div>
                 </div>
                 {% endfor %}
+                </div>
             </div>
         </div>
         {% endif %}
@@ -433,8 +435,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12" id="field">
-                                    <input id="name" name="html" type="number" class="validate" value="{{requiredskills.html}}">
-
+                                    <input id="name" name="html" type="number" class="validate" value="{{requiredskills.html}}" required>
                                 </div>
                             </div>
                             <div class="row text-left">
@@ -442,7 +443,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12" id="field">
-                                    <input id="name" name="css" type="number" class="validate" value="{{requiredskills.css}}">
+                                    <input id="name" name="css" type="number" class="validate" value="{{requiredskills.css}}" required>
 
                                 </div>
                             </div>
@@ -451,7 +452,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12" id="field">
-                                    <input id="name" name="js" type="number" class="validate" value="{{requiredskills.js}}">
+                                    <input id="name" name="js" type="number" class="validate" value="{{requiredskills.js}}" required>
 
                                 </div>
                             </div>
@@ -461,7 +462,7 @@
                             <div class="row">
                                 <div class="input-field col s12" id="field">
 
-                                    <input id="name" name="db" type="number" class="validate" value="{{requiredskills.db}}">
+                                    <input id="name" name="db" type="number" class="validate" value="{{requiredskills.db}}" required>
                                 </div>
                             </div>
                             <div class="row text-left">
@@ -469,7 +470,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12" id="field">
-                                    <input id="name" name="python" type="number" class="validate" value="{{requiredskills.python}}">
+                                    <input id="name" name="python" type="number" class="validate" value="{{requiredskills.python}}" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -504,19 +505,19 @@
                             {% csrf_token %}
                             <div class="row text-center">
                                 <div class="input-field col s12" id="issue-field">
-                                    <input id="name" name="name" type="text" class="validate">
+                                    <input id="name" name="name" type="text" class="validate" required>
                                     <label for="icon_prefix">Name</label>
                                 </div>
                             </div>
                             <div class="row text-center">
                                 <div class="input-field col s12" id="issue-field">
-                                    <input id="name" name="description" type="text" class="validate">
+                                    <input id="name" name="description" type="text" class="validate" required>
                                     <label for="icon_prefix">Description</label>
                                 </div>
                             </div>
                             <div class="row text-center">
                                 <div class="input-field col s12" id="issue-field">
-                                    <input id="name" name="cost" type="number" class="validate">
+                                    <input id="name" name="cost" type="number" class="validate" required>
                                     <label for="icon_prefix">Cost</label>
                                 </div>
                             </div>

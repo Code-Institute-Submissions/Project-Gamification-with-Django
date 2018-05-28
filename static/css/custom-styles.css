@@ -32,7 +32,7 @@ body {
 a:hover, a:active, a:focus {
    outline: 0;
 }
-
+input[type="email"]:focus:not([readonly]),
 input[type="text"]:focus:not([readonly]),
 input[type="number"]:focus:not([readonly]),
 input[type="number"].valid{
@@ -90,6 +90,10 @@ label {
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: 400;
+}
+
+.btn:active:focus, .btn:focus {
+    outline: none
 }
 
 .alert {
@@ -1430,6 +1434,12 @@ strong {
     background-color:  #234a66;
 }
 
+#message-log {
+    max-height: 650px;
+    overflow:auto;
+}
+
+
 /*$$$$$$$$$$$$$$$$$$$$$$         DETAILS MODAL        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
 
 #detailsModal {
@@ -1449,7 +1459,7 @@ strong {
     color: #969696;
 }
 
-#form-card h2, #form-card h4 {
+#form-card h2, #form-card h4,  #form-card h5{
     color: white;
     padding-top: 0px;
 }
@@ -1606,4 +1616,8 @@ input:not([type]):focus:not([readonly]) {
     position: absolute;
     left: 20px;
     opacity: 1;
+}
+
+.errorlist {
+    color: #d64440;
 }
