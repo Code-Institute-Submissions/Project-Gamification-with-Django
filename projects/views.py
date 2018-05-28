@@ -79,7 +79,7 @@ def project_details(request, pk):
            new_issue.save()
            
            ProjectMessage.objects.create(project = project,
-                                         message = "Issue {0} raised by {1}".format(new_issue.name, new_issue.assigned_to)
+                                         message = 'Issue "{0}" raised by pm {1}'.format(new_issue.name, new_issue.assigned_to)
                                          ).save
                
                
@@ -88,7 +88,7 @@ def project_details(request, pk):
                project.status = "hold"
                ProjectMessage.objects.create(
                    project = project,
-                   message = "Project {0} placed on hold.".format(project.name)
+                   message = 'Project "{0}" placed on hold.'.format(project.name)
                    ).save()
            project.save()
       
@@ -150,7 +150,7 @@ def propose_project(request):
                    
                ProjectMessage.objects.create(
                    project = new_project,
-                   message = "Project {0} proposed by {1}".format(new_project.name, new_project.proposed_by)
+                   message = 'Project "{0}" proposed by user {1}'.format(new_project.name, new_project.proposed_by)
                    ).save()       
                    
                    
@@ -233,7 +233,7 @@ def advance_project(request, pk):
         
             ProjectMessage.objects.create(
                        project = project,
-                       message = "Project {0} advanced to stage {1}".format(project.name, project.status)
+                       message = 'Project "{0}" advanced to stage "{1}"'.format(project.name, project.status)
                        ).save()    
             
             
@@ -290,7 +290,7 @@ def assign_issue(request, pk, ik):
     
     ProjectMessage.objects.create(
                    project = issue.project,
-                   message = "Issue {0} assigned to {1}".format(issue.name, issue.assigned_to)
+                   message = 'Issue "{0}" assigned to user {1}'.format(issue.name, issue.assigned_to)
                    ).save()
     
 
