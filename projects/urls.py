@@ -11,5 +11,5 @@ urlpatterns = [
     path('project_details/<int:pk>/leave', leave_team, name='leave_team'),
     path('project_details/<int:pk>/advance_project', advance_project, name='advance_project'),
     path('project_details/<int:pk>/complete_project', complete_project, name='complete_project'),
-    path('assign_issue/<int:pk>', assign_issue, name='assign_issue')
+    path('project_details/<int:pk>/assign_issue/<int:ik>', assign_issue, name='assign_issue')
     ]

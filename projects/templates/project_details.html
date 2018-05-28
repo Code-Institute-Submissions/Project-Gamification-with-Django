@@ -344,7 +344,7 @@
                 </div>
                 <div class="col-md-2 col-lg-2 text-center" id="issue-details">
                     {% if issue.assigned_to == project.proposed_by and issue.assigned_to != request.user %}
-                    <a href="{% url 'assign_issue' pk=issue.id %}"><button type="submit" class="btn_login" id="btn-assign">Assign to me</button></a> {% else %}
+                    <a href="{% url 'assign_issue' ik=issue.id pk=project.id %}"><button type="submit" class="btn_login" id="btn-assign">Assign to me</button></a> {% else %}
                     <h4>{{ issue.assigned_to }}</h4>
                     {% endif %}
                 </div>

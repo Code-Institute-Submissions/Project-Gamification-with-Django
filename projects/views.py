@@ -280,11 +280,11 @@ def complete_project(request, pk):
     
 
 
-def assign_issue(request, pk):
+def assign_issue(request, pk, ik):
     
-    
+    project = Project.objects.get(pk=pk)
     user = request.user
-    issue = get_object_or_404(Issue, id=pk)
+    issue = get_object_or_404(Issue, id=ik)
     issue.assigned_to = request.user
     issue.save()
     
@@ -293,7 +293,7 @@ def assign_issue(request, pk):
                    message = "Issue {0} assigned to {1}".format(issue.name, issue.assigned_to)
                    ).save()
     
-        
+
     return redirect(reverse('project_details', kwargs={'pk': pk }))   
         
     
