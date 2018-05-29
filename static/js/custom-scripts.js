@@ -207,21 +207,19 @@
 /* ################################################################################### */
 
 /* CHARITIES */
-function deleteProject(project){
-  var $project = $(project)
-  $project.parent().remove()
-  var id = $project.data('id')
+function deleteCharity(charity){
+  var $charity = $(charity)
+  $charity.parent().remove()
+  var id = $charity.data('id')
 
   $.ajax({
-    url: 'projects/delete_project/' + id,
+    url: 'charities/delete_charity/' + id,
     method: 'DELETE',
     beforeSend: function(xhr){
       xhr.setRequestHeader('X-CSRFToken', csrf_token)
     }
   })
 }
-/* CHARITIES */
-
 
 
 

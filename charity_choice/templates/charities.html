@@ -21,7 +21,7 @@
 
 
     <div class="row"></div>
-
+    {% for charity in charities %}
 
     <div class="col-md-3 col-lg-3 text-center" id="status-container">
         <div class="row"></div>
@@ -33,18 +33,21 @@
                 </div>
                 <div class="card-stacked">
                     <div id="card-charity">
-                        <h2 class="header">Horizontal Card</h2>
+                        <h2 class="header">{{ charity.name }}</h2>
                         <br>
-                        <p>I am a very simple card. I am good at containing small bits of information.</p>
+                        <p>{{ charity.description|truncatechars:80 }}</p>
                     </div>
                     <div class="card-action">
                         <a href="#">Donate 5€</a>
+                        <button data-id="{{ charity.id }}" onclick="deleteProject(this)" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
+    
+    {% endfor %}
     <div class="col-md-3 col-lg-3 text-center" id="status-container">
         <div class="row"></div>
         <div class="col-md-12 col-lg-12 text-center" id="col-charity">
