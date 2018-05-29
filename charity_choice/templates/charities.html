@@ -47,7 +47,10 @@
                         <p>{{ charity.description|truncatechars:60 }}</p>
                     </div>
                     <div class="card-action">
-                        <a href="#">Donate 5€</a>
+                        <form class="form-inline" method="post" action="">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Support</button>
+                        </form>
                     </div>
                 </div>
             </div>

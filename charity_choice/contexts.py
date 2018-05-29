@@ -1,21 +1,21 @@
 from django.shortcuts import get_object_or_404
-from projects.models import Project
+from charity_choice.models import Charity
 
 
-def support_project(request):
+def add_to_donations(request):
     
-    chosen_projects = request.session.get('chosen_projects', {})
+    chosen_donations = request.session.get('chosen_donations', {})
     
-    backed_projects = []
+    backed_charities = []
     total = 0
-    project_count = 0
-    for id, quantity in chosen_projects.items():
+    charity_count = 0
+    for id in chosen_donations.items():
         project = get_object_or_404(Project, pk=id)
-        total += quantity * project.budget
-        project_count += quantity
-        backed_projects.append({'id':id, 'quantity': quantity, 'project' : project})
+        total += charity.donation
+        charity_count += 1
+        backed_charities.append({'id':id, 'charity' : charity})
         
-    return { 'backed_projects': backed_projects, 'total': total, 'project_count' : project_count }     
+    return { 'backed_charities': backed_charities, 'total': total, 'charity_count' : charity_count }     
         
     
     

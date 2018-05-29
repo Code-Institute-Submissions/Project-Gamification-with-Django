@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'charity_choice.contexts.support_project'
+                'charity_choice.contexts.add_to_donations'
             ],
         },
     },

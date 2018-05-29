@@ -54,6 +54,12 @@ def propose_charity(request):
     return render (request, 'propose_charity.html', {'form': form })    
     
 
+
+def view_donations(request):
+    """A view that renders the cart contents page"""
+    return render(request, "view_donations.html")
+    
+
 def delete_charity(request, pk):
 
     if request.method == 'DELETE':
@@ -62,42 +68,23 @@ def delete_charity(request, pk):
             
         return redirect(reverse('charities'))    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def view_backed_projects(request):
-    return render(request, "charity_choice.html")
     
-def support_project(request, id):
-    quantity=int(request.POST.get('quantity'))
+def add_to_donations(request, id):
     
-    chosen_projects = request.session.get('chosen_projects', {})
-    chosen_projects[id] = chosen_projects.get(id, quantity)
+    quantity=1
     
-    request.session['chosen_projects'] = chosen_projects
-    return redirect(reverse('login_page'))
+    chosen_donations = request.session.get('chosen_donations', {})
+    chosen_donations[id] = chosen_donations.get(id, quantity)
+    
+    request.session['chosen_donations'] = chosen_donations
+    return redirect(reverse('charities'))
     
 
-def adjust_backed_projects(request, id):
+def adjust_donations(request, id):
     
-    quantity = int(request.POST.get('quantity'))
-    chosen_projects = request.session.get('chosen_projects', {})
+    chosen_donations = request.session.get('chosen_donations', {})
     
-    if quantity > 0:
-        chosen_projects[id] = quantity
-    else:
-        chosen_projects.pop(id)
+    chosen_donations.pop(id)
         
-    request.session['chosen_projects'] = chosen_projects
-    return redirect(reverse('view_backed_projects'))
+    request.session['chosen_donations'] = chosen_donations
+    return redirect(reverse('charities'))

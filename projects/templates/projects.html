@@ -14,6 +14,9 @@
         </div>
     </div>
     {% endif %}
+    <a href="{% url 'view_donations' %}">
+        <i class="fas fa-shopping-cart"></i> Donations
+    </a>
 
 </div>
 
@@ -61,13 +64,13 @@
         </div>
         <div class="col-md-2 col-lg-2 text-center" id="status-container">
             <div class="card" id="status-card">
-            <h2>Analysis</h2>
-            <h1>{{ count_them.analysis }}</h1>
+                <h2>Analysis</h2>
+                <h1>{{ count_them.analysis }}</h1>
             </div>
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
                 {% for project in projects %} {% if project.status == 'analysis' %}
-                <div class="card" id="project-card2"  style="border-color:purple">
+                <div class="card" id="project-card2" style="border-color:purple">
                     <div class="col-md-8 col-lg-8 text-left">
                         <div class="row text-left" id="card-row-upper">
                             <h3>{{ project.name }}</h3>
@@ -98,13 +101,13 @@
         </div>
         <div class="col-md-2 col-lg-2 text-center" id="status-container">
             <div class="card" id="status-card">
-            <h2>Development</h2>
-            <h1>{{ count_them.development }}</h1>
+                <h2>Development</h2>
+                <h1>{{ count_them.development }}</h1>
             </div>
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
                 {% for project in projects %} {% if project.status == 'development' %}
-               <div class="card" id="project-card2" style="border-color:green">
+                <div class="card" id="project-card2" style="border-color:green">
                     <div class="col-md-8 col-lg-8 text-left">
                         <div class="row text-left" id="card-row-upper">
                             <h3>{{ project.name }}</h3>
@@ -135,8 +138,8 @@
         </div>
         <div class="col-md-2 col-lg-2 text-center" id="status-container">
             <div class="card" id="status-card">
-            <h2>Test</h2>
-            <h1>{{ count_them.test }}</h1>
+                <h2>Test</h2>
+                <h1>{{ count_them.test }}</h1>
             </div>
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
@@ -172,8 +175,8 @@
         </div>
         <div class="col-md-2 col-lg-2 text-center" id="status-container">
             <div class="card" id="status-card">
-            <h2>Deployment</h2>
-            <h1>{{ count_them.deployment }}</h1>
+                <h2>Deployment</h2>
+                <h1>{{ count_them.deployment }}</h1>
             </div>
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
@@ -215,8 +218,8 @@
         {% if my_profile.position == "admin" %}
         <div class="col-md-2 col-lg-2 text-center" id="status-container">
             <div class="card" id="status-card-hold">
-            <h2>On Hold</h2>
-            <h1>{{ count_them.hold }}</h1>
+                <h2>On Hold</h2>
+                <h1>{{ count_them.hold }}</h1>
             </div>
             <div class="row"></div>
             <div class="col-md-12 col-lg-12 text-center" id="bucket">
@@ -249,7 +252,7 @@
                 </div>
                 {% endif %} {% endfor %}
             </div>
-        </div>    
+        </div>
         {% endif %}
     </div>
 

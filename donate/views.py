@@ -17,9 +17,9 @@ def finalize_donation(request):
             donation.date = timezone.now()
             donation.save()
             
-            chosen_projects = request.session.get('chosen_projects', {})
+            chosen_donations = request.session.get('chosen_donations', {})
             total = 0
-            for id, quantity in chosen_projects.items():
+            for id, quantity in chosen_donations.items():
                 project = get_object_or_404(Project, pk=id)
                 total += quantity * project.budget
                 supported_project = SupportedProject(
