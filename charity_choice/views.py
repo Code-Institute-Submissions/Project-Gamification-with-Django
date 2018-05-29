@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 from django.urls import reverse
 from .forms import ProposeCharityForm
 from .models import Charity
+from accounts.models import MyProfile
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 
@@ -10,9 +11,12 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def charities(request):
-    charities = Charity.objects.all()
     
-    context = {"charities": charities}
+    charities = Charity.objects.all()
+    my_profile = get_object_or_404(MyProfile, owner=request.user)
+    
+    context = {"charities": charities,
+                "my_profile": my_profile}
     
     return render(request, "charities.html", context)
 
@@ -45,12 +49,12 @@ def propose_charity(request):
            
    
     else:
-        form = ProposeProjectForm()
+        form = ProposeCharityForm()
         
-    return render (request, 'propose_project.html', {'form': form })    
+    return render (request, 'propose_charity.html', {'form': form })    
     
 
-def delete_project(request, pk):
+def delete_charity(request, pk):
 
     if request.method == 'DELETE':
         charity = get_object_or_404(Charity, pk=pk)

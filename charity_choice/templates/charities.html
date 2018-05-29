@@ -14,108 +14,51 @@
         </div>
     </div>
     {% endif %}
-
 </div>
 
 <div id="page-inner">
-
-
+    <div class="row">
+        <div class="col-md-3 col-lg-3 text-center"></div>
+        <div class="col-md-6 col-lg-6 text-center">
+        
+            <h1>This month we support:</h1>
+            {% if my_profile.position == "admin" %}
+            <a href="{% url 'propose_charity' %}"><button type="submit" class="btn_login" id="btn-issue">New Charity</button></a>
+            {% endif %}
+        </div>
+        <div class="col-md-3 col-lg-3 text-center"></div>
+    </div>
+    <div class="row"></div>
     <div class="row"></div>
     {% for charity in charities %}
 
     <div class="col-md-3 col-lg-3 text-center" id="status-container">
         <div class="row"></div>
         <div class="col-md-12 col-lg-12 text-center" id="col-charity">
-        
+
             <div class="card horizontal">
                 <div class="card-image">
-                    <img src="{% static 'img/keldorn.png' %}" height="200" width="240">
+                    <img src='{{ MEDIA_URL }}{{ charity.image }}' class="img-responsive" id="charity-img" />
                 </div>
                 <div class="card-stacked">
                     <div id="card-charity">
                         <h2 class="header">{{ charity.name }}</h2>
                         <br>
-                        <p>{{ charity.description|truncatechars:80 }}</p>
+                        <p>{{ charity.description|truncatechars:60 }}</p>
                     </div>
                     <div class="card-action">
                         <a href="#">Donate 5€</a>
-                        <button data-id="{{ charity.id }}" onclick="deleteProject(this)" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </div>
-
+            {% if my_profile.position == "admin" %}
+            <button data-id="{{ charity.id }}" onclick="deleteCharity(this)" class="btn btn-danger">Remove</button>
+            {% endif %}
         </div>
     </div>
-    
+
     {% endfor %}
-    <div class="col-md-3 col-lg-3 text-center" id="status-container">
-        <div class="row"></div>
-        <div class="col-md-12 col-lg-12 text-center" id="col-charity">
-            
-            <div class="card horizontal">
-                <div class="card-image">
-                    <img src="{% static 'img/keldorn.png' %}" height="200" width="240">
-                </div>
-                <div class="card-stacked">
-                    <div id="card-charity">
-                        <h2 class="header">Horizontal Card</h2>
-                        <br>
-                        <p>I am a very simple card. I am good at containing small bits of information.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Donate 5€</a>
-                    </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-lg-3 text-center" id="status-container">
-        <div class="row"></div>
-        <div class="col-md-12 col-lg-12 text-center" id="col-charity">
-
-            
-            <div class="card horizontal">
-                <div class="card-image">
-                    <img src="{% static 'img/keldorn.png' %}" height="200" width="240">
-                </div>
-                <div class="card-stacked">
-                    <div id="card-charity">
-                        <h2 class="header">Horizontal Card</h2>
-                        <br>
-                        <p>I am a very simple card. I am good at containing small bits of information.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Donate 5€</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-    <div class="col-md-3 col-lg-3 text-center" id="status-container">
-        <div class="row"></div>
-        <div class="col-md-12 col-lg-12 text-center" id="col-charity">
-            
-            <div class="card horizontal">
-                <div class="card-image">
-                    <img src="{% static 'img/keldorn.png' %}" height="200" width="240">
-                </div>
-                <div class="card-stacked">
-                    <div id="card-charity">
-                        <h2 class="header">Horizontal Card</h2>
-                        <br>
-                        <p>I am a very simple card. I am good at containing small bits of information.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Donate 5€</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <!-- /. PAGE INNER  -->
 
 

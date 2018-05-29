@@ -6,7 +6,6 @@ from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from .models import MyProfile, Personality, Position
 from projects.models import Project, Issue, Team
-# from django.utils.text import slugify
 from projects.views import all_projects
 
 

@@ -213,7 +213,7 @@ function deleteCharity(charity){
   var id = $charity.data('id')
 
   $.ajax({
-    url: 'charities/delete_charity/' + id,
+    url: 'delete_charity/' + id,
     method: 'DELETE',
     beforeSend: function(xhr){
       xhr.setRequestHeader('X-CSRFToken', csrf_token)
