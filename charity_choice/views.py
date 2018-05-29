@@ -1,10 +1,71 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
+from django.contrib import messages, auth
+from django.urls import reverse
+from .forms import ProposeCharityForm
+from .models import Charity
+from django.template.context_processors import csrf
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
 def charities(request):
-    return render(request, "charities.html")
+    charities = Charity.objects.all()
     
+    context = {"charities": charities}
+    
+    return render(request, "charities.html", context)
+
+    
+
+@login_required
+def propose_charity(request):
+    
+
+    if request.method == 'POST':
+
+        form = ProposeCharityForm(request.POST, request.FILES)
+       
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+            donation = 5
+            image = form.cleaned_data['image']
+           
+            new_charity = Charity.objects.create(
+                                                name = name,
+                                                description = description,
+                                                donation = donation,
+                                                image = image,
+                                                )
+            new_charity.save()
+
+               
+            return redirect(reverse('charities'))
+           
+   
+    else:
+        form = ProposeProjectForm()
+        
+    return render (request, 'propose_project.html', {'form': form })    
+    
+
+def delete_project(request, pk):
+
+    if request.method == 'DELETE':
+        charity = get_object_or_404(Charity, pk=pk)
+        charity.delete()
+            
+        return redirect(reverse('charities'))    
+
+
+
+
+
+
+
+
+
 
 
 
