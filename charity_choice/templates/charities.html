@@ -47,7 +47,7 @@
                         <p>{{ charity.description|truncatechars:60 }}</p>
                     </div>
                     <div class="card-action">
-                        <form class="form-inline" method="post" action="">
+                        <form class="form-inline" method="post" action="{% url 'add_to_donations' charity.id %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Support</button>
                         </form>

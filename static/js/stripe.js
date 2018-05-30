@@ -1,5 +1,5 @@
 $(function() {
-    $("#payment-form").submit(function() {
+    $("#make_donation_form").submit(function() {
         var form = this;
         var card = {
             number: $("#id_credit_card_number").val(),

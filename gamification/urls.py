@@ -21,7 +21,7 @@ from accounts import urls as accounts_urls
 from projects import urls as projects_urls
 from charity_choice import urls as charity_choice_urls
 from project_search import urls as project_search_urls
-from donate import urls as donate_urls
+from charity_donation import urls as donation_urls
 from projects.views import all_projects
 from django.views import static
 from .settings import MEDIA_ROOT
@@ -33,7 +33,7 @@ urlpatterns = [
     path('projects/', include(projects_urls)),
     path('charity_choice/', include(charity_choice_urls)),
     path('find_project/', include(project_search_urls)),
-    path('finalize_donation/', include(donate_urls)),
+    path('charity_donation/', include(donation_urls)),
     url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
 
 ]

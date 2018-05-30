@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'projects',
     'accounts',
     'charity_choice',
-    'donate',
+    'charity_donation',
     'django_forms_bootstrap',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'charity_choice.contexts.add_to_donations'
+                'charity_choice.contexts.donation_contents'
             ],
         },
     },

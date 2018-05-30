@@ -22,7 +22,7 @@ def finalize_donation(request):
             for id, quantity in chosen_donations.items():
                 project = get_object_or_404(Project, pk=id)
                 total += quantity * project.budget
-                supported_project = SupportedProject(
+                supported_project = DonationItem(
                     donation = donation,
                     project = project,
                     quantity = quantity
