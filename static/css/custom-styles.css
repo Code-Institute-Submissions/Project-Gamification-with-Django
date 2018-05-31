@@ -1680,3 +1680,8 @@ input:not([type]):focus:not([readonly]) {
     vertical-align: middle;
     padding: 10px;
 }
+
+
+.page-header a {
+    text-decoration: none
+}
