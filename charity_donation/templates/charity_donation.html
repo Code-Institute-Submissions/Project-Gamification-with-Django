@@ -42,6 +42,8 @@
 
             {% endfor %}
         </div>
+        
+        
         <div class="row">
             <div class="col-md-1 col-lg-1 text-left">
                 <h2>Total: {{ total }}<span class="glyphicon glyphicon-euro" aria-hidden="true"></span></h2>
@@ -54,20 +56,16 @@
                 <div class="alert-message block-message error" id="stripe-error-message"></div>
             </div>
 
-            <div class="form-group col-md-6">
-                {% for field in donation_form %} {{ field.errors }}
-                <label>{{field.label}}</label>
-                <input placeholder="{{field.label}}" name="{{field.name}}" class="form-control" />
-                </div>
-                {% endfor %}
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4" id="col-payment">
+                {{ donation_form|as_bootstrap }}
                 {{ make_donation_form|as_bootstrap }}
+                <br>
+                <div class="form-group text-center">
+                <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+                </div>
             </div>
 
             {% csrf_token %}
-            <div class="form-group col-md-12">
-                <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-            </div>
         </form>
     </div>
 </div>

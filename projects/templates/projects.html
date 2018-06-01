@@ -14,13 +14,6 @@
         </div>
     </div>
     {% endif %}
-    <a href="{% url 'view_donations' %}">
-        <i class="fas fa-shopping-cart"></i> Donations
-        {% if charity_count > 0 %}
-            <label class="badge badge-warning">{{ charity_count }}</label>
-        {% endif %}
-    </a>
-
 </div>
 
 <div id="page-inner">
