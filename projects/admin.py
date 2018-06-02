@@ -6,7 +6,7 @@ from django.db.models import Count, DateField
 from django.db.models import Min, Max
 
 # Register your models here.
-admin.site.register(Project)
+
 admin.site.register(Issue)
 admin.site.register(RequiredSkills)
 admin.site.register(Team)
@@ -14,6 +14,17 @@ admin.site.register(CommitSkill)
 admin.site.register(ProjectState)
 admin.site.register(ProjectMessage)
 
+
+
+class ProjectModelAdmin(admin.ModelAdmin):
+    list_display = ["name","status"]
+    class Meta:
+        model = Project
+        verbose_name = "Project Summary"
+        verbose_name_plural = "Projects Summary"   
+    
+
+admin.site.register(Project, ProjectModelAdmin)
 
 @admin.register(ProjectMessageSummary)
 class ProjectMessageSummary(admin.ModelAdmin):

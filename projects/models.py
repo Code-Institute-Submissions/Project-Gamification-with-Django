@@ -12,6 +12,9 @@ class Project(models.Model):
     budget = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)
     image = models.ImageField(upload_to='images')
     
+    class Meta:
+        verbose_name = "Project Summary"
+        verbose_name_plural = "Projects Summary"    
 
     
     def get_absolute_url(self):
@@ -19,6 +22,8 @@ class Project(models.Model):
     
     def __str__(self):
         return self.name
+        
+   
         
         
 class ProjectState(models.Model):
