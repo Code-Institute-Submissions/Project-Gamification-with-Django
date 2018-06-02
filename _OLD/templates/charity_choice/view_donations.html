@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
+<div class="header">
+    <h1 class="page-header">
+        My Donations
+    </h1>
+    <ol class="breadcrumb text-left">
+        <li><a href="{% url 'login_page' %}">Home</a></li>
+        <li><a href="{% url 'charities' %}">Donate</a></li>
+        <li class="active">My Donations</li>
+    </ol>
+    {% if messages %}
+    <div class="alert alert-success">
+        <div class="messages text-center">
+            {% for message in messages %} {{ message }} {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<div id="page-inner">
+    <div class="row"></div>
+    <div class="row">
+
+        {% for item in backed_charities %}
+
+        <div class="col-md-3 col-lg-3 text-center" id="status-container">
+            <div class="row"></div>
+            <div class="col-md-12 col-lg-12 text-center" id="col-charity">
+
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src='{{ MEDIA_URL }}{{ item.charity.image }}' class="img-responsive" id="charity-img" />
+                    </div>
+                    <div class="card-stacked">
+                        <div id="card-charity">
+                            <h2 class="header">{{ item.charity.name }}</h2>
+                            <br>
+                            <p>{{ item.charity.description|truncatechars:60 }}</p>
+                        </div>
+                        <div class="card-action">
+                            <form class="form-inline" method="post" action="{% url 'adjust_donations' item.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary"></span>Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-1 col-lg-1 text-left">
+            <h2>Total: {{ total }}<span class="glyphicon glyphicon-euro" aria-hidden="true"></span></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-lg-2 text-left">
+            <a href="{% url 'charity_donation' %}" class="btn btn-success" role="button"><i class="fas fa-1x fa-donate"></i>Proceed with Donation</a>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

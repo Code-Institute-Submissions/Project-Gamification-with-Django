@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% load staticfiles %} {% load bootstrap_tags %} {% block content %}
+<div class="header">
+    <h1 class="page-header">
+        Donate
+        {% if charity_count > 0 %}
+        <a href="{% url 'view_donations' %}">
+        <i class="fas fa-1x fa-donate"></i>
+        <label class="badge badge-warning">{{ charity_count }}</label>
+        </a> {% endif %}
+    </h1>
+    <ol class="breadcrumb text-left">
+        <li><a href="{% url 'login_page' %}">Home</a></li>
+        <li class="active">Donate</li>
+    </ol>
+    {% if messages %}
+    <div class="alert alert-success">
+        <div class="messages text-center">
+            {% for message in messages %} {{ message }} {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<div id="page-inner">
+    <div class="row">
+        <div class="col-md-3 col-lg-3 text-center"></div>
+        <div class="col-md-6 col-lg-6 text-center">
+
+            <h1>This month we support:</h1>
+            {% if my_profile.position == "admin" %}
+            <a href="{% url 'propose_charity' %}"><button type="submit" class="btn_login" id="btn-issue">New Charity</button></a> {% endif %}
+        </div>
+        <div class="col-md-3 col-lg-3 text-center"></div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+    {% for charity in charities %}
+
+    <div class="col-md-3 col-lg-3 text-center" id="status-container">
+        <div class="row"></div>
+        <div class="col-md-12 col-lg-12 text-center" id="col-charity">
+
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src='{{ MEDIA_URL }}{{ charity.image }}' class="img-responsive" id="charity-img" />
+                </div>
+                <div class="card-stacked">
+                    <div id="card-charity">
+                        <h2 class="header">{{ charity.name }}</h2>
+                        <br>
+                        <p>{{ charity.description|truncatechars:60 }}</p>
+                    </div>
+                    <div class="card-action">
+                        <form class="form-inline" method="post" action="{% url 'add_to_donations' charity.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn_login" id="btn-status">Donate 5€</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% if my_profile.position == "admin" %}
+            <button data-id="{{ charity.id }}" onclick="deleteCharity(this)" class="btn btn-danger">Remove</button> {% endif %}
+        </div>
+    </div>
+
+    {% endfor %}
+
+    <!-- /. PAGE INNER  -->
+</div>
+
+
+    {% endblock %}

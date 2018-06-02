@@ -28,15 +28,7 @@ class ProjectState(models.Model):
         return self.name    
         
         
-        
-class ProjectSummary(Project):
-    class Meta:
-        proxy = True
-        verbose_name = "Project Summary"
-        verbose_name_plural = "Projects Summary"
-        
-        
-        
+
         
 class Issue(models.Model):
     name = models.CharField(max_length=254, default='')
@@ -110,6 +102,14 @@ class ProjectMessage(models.Model):
     
     def __str__(self):
         return str(self.project)
+    
+    
+class ProjectMessageSummary(ProjectMessage):
+    class Meta:
+        proxy = True
+        verbose_name = "Project Message Summary"
+        verbose_name_plural = "Project Messages Summary"    
+    
     
     
 ## IDEA
