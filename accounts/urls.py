@@ -5,7 +5,6 @@ from .views import login_page, profile, logout, issue_fixed, login_page
 urlpatterns = [
     path('profile/<int:pk>', profile, name='profile'),
     path('issue_fixed/<int:pk>', issue_fixed, name='issue_fixed'),
-    # path('my_details/<int:pk>', my_details, name='my_details'),
     path('logout/', logout, name='logout'),
     path('password-reset/', include(urls_reset)),
     

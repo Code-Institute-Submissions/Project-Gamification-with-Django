@@ -27,17 +27,6 @@ class ProjectState(models.Model):
     def __str__(self):
         return self.name    
         
-        
-        
-class ProjectSummary(Project):
-    class Meta:
-        proxy = True
-        verbose_name = "Project Summary"
-        verbose_name_plural = "Projects Summary"
-        
-        
-        
-        
 class Issue(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
