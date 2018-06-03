@@ -8,7 +8,11 @@ class Donation(models.Model):
     date = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return "{0}-{1}-{2}".format(self.id, self.date, self.donor)
+        return str(self.donor)
+    
+    class Meta:
+        verbose_name = "User Donation"
+        verbose_name_plural = "User Donations"     
 
 
 class DonationLineItem(models.Model):
@@ -16,5 +20,6 @@ class DonationLineItem(models.Model):
     charity = models.ForeignKey(Charity, null=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(blank=False, default=1)
     
+
     def __str__(self):
-        return "{0}".format(self.charity.name)    
+        return str(self.charity.name)    

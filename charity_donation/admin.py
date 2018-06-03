@@ -5,9 +5,13 @@ from .models import Donation, DonationLineItem
 
 class DonationLineAdminInline(admin.TabularInline):
     model = DonationLineItem
+
     
-class DonationAdmin(admin.ModelAdmin):
-    inlines = (DonationLineAdminInline, )
+class DonationModelAdmin(admin.ModelAdmin):
+    list_display = ["donor","date"]
+    class Meta:
+        model = Donation
+        
     
 
-admin.site.register(Donation, DonationAdmin)
+admin.site.register(Donation, DonationModelAdmin)

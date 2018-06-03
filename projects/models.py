@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
-# Create your models here.
+
 class Project(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
@@ -16,18 +16,20 @@ class Project(models.Model):
         verbose_name = "Project Summary"
         verbose_name_plural = "Projects Summary"    
 
-    
-    def get_absolute_url(self):
-        return reverse('project_details', kwargs={'pk': self.pk})
+    # def get_absolute_url(self):
+    #     return reverse('project_details', kwargs={'pk': self.pk})
     
     def __str__(self):
         return self.name
         
    
         
-        
 class ProjectState(models.Model):
     name = models.CharField(max_length=254, default='proposed')
+    
+    class Meta:
+        verbose_name = "Project State"
+        verbose_name_plural = "Projects States" 
       
     def __str__(self):
         return self.name    
@@ -42,11 +44,15 @@ class Issue(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     assigned_to = models.ForeignKey(User, on_delete=models.CASCADE)
     
-    def get_absolute_url(self):
-        return reverse('project_details', kwargs={'pk': self.pk})
+    # def get_absolute_url(self):
+    #     return reverse('project_details', kwargs={'pk': self.pk})
+    
+    class Meta:
+        verbose_name = "Bugs & Issues"
+        verbose_name_plural = "Bugs & Issues" 
         
     def __str__(self):
-        return self.name        
+        return "{0}-{1}".format(self.project.name, self.name)       
         
 
 
@@ -59,7 +65,12 @@ class RequiredSkills(models.Model):
     css = models.DecimalField(max_digits=1, decimal_places = 0, default = 0)
     db = models.DecimalField(max_digits=1, decimal_places = 0, default = 0)
 
-    
+    class Meta:
+        verbose_name = "Required Skillset"
+        verbose_name_plural = "Required Skillsets" 
+        
+        
+        
     def __str__(self):
         return str(self.project)    
         
@@ -109,11 +120,7 @@ class ProjectMessage(models.Model):
         return str(self.project)
     
     
-class ProjectMessageSummary(ProjectMessage):
-    class Meta:
-        proxy = True
-        verbose_name = "Project Message Summary"
-        verbose_name_plural = "Project Messages Summary"    
+
     
     
     
