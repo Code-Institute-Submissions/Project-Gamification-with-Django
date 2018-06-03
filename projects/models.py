@@ -79,6 +79,9 @@ class Team(models.Model):
     projects = models.ManyToManyField(Project)
     current_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
+    class Meta:
+        verbose_name = "Team Member"
+        verbose_name_plural = "Team Members" 
     
     @classmethod
     def join_team(cls, current_user, new_project):
@@ -104,9 +107,13 @@ class CommitSkill(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     skill = models.CharField(max_length=254, default='')
     
-    
+    class Meta:
+        verbose_name = "Skill Coverage"
+        verbose_name_plural = "Skills Coverage" 
+        
+        
     def __str__(self):
-        return str(self.project)
+        return "{0}-{1}".format(self.project.name, self.user.username)   
         
 
         

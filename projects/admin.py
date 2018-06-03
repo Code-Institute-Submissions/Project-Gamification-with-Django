@@ -51,6 +51,21 @@ admin.site.register(Team, TeamModelAdmin)
 
 
 
+class CommitSkillModelAdmin(admin.ModelAdmin):
+    list_display = ["project","user","skill"]
+    search_fields = ["user","skill"]
+    list_filter = (
+    "project","skill"
+    ) 
+    
+    
+    class Meta:
+        model = CommitSkill
+        
+ 
+
+admin.site.register(CommitSkill, CommitSkillModelAdmin)
+
 class ProjectMessageModelAdmin(admin.ModelAdmin):
     list_display = ["project","message_date", "message"]
     # change_list_template = 'admin/project_message_summary_change_list.html'

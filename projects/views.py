@@ -45,6 +45,20 @@ def project_details(request, pk):
     
     issue_counter = len(issues)
     
+    
+    alfa = 1
+    beta = 4
+    gamma = 6
+    ypsylon = 3
+    
+    
+    
+    
+    
+    
+    
+    
+    
     context = {'project': project, 
                 'issues': issues, 
                 'profiles': profiles,
@@ -53,8 +67,29 @@ def project_details(request, pk):
                 'requiredskills' : requiredskills,
                 'project_team': project_team,
                 'skill_coverage': skill_coverage,
-                'project_log': project_log }
+                'project_log': project_log,
+                'alfa': alfa,
+                'beta': beta,
+                'gamma': gamma,
+                'ypsylon': ypsylon,
+    }
    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     if request.method == 'GET':
         return render(request, 'project_details.html', context )
