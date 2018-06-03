@@ -1,9 +1,64 @@
 {% extends "admin/base.html" %}
 
-{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+{% block title %}{{ title }} | Project Gamification Dashboard{% endblock %}
+
+{% block extrastyle %}
+
+<style>
+
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited  {
+    color: #FFCB9A;
+    font-weight: bold;
+}
+
+div.breadcrumbs a {
+    color: #fff;
+}
+
+.object-tools a:focus, .object-tools a:hover, div.breadcrumbs a:focus  {
+    background-color: #234a66;
+}
+
+div.breadcrumbs, div.breadcrumbs a:hover {
+    color: #FFCB9A;
+}
+
+#user-tools {
+    font-weight: bold;
+}
+
+#user-tools a {
+    border-bottom-color: #234a66;
+    font-weight: bold;
+}
+
+#user-tools a:focus, #user-tools a:hover {
+    color: #FFCB9A;
+    border-bottom-color: #234a66;
+}
+#header {
+    color: #FFCB9A;
+    background-color: #234a66;
+    
+ }
+div.breadcrumbs {
+    background-color: #2a597a;
+}
+.module caption {
+    background-color: #2a597a;
+}
+
+a.section:link, a.section:visited {
+    font-weight: bold;
+}
+
+</style>
+
+{% endblock %}
 
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">Admin Dashboard</a></h1>
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Project Gamification Dashboard</a></h1>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}

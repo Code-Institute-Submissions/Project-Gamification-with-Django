@@ -8,7 +8,9 @@ class DonationLineAdminInline(admin.TabularInline):
 
     
 class DonationModelAdmin(admin.ModelAdmin):
+    inlines = (DonationLineAdminInline, )
     list_display = ["donor","date"]
+    date_hierarchy = 'date'
     class Meta:
         model = Donation
         

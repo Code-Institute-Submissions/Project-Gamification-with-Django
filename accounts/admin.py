@@ -11,5 +11,9 @@ class MyProfileModelAdmin(admin.ModelAdmin):
     class Meta:
         model = MyProfile
         
+    list_filter = (
+        "position", "personality"
+        )    
+        
 admin.site.register(MyProfile, MyProfileModelAdmin)        
 

@@ -70,7 +70,6 @@ class RequiredSkills(models.Model):
         verbose_name_plural = "Required Skillsets" 
         
         
-        
     def __str__(self):
         return str(self.project)    
         
@@ -120,10 +119,3 @@ class ProjectMessage(models.Model):
         return str(self.project)
     
     
-
-    
-    
-    
-## IDEA
-# def __str__(self):
-#         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
