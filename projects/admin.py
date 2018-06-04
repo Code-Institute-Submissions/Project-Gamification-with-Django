@@ -41,6 +41,8 @@ admin.site.register(RequiredSkills, RequiredSkillsModelAdmin)
 
 class TeamModelAdmin(admin.ModelAdmin):
     list_display = ["current_user","user_projects"]
+    
+    search_fields = ["current_user","user_projects"]
     class Meta:
         model = Team
         
@@ -57,7 +59,6 @@ class CommitSkillModelAdmin(admin.ModelAdmin):
     list_filter = (
     "project","skill"
     ) 
-    
     
     class Meta:
         model = CommitSkill

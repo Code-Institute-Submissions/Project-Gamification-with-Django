@@ -25,7 +25,14 @@
                 
             </canvas>
             <div class="row" id="row-description">
-                <h1>{{alfa}}</h1>
+                <h1>{{achievers}} {{explorers}}  {{socializers}} {{killers}}</h1>
+                <h1>{{ efficiency_ratio }}</h1>
+                <h1>{{ innovation_ratio }}</h1>
+                <h1>{{ teamwork_ratio }}</h1>
+                {% for element in project_team %}
+                {{element}}
+                {% endfor %}
+            
             </div>
         </div>
         </div>
@@ -55,10 +62,10 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: ["January", "February", "March"],
+        labels: ["achiever", "explorer", "socializer", "killer"],
         datasets: [{
            
-            data: [{{alfa}}, {{beta}}, {{gamma}}, {{ypsylon}}],
+            data: [{{achievers}}, {{explorers}}, {{socializers}}, {{killers}}],
             backgroundColor: [
             'red',    // color for data at index 0
             'blue',   // color for data at index 1

@@ -46,18 +46,30 @@ def project_details(request, pk):
     issue_counter = len(issues)
     
     
-    alfa = 1
-    beta = 4
-    gamma = 6
-    ypsylon = 3
+    achievers = 0
+    explorers = 0
+    socializers = 0
+    killers = 0
+    for element in project_team:
+        team_profiles = MyProfile.objects.filter(owner=element.current_user)
+        for row in team_profiles:
+            if row.personality == "achiever":
+                achievers += 1
+            elif row.personality == "explorer":
+                explorers += 1   
+            elif row.personality == "socializer":
+                socializers += 1       
+            elif row.personality == "killer":
+                killers += 1  
+                
+                
+    efficiency_ratio = socializers * (-2) + explorers * 1 + killers * 2 + achievers * 3
+    innovation_ratio = socializers * (-2) + explorers * 3 + killers * 2 + achievers * 1
+    teamwork_ratio =  socializers * 2 + explorers * (-2) + killers * (-2) + achievers * (-2)
     
     
-    
-    
-    
-    
-    
-    
+                
+ 
     
     context = {'project': project, 
                 'issues': issues, 
@@ -68,11 +80,15 @@ def project_details(request, pk):
                 'project_team': project_team,
                 'skill_coverage': skill_coverage,
                 'project_log': project_log,
-                'alfa': alfa,
-                'beta': beta,
-                'gamma': gamma,
-                'ypsylon': ypsylon,
-    }
+                'achievers': achievers,
+                'explorers': explorers,
+                'socializers': socializers,
+                'killers': killers,
+                'team_profiles' : team_profiles,
+                'efficiency_ratio' : efficiency_ratio,
+                'innovation_ratio' : innovation_ratio,
+                'teamwork_ratio' : teamwork_ratio
+     }
    
     
     
