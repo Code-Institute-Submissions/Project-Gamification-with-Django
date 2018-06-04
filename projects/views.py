@@ -42,8 +42,6 @@ def project_details(request, pk):
     skill_coverage = CommitSkill.objects.filter(project = project)
     project_log = ProjectMessage.objects.filter(project = project).order_by('-message_date')
     my_profile = get_object_or_404(MyProfile, owner=request.user)
-    project_advice = GamificationAdvice.objects.all()
-    
     issue_counter = len(issues)
     
     achievers = 0
@@ -101,7 +99,6 @@ def project_details(request, pk):
         statement_3 = get_object_or_404(GamificationAdvice, name="teamwork0")    
     
     
-    
     project_ratios = [efficiency_ratio, innovation_ratio, teamwork_ratio]
     
     if max(project_ratios) == efficiency_ratio and efficiency_ratio != 0:
@@ -136,23 +133,6 @@ def project_details(request, pk):
                 'statement_2': statement_2,
                 'statement_3': statement_3
      }
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     if request.method == 'GET':
         return render(request, 'project_details.html', context )

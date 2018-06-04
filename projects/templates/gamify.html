@@ -1,0 +1,82 @@
+
+        
+        <div class="row">
+        <div class="col-md-5 col-lg-5 text-left">
+            <canvas id="myChart">
+                
+                
+            </canvas>
+            <div class="row" id="row-description">
+                <h1>{{achievers}} {{explorers}}  {{socializers}} {{killers}}</h1>
+                <h1>{{ efficiency_ratio }}</h1>
+                <h1>{{ innovation_ratio }}</h1>
+                <h1>{{ teamwork_ratio }}</h1>
+                <h1>{{ statement_1.advice }}</h1>
+                <h1>{{ statement_2.advice }}</h1>
+                <h1>{{ statement_3.advice }}</h1>
+                <h3>{{ team_type }}</h3>
+                {% for element in project_team %}
+                {{element}}
+                {% endfor %}
+            
+            </div>
+        </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+<!-- /. PAGE WRAPPER  -->
+
+
+<script>
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'doughnut',
+    // The data for our dataset
+    data: {
+        labels: ["achievers", "explorers", "socializers", "killers"],
+        datasets: [{
+            data: [{{achievers}}, {{explorers}}, {{socializers}}, {{killers}}],
+            backgroundColor: [
+            'red',    // color for data at index 0
+            'blue',   // color for data at index 1
+            'green',  // color for data at index 2
+            'orange',
+            //...
+        ],
+        }]
+    },
+    // Configuration options go here
+    options: {
+        
+        
+    }
+});
+</script>
+
+
+<script>
+    var elem = document.querySelectorAll('.modal')
+    var instance = M.Modal.init(elem)
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.tooltipped').tooltip();
+    });
+</script>
+
+{% endblock %}
