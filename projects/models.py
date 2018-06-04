@@ -97,9 +97,17 @@ class Team(models.Model):
             current_user=current_user
         )
         team.projects.remove(new_project)    
+        
+        
+        
+        
+        
+        
             
     def __str__(self):
         return str(self.current_user)       
+        
+        
         
 
 class CommitSkill(models.Model):  
@@ -126,3 +134,9 @@ class ProjectMessage(models.Model):
         return str(self.project)
     
     
+class GamificationAdvice(models.Model):
+    name =  models.CharField(max_length=254, default='')
+    advice = models.TextField()
+    
+    def __str__(self):
+        return str(self.name)

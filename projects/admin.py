@@ -11,6 +11,7 @@ from django.db.models import Min, Max
 admin.site.register(ProjectState)
 
 
+
 class ProjectModelAdmin(admin.ModelAdmin):
     list_display = ["name","status", 'proposed_by', 'budget']
     class Meta:
@@ -77,3 +78,15 @@ class ProjectMessageModelAdmin(admin.ModelAdmin):
         )
     
 admin.site.register(ProjectMessage, ProjectMessageModelAdmin)    
+
+
+
+
+
+class GamificationAdviceModelAdmin(admin.ModelAdmin):
+    list_display = ["name","advice"]
+    
+    class Meta:
+        model = GamificationAdvice
+
+admin.site.register(GamificationAdvice, GamificationAdviceModelAdmin)

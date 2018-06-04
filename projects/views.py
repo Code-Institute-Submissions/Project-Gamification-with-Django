@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Project, Issue, RequiredSkills, Team, CommitSkill, ProjectState, ProjectMessage
+from .models import *
 from accounts.models import MyProfile
 from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm
 from django.urls import reverse
@@ -42,9 +42,9 @@ def project_details(request, pk):
     skill_coverage = CommitSkill.objects.filter(project = project)
     project_log = ProjectMessage.objects.filter(project = project).order_by('-message_date')
     my_profile = get_object_or_404(MyProfile, owner=request.user)
+    project_advice = GamificationAdvice.objects.all()
     
     issue_counter = len(issues)
-    
     
     achievers = 0
     explorers = 0
@@ -67,10 +67,53 @@ def project_details(request, pk):
     innovation_ratio = socializers * (-2) + explorers * 3 + killers * 2 + achievers * 1
     teamwork_ratio =  socializers * 2 + explorers * (-2) + killers * (-2) + achievers * (-2)
     
+    if efficiency_ratio > 5:
+        statement_1 = get_object_or_404(GamificationAdvice, name="efficiency++")  
+    elif 0 < efficiency_ratio <= 5:
+        statement_1 = get_object_or_404(GamificationAdvice, name="efficiency+") 
+    elif -5 <= efficiency_ratio < 0:
+        statement_1 = get_object_or_404(GamificationAdvice, name="efficiency-")
+    elif efficiency_ratio < -5:
+        statement_1 = get_object_or_404(GamificationAdvice, name="efficiency--")    
+    else:
+        statement_1 = get_object_or_404(GamificationAdvice, name="efficiency0")
+        
+    if innovation_ratio > 5:
+        statement_2 = get_object_or_404(GamificationAdvice, name="innovation++")  
+    elif 0 < innovation_ratio <= 5:
+        statement_2 = get_object_or_404(GamificationAdvice, name="innovation+") 
+    elif -5 <= innovation_ratio < 0:
+        statement_2 = get_object_or_404(GamificationAdvice, name="innovation-")
+    elif innovation_ratio < -5:
+        statement_2 = get_object_or_404(GamificationAdvice, name="innovation--")    
+    else:
+        statement_2 = get_object_or_404(GamificationAdvice, name="innovation0")    
+        
+    if teamwork_ratio > 5:
+        statement_3 = get_object_or_404(GamificationAdvice, name="teamwork++")  
+    elif 0 < teamwork_ratio <= 5:
+        statement_3 = get_object_or_404(GamificationAdvice, name="teamwork+") 
+    elif -5 <= teamwork_ratio < 0:
+        statement_3 = get_object_or_404(GamificationAdvice, name="teamwork-")
+    elif teamwork_ratio < -5:
+        statement_3 = get_object_or_404(GamificationAdvice, name="teamwork--")    
+    else:
+        statement_3 = get_object_or_404(GamificationAdvice, name="teamwork0")    
     
-                
- 
     
+    
+    project_ratios = [efficiency_ratio, innovation_ratio, teamwork_ratio]
+    
+    if max(project_ratios) == efficiency_ratio and efficiency_ratio != 0:
+        team_type = "Robot Factory"
+    elif  max(project_ratios) == innovation_ratio and innovation_ratio != 0:  
+        team_type = "Research Lab"
+    elif max(project_ratios) == teamwork_ratio and teamwork_ratio != 0:  
+        team_type = "Think tank"
+    else:
+        team_type = "Equilibrium"
+        
+
     context = {'project': project, 
                 'issues': issues, 
                 'profiles': profiles,
@@ -87,7 +130,11 @@ def project_details(request, pk):
                 'team_profiles' : team_profiles,
                 'efficiency_ratio' : efficiency_ratio,
                 'innovation_ratio' : innovation_ratio,
-                'teamwork_ratio' : teamwork_ratio
+                'teamwork_ratio' : teamwork_ratio,
+                'team_type' : team_type, 
+                'statement_1': statement_1,
+                'statement_2': statement_2,
+                'statement_3': statement_3
      }
    
     
