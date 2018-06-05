@@ -42,3 +42,15 @@ class Personality(models.Model):
         
     def __str__(self):
         return self.name
+        
+        
+class PersonalityQuestion(models.Model):
+    question = models.CharField(max_length=254, default='undefined')
+    answer_1 = models.CharField(max_length=254, default='undefined')
+    answer_2 = models.CharField(max_length=254, default='undefined')
+    answer_3 = models.CharField(max_length=254, default='undefined')
+    answer_4 = models.CharField(max_length=254, default='undefined')
+    
+    
+    def __str__(self):
+        return self.question

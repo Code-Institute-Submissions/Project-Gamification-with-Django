@@ -1,9 +1,10 @@
 from django.contrib import admin
-from .models import MyProfile, Personality, Position
+from .models import *
 
 
 admin.site.register(Personality)
 admin.site.register(Position)
+admin.site.register(PersonalityQuestion)
 
 
 class MyProfileModelAdmin(admin.ModelAdmin):
