@@ -149,10 +149,28 @@ def issue_fixed(request, pk):
 def gamification_test(request, pk):
     
     my_profile = get_object_or_404(MyProfile, owner=request.user)
-   
+    questions = PersonalityQuestion.objects.all()
     form = PersonalityForm(request.POST)
     
     if request.method == 'POST':
+        first = request.POST.get('question_1')
+        second = request.POST.get('question_2')
+        third = request.POST.get('question_3')
+        fourth = request.POST.get('question_4')
+        fifth = request.POST.get('question_5')
+        sixth = request.POST.get('question_6')
+        answers_list = [first, second, third, fourth, fifth, sixth]
+        score = 0
+        for element in answers_list:
+            if element == "answer_1":
+                score += 1
+            elif element == "answer_2": 
+                score += 2
+            elif element == "answer_3":
+                score += 3
+            elif element == "answer_4":
+                score += 4
         
+        return render(request, 'gamification_test.html', {'form': form, 'first': first, 'second':  second, 'answers_list': answers_list, 'score': score })
     
     return render(request, 'gamification_test.html', {'form': form})

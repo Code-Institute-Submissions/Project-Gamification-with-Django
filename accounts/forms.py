@@ -78,7 +78,28 @@ class PersonalityForm(forms.Form):
     question_3=forms.CharField(label="In a game, you have encountered big monster:", widget=forms.RadioSelect(choices=CHOICES_3))
 
         
-        
+    CHOICES_4=[('answer_1','A bard, who is a good friend and who is great for entertaining you and your friends?'),
+             ('answer_2','A wizard, to identify the items that you find there?'),
+             ('answer_3','An amulet that increases the damage you do against other players by 10%?'),
+             ('answer_4','Magic cloak so you can move around the area without restrictions?')]
+             
+    question_4=forms.CharField(label="For the dungeon you'll take:", widget=forms.RadioSelect(choices=CHOICES_4))
+    
+    
+    CHOICES_5=[('answer_1','Have a biggest clan on a server?'),
+             ('answer_2','Have the highest score on the list?'),
+             ('answer_3','Being undefeated PvP player on server?'),
+             ('answer_4','Design my own area in a game?')]
+             
+    question_5=forms.CharField(label="In a game, I'd prefer to:", widget=forms.RadioSelect(choices=CHOICES_5))
+    
+    
+    CHOICES_6=[('answer_1','you prefer to hear what someone has to say?'),
+             ('answer_2','you are bragging about having best equipment in the area?'),
+             ('answer_3','How many other players you have defeated in challenges?'),
+             ('answer_4','About how to find a secret item?')]
+             
+    question_6=forms.CharField(label="In a game you talk about:", widget=forms.RadioSelect(choices=CHOICES_6))        
         
         
         

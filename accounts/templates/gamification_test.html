@@ -9,11 +9,15 @@
     <div class="col-md-8 col-lg-8 text-center">
       <div class=row></div>
       <div class=row></div>
-      <h1>My Game Personality:</h1>
+      <h1>My Game Personality: {{ first }}{{ second }}{{ answers_list }} {{ score }}</h1>
+      {% for element in answers_list %}
+      {{ element }}
+      {% endfor %}
       <div class=row></div>
       <div class=row></div>
       <div class="card text-left" id="form-card">
         <form method="POST" id="skill-form">
+          {% csrf_token %}
         {{ form }}
       </div>
       <div class=row></div>
