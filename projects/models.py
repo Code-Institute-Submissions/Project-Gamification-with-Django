@@ -98,12 +98,6 @@ class Team(models.Model):
         )
         team.projects.remove(new_project)    
         
-        
-        
-        
-        
-        
-            
     def __str__(self):
         return str(self.current_user)       
         

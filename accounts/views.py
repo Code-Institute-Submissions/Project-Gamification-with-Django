@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.contrib import messages, auth
 from django.urls import reverse
-from .forms import UserLoginForm, UserRegistrationForm, MyDetailsForm
+from .forms import *
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-from .models import MyProfile, Personality, Position
+from .models import *
 from projects.models import Project, Issue, Team
 from projects.views import all_projects
 
@@ -148,4 +148,11 @@ def issue_fixed(request, pk):
     
 def gamification_test(request, pk):
     
-    return render(request, 'gamification_test.html')
+    my_profile = get_object_or_404(MyProfile, owner=request.user)
+   
+    form = PersonalityForm(request.POST)
+    
+    if request.method == 'POST':
+        
+    
+    return render(request, 'gamification_test.html', {'form': form})
