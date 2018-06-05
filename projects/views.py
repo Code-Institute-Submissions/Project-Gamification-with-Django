@@ -325,7 +325,7 @@ def advance_project(request, pk):
     return render (request, 'advance_project.html', {'form': form, 'project': project, 'project_states' : project_states, 'my_profile' : my_profile })    
     
     
-## BUILD     
+  
 
 def complete_project(request, pk):
     

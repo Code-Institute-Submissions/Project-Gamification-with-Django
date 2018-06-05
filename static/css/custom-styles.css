@@ -1413,6 +1413,15 @@ strong {
     background-color: #234a66;
 }
 
+#btn-mypersonality {
+    width: 90px;
+    height: 30px;
+    font-size: 12px;
+    padding: 1px;
+    margin-top: -5px;
+    background-color: #234a66;
+}
+
 #mydetails-table {
     min-height: 60px;
     margin: 0px;
@@ -1631,6 +1640,46 @@ input:not([type]):focus:not([readonly]) {
     color: #d64440;
 }
 
+#col-test {
+    text-align: center;
+    background-image: url('../../static/img/backg-modal.gif');
+    background-size: cover;
+    color: white;
+    border-radius: 10px;
+    height: 1000px; 
+    overflow:auto;
+}
+
+#personality-form {
+    padding: 10px 10px 10px 30px;
+    
+}
+
+#personality-form label {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: -20px;
+    
+}
+
+#personality-form li>label {
+    padding-bottom: 5px;
+    font-size: 16px;
+    font-weight: normal;
+    margin-left: 0px;
+    
+}
+
+#personality-form input:not([type]) {
+    padding-bottom: 15px;
+    color: white;
+    font-size: 18px;
+}
+
+#personality-form .errorlist {
+    display: none;
+}
 
 
 /*$$$$$$$$$$$$$$$$$$$$$$        CHARITY & DONATION        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/

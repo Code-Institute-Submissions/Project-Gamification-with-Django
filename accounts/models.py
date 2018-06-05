@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class MyProfile(models.Model):
     position = models.CharField(max_length=254, default='Coder', blank=True)
-    personality = models.CharField(max_length=254, default='geek', blank=True)
+    personality = models.CharField(max_length=254, default='', blank=True)
     image = models.ImageField(upload_to='portraits', blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     my_wallet = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)
@@ -44,13 +44,3 @@ class Personality(models.Model):
         return self.name
         
         
-class PersonalityQuestion(models.Model):
-    question = models.CharField(max_length=254, default='undefined')
-    answer_1 = models.CharField(max_length=254, default='undefined')
-    answer_2 = models.CharField(max_length=254, default='undefined')
-    answer_3 = models.CharField(max_length=254, default='undefined')
-    answer_4 = models.CharField(max_length=254, default='undefined')
-    
-    
-    def __str__(self):
-        return self.question

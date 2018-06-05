@@ -2,7 +2,6 @@
 <div class="header">
     <h1 class="page-header">
         User Profile
-        <a href="{% url 'gamification_test' pk=user.id %}"><button type="submit" class="btn_login" id="btn-issue">Gamify Me</button></a>
     </h1>
     <ol class="breadcrumb text-left">
         <li><a href="{% url 'login_page' %}">Home</a></li>
@@ -51,7 +50,11 @@
                     <div class="col-md-1 col-lg-1">
                     </div>
                     <div class="col-md-5 col-lg-5" id="my-details">
+                        {% if my_profile.personality == '' %}
+                        <a href="{% url 'gamification_test' pk=user.id %}"><button type="submit" class="btn_login" id="btn-mypersonality">Take Test</button></a>
+                        {% else %}
                         <h4>{{ my_profile.personality }}</h4>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="row">
@@ -261,21 +264,7 @@
                               {% endfor %}
                             </select>
                         </div>
-                        <div class="row text-left">
-                            <h2>My Personality:</h2>
-                        </div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <div class="row"></div>
-                        <div class="row">
-                            <select id="type_of_algorithm" name="personality">
-                              <option value="{{ my_profile.personality }}" disabled selected>{{ my_profile.personality }}</option>
-                              {% for type in personalities %}
-                                  <option value={{type.name}}>{{type.name}}</option>
-                              {% endfor %}
-                            </select>
-                        </div>
-
+                        
                         <div class="row"></div>
                         <div class="row text-left">
                             <h2>My Portrait:</h2>

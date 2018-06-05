@@ -149,7 +149,6 @@ def issue_fixed(request, pk):
 def gamification_test(request, pk):
     
     my_profile = get_object_or_404(MyProfile, owner=request.user)
-    questions = PersonalityQuestion.objects.all()
     form = PersonalityForm(request.POST)
     
     if request.method == 'POST':
@@ -165,12 +164,23 @@ def gamification_test(request, pk):
             if element == "answer_1":
                 score += 1
             elif element == "answer_2": 
-                score += 2
-            elif element == "answer_3":
                 score += 3
-            elif element == "answer_4":
+            elif element == "answer_3":
                 score += 4
+            elif element == "answer_4":
+                score += 2
+        if  score <= 11:  
+            my_profile.personality = 'socializer'
+        elif 11 < score <= 15:
+            my_profile.personality = 'explorer'
+        elif 15 < score <= 20:
+            my_profile.personality = 'achiever'
+        else:    
+            my_profile.personality = 'killer'
+            
+        my_profile.save()    
         
-        return render(request, 'gamification_test.html', {'form': form, 'first': first, 'second':  second, 'answers_list': answers_list, 'score': score })
+      
+        return redirect(reverse('profile', kwargs={'pk': pk }))
     
     return render(request, 'gamification_test.html', {'form': form})

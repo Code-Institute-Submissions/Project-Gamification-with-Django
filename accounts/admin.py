@@ -4,7 +4,6 @@ from .models import *
 
 admin.site.register(Personality)
 admin.site.register(Position)
-admin.site.register(PersonalityQuestion)
 
 
 class MyProfileModelAdmin(admin.ModelAdmin):

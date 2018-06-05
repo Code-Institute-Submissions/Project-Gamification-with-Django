@@ -4,26 +4,25 @@
   <div class=row></div>
 
   <div class="col-md-4 col-lg-4 text-right"></div>
-  <div class="col-md-4 col-lg-4 text-center" id="col-form">
+  <div class="col-md-4 col-lg-4 text-center" id="col-test">
     <div class="col-md-2 col-lg-2 text-right"></div>
     <div class="col-md-8 col-lg-8 text-center">
       <div class=row></div>
       <div class=row></div>
-      <h1>My Game Personality: {{ first }}{{ second }}{{ answers_list }} {{ score }}</h1>
+      <h1>Game Personality Test:</h1>
       {% for element in answers_list %}
       {{ element }}
       {% endfor %}
       <div class=row></div>
       <div class=row></div>
       <div class="card text-left" id="form-card">
-        <form method="POST" id="skill-form">
+        <form method="POST" id="personality-form">
           {% csrf_token %}
         {{ form }}
       </div>
       <div class=row></div>
-      <div class=row></div>
       <div class=row>
-        <button type="submit" class="btn_login" id="btn-status">Gamify</button>
+        <button type="submit" class="btn_login" id="btn-status">Submit</button>
       </div>
       </form>
     </div>

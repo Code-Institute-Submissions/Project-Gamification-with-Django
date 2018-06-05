@@ -88,10 +88,10 @@ class PersonalityForm(forms.Form):
     
     CHOICES_5=[('answer_1','Have a biggest clan on a server?'),
              ('answer_2','Have the highest score on the list?'),
-             ('answer_3','Being undefeated PvP player on server?'),
+             ('answer_3','Be undefeated PvP player on server?'),
              ('answer_4','Design my own area in a game?')]
              
-    question_5=forms.CharField(label="In a game, I'd prefer to:", widget=forms.RadioSelect(choices=CHOICES_5))
+    question_5=forms.CharField(label="In a game, You'd prefer to:", widget=forms.RadioSelect(choices=CHOICES_5))
     
     
     CHOICES_6=[('answer_1','you prefer to hear what someone has to say?'),

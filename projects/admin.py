@@ -80,9 +80,6 @@ class ProjectMessageModelAdmin(admin.ModelAdmin):
 admin.site.register(ProjectMessage, ProjectMessageModelAdmin)    
 
 
-
-
-
 class GamificationAdviceModelAdmin(admin.ModelAdmin):
     list_display = ["name","advice"]
     
