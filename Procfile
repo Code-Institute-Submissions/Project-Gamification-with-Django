@@ -1,1 +1,1 @@
-web: gunicorn gamification.wsgi.py:application
+web: gunicorn gamification_wsgi.py:application
