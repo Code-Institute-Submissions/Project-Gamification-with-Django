@@ -248,8 +248,6 @@ def propose_project(request):
     
     
 def delete_project(request, pk):
-    ## change post to delete for charities
-    # if request.method == 'POST':
     project = get_object_or_404(Project, pk=pk)
     project.delete()
         
