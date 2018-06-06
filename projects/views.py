@@ -38,7 +38,7 @@ def project_details(request, pk):
     issues = Issue.objects.filter(project=project)
     profiles = MyProfile.objects.all()
     requiredskills = get_object_or_404(RequiredSkills, project=project)
-    project_team = Team.objects.filter(projects = project)
+    project_team = TeamMember.objects.filter(projects = project)
     skill_coverage = CommitSkill.objects.filter(project = project)
     project_log = ProjectMessage.objects.filter(project = project).order_by('-message_date')
     my_profile = get_object_or_404(MyProfile, owner=request.user)
@@ -258,7 +258,7 @@ def delete_project(request, pk):
     
 def join_team(request, pk):
     project = Project.objects.get(pk=pk)
-    Team.join_team(request.user, project)
+    TeamMember.join_team(request.user, project)
     requiredskills = get_object_or_404(RequiredSkills, project=project)
     
     form = CommitSkillForm(request.POST)
@@ -282,7 +282,7 @@ def leave_team(request, pk):
     project = Project.objects.get(pk=pk)
     commitskill = get_object_or_404(CommitSkill, project=project, user=request.user)
     commitskill.delete() 
-    Team.leave_team(request.user, project)
+    TeamMember.leave_team(request.user, project)
     
     return redirect(reverse('project_details', kwargs={'pk': pk }))
     
@@ -295,7 +295,7 @@ def reject_candidate(request, pk):
         user = commitskill.user
         project = commitskill.project
         commitskill.delete()   
-        Team.leave_team(user, project)
+        TeamMember.leave_team(user, project)
    
     return redirect(reverse('project_details', kwargs={'pk': pk }))    
     
@@ -308,6 +308,11 @@ def advance_project(request, pk):
     my_profile = MyProfile.objects.get(owner=project.proposed_by)
     
     form = ChangeStateForm(request.POST, instance = project)
+    
+    context = {'form': form, 
+                'project': project, 
+                'project_states' : project_states, 
+                'my_profile' : my_profile }
     
     if request.method == 'POST':
         
@@ -322,7 +327,7 @@ def advance_project(request, pk):
             
             return redirect(reverse('project_details', kwargs={'pk': pk }))
         
-    return render (request, 'advance_project.html', {'form': form, 'project': project, 'project_states' : project_states, 'my_profile' : my_profile })    
+    return render (request, 'advance_project.html', context )    
     
     
   
@@ -330,7 +335,7 @@ def advance_project(request, pk):
 def complete_project(request, pk):
     
     project = Project.objects.get(pk=pk)
-    project_team = Team.objects.filter(projects = project)
+    project_team = TeamMember.objects.filter(projects = project)
     project_manager = MyProfile.objects.get(owner=project.proposed_by)
     
     team_members = 0
@@ -338,6 +343,11 @@ def complete_project(request, pk):
         team_members += 1
 
     prize = project.budget / team_members
+    
+    context = {'project': project, 
+                'team_members' : team_members, 
+                'prize' : prize, 
+                'project_team' : project_team }
     
     if request.method == 'POST':
         
@@ -359,7 +369,7 @@ def complete_project(request, pk):
         return redirect(reverse('projects'))
         
     
-    return render (request, 'complete_project.html', {'project': project, 'team_members' : team_members, 'prize' : prize, 'project_team' : project_team })
+    return render (request, 'complete_project.html', context)
     
 
 

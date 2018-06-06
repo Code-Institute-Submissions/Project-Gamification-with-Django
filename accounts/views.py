@@ -5,7 +5,7 @@ from .forms import *
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from .models import *
-from projects.models import Project, Issue, Team
+from projects.models import Project, Issue, TeamMember
 from projects.views import all_projects
 
 
@@ -78,7 +78,7 @@ def profile(request, pk):
     issues = Issue.objects.filter(assigned_to=request.user)
     projects = Project.objects.filter(proposed_by=request.user)
     try:
-        joined_teams = get_object_or_404(Team, current_user = request.user)
+        joined_teams = get_object_or_404(TeamMember, current_user = request.user)
         joined_projects = joined_teams.projects.all()
     except:
         joined_projects = []

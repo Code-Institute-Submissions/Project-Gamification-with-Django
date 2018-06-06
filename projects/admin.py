@@ -40,17 +40,17 @@ class RequiredSkillsModelAdmin(admin.ModelAdmin):
 admin.site.register(RequiredSkills, RequiredSkillsModelAdmin)
 
 
-class TeamModelAdmin(admin.ModelAdmin):
+class TeamMemberModelAdmin(admin.ModelAdmin):
     list_display = ["current_user","user_projects"]
     
     search_fields = ["current_user","user_projects"]
     class Meta:
-        model = Team
+        model = TeamMember
         
     def user_projects(self, obj):
         return "\n".join([p.name for p in obj.projects.all()])    
 
-admin.site.register(Team, TeamModelAdmin)
+admin.site.register(TeamMember, TeamMemberModelAdmin)
 
 
 

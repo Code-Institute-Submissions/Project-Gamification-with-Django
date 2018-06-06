@@ -7,7 +7,6 @@
         {% endif %}
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{% url 'login_page' %}">Home</a></li>
         <li><a href="{% url 'projects' %}">Dashboard</a></li>
         <li class="active">{{ project.name }}</li>
     </ol>
@@ -252,7 +251,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'html' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -260,7 +259,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'css' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -268,7 +267,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'js' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -276,7 +275,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'db' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -284,7 +283,7 @@
                     {% for element in skill_coverage %} {% if element.skill == 'python' %}
                     <div class="card text-center" id="name-card">
                         <b>{{ element.user|truncatechars:10 }}</b> {% if my_profile.owner == project.proposed_by %}
-                        <i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Reject Candidate" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
+                        <i class="small material-icons" id="reject-icon" data-id="{{ element.id }}" onclick="rejectCandidate(this)">clear</i> {% endif %}
                     </div>
                     {% endif %} {% endfor %}
                 </div>
@@ -403,10 +402,10 @@
                 <div id="message-log">
                 {% for element in project_log %}
                 <div class="row" id="row-table">
-                    <div class="col-md-2 col-lg-2 text-center" id="row-action">
+                    <div class="col-md-3 col-lg-3 text-center" id="row-action" style="border-right: 1px solid #D3D3D3">
                         <h5 style="color:blue">{{ element.message_date }}</h5>
                     </div>
-                    <div class="col-md-10 col-lg-10 text-left" id="row-action">
+                    <div class="col-md-9 col-lg-9 text-left" id="row-action">
                         <h5>{{ element.message }}</h5>
                     </div>
                 </div>

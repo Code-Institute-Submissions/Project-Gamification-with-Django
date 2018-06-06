@@ -75,7 +75,7 @@ class RequiredSkills(models.Model):
         
       
         
-class Team(models.Model):
+class TeamMember(models.Model):
     projects = models.ManyToManyField(Project)
     current_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
@@ -85,18 +85,18 @@ class Team(models.Model):
     
     @classmethod
     def join_team(cls, current_user, new_project):
-        team, created = cls.objects.get_or_create(
+        teammember, created = cls.objects.get_or_create(
             current_user=current_user
         )
-        team.projects.add(new_project)
+        teammember.projects.add(new_project)
         
         
     @classmethod
     def leave_team(cls, current_user, new_project):
-        team, created = cls.objects.get_or_create(
+        teammember, created = cls.objects.get_or_create(
             current_user=current_user
         )
-        team.projects.remove(new_project)    
+        teammember.projects.remove(new_project)    
         
     def __str__(self):
         return str(self.current_user)       
@@ -122,7 +122,7 @@ class CommitSkill(models.Model):
 class ProjectMessage(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     message = models.TextField()
-    message_date = models.DateField(auto_now=True)
+    message_date = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return str(self.project)
