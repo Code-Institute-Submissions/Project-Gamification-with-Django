@@ -44,7 +44,7 @@ def login_page(request):
                 
                 MyProfile.objects.create(
                 position = "guest",
-                personality = "guest",
+                personality = "",
                 my_wallet = 0,
                 owner = request.user
                 ).save()

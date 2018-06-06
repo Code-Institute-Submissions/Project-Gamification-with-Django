@@ -1637,7 +1637,7 @@ input:not([type]):focus:not([readonly]) {
 }
 
 .errorlist {
-    color: #d64440;
+    display: none;
 }
 
 #col-test {
@@ -1677,9 +1677,9 @@ input:not([type]):focus:not([readonly]) {
     font-size: 18px;
 }
 
-#personality-form .errorlist {
-    display: none;
-}
+/*#personality-form .errorlist {*/
+/*    display: none;*/
+/*}*/
 
 
 /*$$$$$$$$$$$$$$$$$$$$$$        CHARITY & DONATION        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/

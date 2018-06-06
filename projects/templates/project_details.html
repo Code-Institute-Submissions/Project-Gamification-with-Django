@@ -539,7 +539,7 @@
                                 </div>
                             </div>
                             <div class="row text-center">
-                                <button type="submit" class="btn btn-success" style="background-color:#d9534f; border:none">New Issue</button>
+                                <button type="submit" class="btn btn-success" style="background-color:#d9534f; border:none">Raise Issue</button>
                             </div>
                         </form>
                     </div>
@@ -607,13 +607,13 @@
                      <canvas id="myChart">
                      </canvas>
                  </div>
-                 <div class="col-md-6 col-lg-6">
+                 <div class="col-md-5 col-lg-5">
                  <div class="row">     
-                 <div class="col-md-4 col-lg-4">
+                 <div class="col-md-6 col-lg-6">
                      <h2>Team Type:</h2>
                      </div>
-                    <div class="col-md-6 col-lg-6"> 
-                    <h2 style="color:#2E8B57">"{{ team_type }}"</h2>
+                    <div class="col-md-6 col-lg-6 text-left"> 
+                    <h2 style="color:#2a5776">"{{ team_type }}"</h2>
                     </div>
                  </div> 
                  <br>
@@ -622,9 +622,9 @@
                 <div class="col-md-12 col-lg-12">
                     <h2>Team Characteristics:</h2>
                     <br>
-                    <h4 style="color:#2E8B57">{{ statement_1.advice }}</h4>
-                    <h4 style="color:#2E8B57">{{ statement_2.advice }}</h4>
-                    <h4 style="color:#2E8B57">{{ statement_3.advice }}</h4>
+                    <h4 style="color:#2a5776">{{ statement_1.advice }}</h4>
+                    <h4 style="color:#2a5776">{{ statement_2.advice }}</h4>
+                    <h4 style="color:#2a5776">{{ statement_3.advice }}</h4>
                  </div>
                  </div>
                  <div class="col-md-2 col-lg-2 text-right"></div>
@@ -655,10 +655,10 @@ var chart = new Chart(ctx, {
         datasets: [{
             data: [{{achievers}}, {{explorers}}, {{socializers}}, {{killers}}],
             backgroundColor: [
-            '#adc6e5',    // color for data at index 0
-            '#234a66',   // color for data at index 1
-            '#4a7fb0',  // color for data at index 2
-            '#5b9bd5', // color for data at index 3
+            '#389754',    // color for data at index 0
+            '#3d99a6',   // color for data at index 1
+            '#924d40',  // color for data at index 2
+            '#d0b64b', // color for data at index 3
             //...
         ],
         }]
