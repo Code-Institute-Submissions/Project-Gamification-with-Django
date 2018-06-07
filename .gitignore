@@ -2,4 +2,5 @@
 *.pyc
 .~c9
 env.py
+props.py
 __pycache__?

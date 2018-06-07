@@ -39,7 +39,7 @@ class ProjectState(models.Model):
         
 class Issue(models.Model):
     name = models.CharField(max_length=254, default='')
-    description = models.TextField()
+    description = models.TextField(blank=False)
     cost = models.DecimalField(max_digits=3, decimal_places = 0, default = 0)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     assigned_to = models.ForeignKey(User, on_delete=models.CASCADE)
