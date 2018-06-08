@@ -42,7 +42,7 @@ def project_details(request, pk):
     skill_coverage = CommitSkill.objects.filter(project = project)
     project_log = ProjectMessage.objects.filter(project = project).order_by('-message_date')
     my_profile = get_object_or_404(MyProfile, owner=request.user)
-    issue_counter = len(issues)
+    issue_counter = len(issues)      ## for loop?
     
     achievers = 0
     explorers = 0

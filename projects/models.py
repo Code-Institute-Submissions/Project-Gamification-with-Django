@@ -6,11 +6,11 @@ from django.contrib.auth.models import User
 
 class Project(models.Model):
     name = models.CharField(max_length=254, default='')
-    description = models.TextField()
+    description = models.TextField(blank=False)
     status = models.CharField(max_length=254, default='proposed')
     proposed_by = models.ForeignKey(User, on_delete=models.CASCADE)
     budget = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', blank=True) ## blank for testing!!!
     
     class Meta:
         verbose_name = "Project Summary"
@@ -18,6 +18,9 @@ class Project(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse('project_details', kwargs={'pk': self.pk})
+    
+    # def get_absolute_url(self):
+    #     return '/projects/project_details/{0}'.format(self.id)
     
     def __str__(self):
         return self.name
