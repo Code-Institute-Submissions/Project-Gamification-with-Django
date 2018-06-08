@@ -4,8 +4,8 @@ from django.db import models
 
 
 class Charity(models.Model):
-    name = models.CharField(max_length=254, default='')
-    description = models.TextField()
+    name = models.CharField(max_length=254, default='Charity') ## default name added
+    description = models.TextField(blank=False) ## blank false setup
     donation = models.DecimalField(max_digits=1, decimal_places=0, default=5)
     image = models.ImageField(upload_to='donations')
     
