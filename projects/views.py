@@ -42,23 +42,26 @@ def project_details(request, pk):
     skill_coverage = CommitSkill.objects.filter(project = project)
     project_log = ProjectMessage.objects.filter(project = project).order_by('-message_date')
     my_profile = get_object_or_404(MyProfile, owner=request.user)
-    issue_counter = len(issues)      ## for loop?
     
     achievers = 0
     explorers = 0
     socializers = 0
     killers = 0
-    for element in project_team:
-        team_profiles = MyProfile.objects.filter(owner=element.current_user)
-        for row in team_profiles:
-            if row.personality == "achiever":
-                achievers += 1
-            elif row.personality == "explorer":
-                explorers += 1   
-            elif row.personality == "socializer":
-                socializers += 1       
-            elif row.personality == "killer":
-                killers += 1  
+    team_profiles = []
+    if project_team:
+        for element in project_team:
+            team_profiles = MyProfile.objects.filter(owner=element.current_user)
+            for row in team_profiles:
+                if row.personality == "achiever":
+                    achievers += 1
+                elif row.personality == "explorer":
+                    explorers += 1   
+                elif row.personality == "socializer":
+                    socializers += 1       
+                elif row.personality == "killer":
+                    killers += 1  
+    else:
+        pass
                 
                 
     efficiency_ratio = socializers * (-2) + explorers * 1 + killers * 2 + achievers * 3
@@ -115,7 +118,6 @@ def project_details(request, pk):
                 'issues': issues, 
                 'profiles': profiles,
                 'my_profile': my_profile,
-                'issue_counter': issue_counter, 
                 'requiredskills' : requiredskills,
                 'project_team': project_team,
                 'skill_coverage': skill_coverage,
@@ -132,7 +134,7 @@ def project_details(request, pk):
                 'statement_1': statement_1,
                 'statement_2': statement_2,
                 'statement_3': statement_3
-     }
+            }
     
     if request.method == 'GET':
         return render(request, 'project_details.html', context )
@@ -184,10 +186,6 @@ def project_details(request, pk):
             
         return redirect(reverse('project_details', kwargs={'pk': pk }))    
         
-        
-        
-          
-
 
     return render(request, 'project_details.html', context, { 'form': form, 'requiredskillsform': requiredskillsform } )   
 

@@ -182,7 +182,7 @@
                             {% endif %} {% endfor %}
                         </div>
                     </div>
-                    {% if my_profile.owner == project.proposed_by and project.status == 'proposed' %}
+                    {% if my_profile.owner == project.proposed_by and project.status != 'proposed' %}
                     <div class="row" id="row-skill">
                         <div class="col-md-4 col-lg-4 text-left" id="skills-left">
                             <h4>Analytics</h4>

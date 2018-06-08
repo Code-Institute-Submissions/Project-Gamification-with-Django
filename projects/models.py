@@ -10,17 +10,11 @@ class Project(models.Model):
     status = models.CharField(max_length=254, default='proposed')
     proposed_by = models.ForeignKey(User, on_delete=models.CASCADE)
     budget = models.DecimalField(max_digits=6, decimal_places = 0, default = 0)
-    image = models.ImageField(upload_to='images', blank=True) ## blank for testing!!!
+    image = models.ImageField(upload_to='images') 
     
     class Meta:
         verbose_name = "Project Summary"
         verbose_name_plural = "Projects Summary"    
-
-    # def get_absolute_url(self):
-    #     return reverse('project_details', kwargs={'pk': self.pk})
-    
-    # def get_absolute_url(self):
-    #     return '/projects/project_details/{0}'.format(self.id)
     
     def __str__(self):
         return self.name
@@ -47,8 +41,6 @@ class Issue(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     assigned_to = models.ForeignKey(User, on_delete=models.CASCADE)
     
-    # def get_absolute_url(self):
-    #     return reverse('project_details', kwargs={'pk': self.pk})
     
     class Meta:
         verbose_name = "Bugs & Issues"
