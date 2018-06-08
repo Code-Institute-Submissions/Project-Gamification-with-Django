@@ -200,7 +200,7 @@ def propose_project(request):
     
     if my_profile.my_wallet < 450:
         
-        return redirect(reverse('projects'))
+        return redirect(reverse('projects')) 
         
     else: 
         

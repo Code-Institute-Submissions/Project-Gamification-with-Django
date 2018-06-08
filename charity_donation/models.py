@@ -4,7 +4,7 @@ from charity_choice.models import Charity
 # Create your models here.
 
 class Donation(models.Model):
-    donor = models.CharField(max_length=50, blank=False)
+    donor = models.CharField(max_length=50, blank=False, default="Donor")
     date = models.DateTimeField(auto_now=True)
     
     def __str__(self):

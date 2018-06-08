@@ -110,7 +110,7 @@ class TeamMember(models.Model):
 class CommitSkill(models.Model):  
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    skill = models.CharField(max_length=254, default='')
+    skill = models.CharField(max_length=254, default='html')
     
     class Meta:
         verbose_name = "Skill Coverage"
@@ -132,8 +132,8 @@ class ProjectMessage(models.Model):
     
     
 class GamificationAdvice(models.Model):
-    name =  models.CharField(max_length=254, default='')
-    advice = models.TextField()
+    name =  models.CharField(max_length=254, default='advice')
+    advice = models.TextField(blank=False)
     
     def __str__(self):
         return str(self.name)
