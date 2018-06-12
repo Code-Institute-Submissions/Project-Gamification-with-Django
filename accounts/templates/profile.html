@@ -24,6 +24,8 @@
                         <h1>{{ user.username }}</h1>
                         {% if my_profile.position == 'PM' %}
                         <h4 style="font-style:italic;color:#234a66;margin-top:10px;">Project Manager</h4>
+                        {% elif my_profile.position == 'admin' %}
+                        <h4 style="font-style:italic;color:#234a66;margin-top:10px;">Program Manager</h4>
                         {% else %}
                         <h4 style="font-style:italic; color:#234a66;margin-top:10px;">{{ my_profile.position }}</h4>
                         {% endif %}
