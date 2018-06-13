@@ -5,7 +5,7 @@
 * {
   margin: 0px auto;
   padding: 0px;
-  
+
 }
 
 .cotn_principal {
@@ -37,8 +37,6 @@
 .cont_login {
   position: relative;
   width: 960px;
-  left: 50%;
-  margin-left: -840px;
   text-align: center;
 }
 
@@ -198,7 +196,8 @@
   font-weight: bold;
 }
 
-.btn_login:hover, .btn_login:focus {
+.btn_login:hover,
+.btn_login:focus {
   background-color: #006800;
 }
 
@@ -249,7 +248,8 @@ background text
   cursor: pointer;
 }
 
-.btn_sign_up:active, .btn_sign_up:focus {
+.btn_sign_up:active,
+.btn_sign_up:focus {
   background-color: #142a3a;
 }
 
@@ -440,9 +440,211 @@ input[type="email"] {
   font-size: 30px;
 }
 
-input:not([type]):focus:not([readonly]) + label, input[type="text"]:focus:not([readonly]) + label, input[type="password"]:focus:not([readonly]) + label, 
-input[type="email"]:focus:not([readonly]) + label, input[type="url"]:focus:not([readonly]) + label, input[type="time"]:focus:not([readonly]) + label, input[type="date"]:focus:not([readonly]) + label, 
-input[type="datetime"]:focus:not([readonly]) + label, input[type="datetime-local"]:focus:not([readonly]) + label, input[type="tel"]:focus:not([readonly]) + label, 
-input[type="number"]:focus:not([readonly]) + label, input[type="search"]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
-    color: white;
+input:not([type]):focus:not([readonly])+label,
+input[type="text"]:focus:not([readonly])+label,
+input[type="password"]:focus:not([readonly])+label,
+input[type="email"]:focus:not([readonly])+label,
+input[type="url"]:focus:not([readonly])+label,
+input[type="time"]:focus:not([readonly])+label,
+input[type="date"]:focus:not([readonly])+label,
+input[type="datetime"]:focus:not([readonly])+label,
+input[type="datetime-local"]:focus:not([readonly])+label,
+input[type="tel"]:focus:not([readonly])+label,
+input[type="number"]:focus:not([readonly])+label,
+input[type="search"]:focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
+  color: white;
+}
+
+
+@media(max-width:1285px) {
+
+
+.cont_login {
+
+}
+
+
+
+
+
+}
+
+
+@media(max-width:520px) {
+
+
+  .cont_info_log_sign_up {
+    position: absolute;
+    width: 320px;
+    height: 240px;
+    top: 100px;
+  }
+
+  .cont_back_info {
+    position: relative;
+    float: left;
+    width: 320px;
+    height: 240px;
+  }
+
+
+  .cont_login {
+    position: relative;
+    width: 340px;
+    left: -20px;
+    top: -160px;
+    margin-left: 0px;
+    text-align: center;
+    padding-left: 80px;
+  }
+
+
+  .cont_ba_opcitiy {
+    border: none;
+    background-color: transparent;
+  }
+
+  .btn_login {
+    width: 120px;
+  }
+
+  .btn_sign_up {
+    width: 120px;
+  }
+
+  p {
+    display: none;
+  }
+  h2 {
+    display: none;
+  }
+
+  .cont_forms_active_sign_up {
+    height: 520px;
+    width: 320px;
+    top: 140px;
+    left: 0px;
+
+
+  }
+  .cont_forms_active_login {
+    height: 360px;
+    width: 320px;
+    top: 140px;
+    left: 0px;
+
+  }
+
+
+
+  .form-group {
+    width: 320px;
+    margin: 0px;
+  }
+
+
+
+}
+
+@media(max-width:420px) {
+  
+  .cont_login {
+    padding-left: 50px;
+  }
+  
+  .cont_forms_active_sign_up {
+    height: 520px;
+    width: 320px;
+    top: 140px;
+    left: 50px;
+
+
+  }
+  .cont_forms_active_login {
+    height: 360px;
+    width: 320px;
+    top: 140px;
+    left: 50px;
+
+  }
+
+}
+
+@media(max-width:385px) {
+
+  .cont_login {
+    padding-left: 25px;
+  }
+
+  .btn_login {
+    width: 100px;
+  }
+
+  .btn_sign_up {
+    width: 100px;
+  }
+
+  .cont_forms_active_sign_up {
+    height: 520px;
+    width: 320px;
+    top: 140px;
+    left: 25px;
+
+
+  }
+  .cont_forms_active_login {
+    height: 360px;
+    width: 320px;
+    top: 140px;
+    left: 25px;
+
+  }
+
+
+
+  .form-group {
+    width: 320px;
+    margin: 0px;
+  }
+
+}
+
+@media(max-width:325px) {
+
+
+  .cont_login {
+    padding-left: 0px;
+  }
+
+  .btn_login {
+    width: 100px;
+  }
+
+  .btn_sign_up {
+    width: 100px;
+  }
+
+  .cont_forms_active_sign_up {
+    height: 520px;
+    width: 320px;
+    top: 140px;
+    left: 0px;
+
+
+  }
+  .cont_forms_active_login {
+    height: 360px;
+    width: 320px;
+    top: 140px;
+    left: 0px;
+
+  }
+
+
+
+  .form-group {
+    width: 320px;
+    margin: 0px;
+  }
 }

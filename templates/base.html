@@ -72,6 +72,9 @@
             <li>
                 <a href="{% url 'profile' pk=user.id %}" class="waves-effect waves-dark"><i class="fas fa-3x fa-user"></i></a>
             </li>
+            <li>
+                <a href="{% url 'projects' %}"><i class="fas fa-3x fa-object-group"></i></a>
+            </li>
             {% if my_profile.position == 'PM' %}
             <li>
                 <a href="{% url 'propose_project' %}" class="waves-effect waves-dark"><i class="fas fa-3x fa-project-diagram"></i></a>
@@ -79,6 +82,9 @@
             {% endif %}
             <li>
                 <a href="{% url 'charities' %}" class="waves-effect waves-dark"><i class="fas fa-3x fa-donate"></i></a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}"><i class="fas fa-3x fa-sign-out-alt"></i></a>
             </li>
         </ul>
         {% endif %}
