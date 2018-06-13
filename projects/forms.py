@@ -24,11 +24,11 @@ class RequiredSkillsForm(forms.ModelForm):
    
 class CommitSkillForm(forms.Form):
  
-    CHOICES=[('python','python'),
-             ('html','html'),
+    CHOICES=[('html','html'),
              ('css','css'),
              ('js','js'),
-             ('db','db')]
+             ('db','db'),
+             ('python','python')]
 
     skill = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
     

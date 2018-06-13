@@ -276,8 +276,8 @@ def join_team(request, pk):
     
 def leave_team(request, pk):
     project = Project.objects.get(pk=pk)
-    commitskill = get_object_or_404(CommitSkill, project=project, user=request.user)
-    commitskill.delete() 
+    commitskill = CommitSkill.objects.filter(project=project, user=request.user).delete()
+    # commitskill.all().delete()
     TeamMember.leave_team(request.user, project)
     
     return redirect(reverse('project_details', kwargs={'pk': pk }))
@@ -287,7 +287,7 @@ def leave_team(request, pk):
 def reject_candidate(request, pk):
     
     if request.method == 'DELETE':
-        commitskill = get_object_or_404(CommitSkill, pk=pk)
+        commitskill = get_object_or_404(CommitSkill, pk=pk)  ## ZMIENIC
         user = commitskill.user
         project = commitskill.project
         commitskill.delete()   
@@ -340,10 +340,10 @@ def complete_project(request, pk):
 
     prize = project.budget / team_members
     
-    # context = {'project': project, 
-    #             'team_members' : team_members, 
-    #             'prize' : prize, 
-    #             'project_team' : project_team }
+    context = {'project': project, 
+                'team_members' : team_members, 
+                'prize' : prize, 
+                'project_team' : project_team }
     
     if request.method == 'POST':
         
@@ -365,7 +365,7 @@ def complete_project(request, pk):
         return redirect(reverse('projects'))
         
     
-    return render (request, 'projects.html')
+    return render (request, 'complete_project.html', context)
     
 
 

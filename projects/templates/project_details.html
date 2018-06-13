@@ -56,14 +56,14 @@
                             <div class="col-md-6 col-lg-6 text-left">
                                 {% if my_profile.position == "admin" and project.status != 'deployment' %}
 
-                                <a href="{% url 'advance_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status">
+                                <button onclick="window.location='{% url 'advance_project' pk=project.id %}'" type="submit" class="btn_login" id="btn-status">
                                     {%  if project.status == 'proposed' %}
                                     Launch Project
                                     {% else %}
                                     Advance Project
                                     {% endif %}
-                                    </button></a> {% endif %} {% if my_profile.position == "admin" and project.status == 'deployment'%}
-                                    <button class="btn_login modal-trigger" id="btn-status" style="background-color:#cea007" href="#finishModal">Finish Project!</button>
+                                    </button> {% endif %} {% if my_profile.position == "admin" and project.status == 'deployment'%}
+                                    <button onclick="window.location='{% url 'complete_project' pk=project.id %}'" type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button>
                                  {% endif %}
                             </div>
                         </div>
@@ -304,14 +304,24 @@
                         <h2>Actions</h2>
                     </div>
                 </div>
+                {{ project_team }}
+                {{ skill_coverage }}
+                {{ my_profile.owner }}
+                {% if request.user in project_team %}
+                ZLE
+                {% else %}
+                DOBRZE
+                {% endif %}
                 <div class="row" id="row-table">
                     <div class="col-md-12 col-lg-12 text-center" id="row-action">
-                        <a href="{% url 'join_team' pk=project.id %}"><button type="submit" class="btn_login" id="btn-action" >Join Team</button></a>
+                        <!--<a href="{% url 'join_team' pk=project.id %}"><button type="submit" class="btn_login" id="btn-action" >Join Team</button></a>-->
+                         <button onclick="window.location='{% url 'join_team' pk=project.id %}'" type="submit" class="btn_login" id="btn-action" >Join Team</button>
                     </div>
                 </div>
                 <div class="row" id="row-table">
                     <div class="col-md-12 col-lg-12 text-center" id="row-action">
-                        <a href="{% url 'leave_team' pk=project.id %}"><button type="submit" class="btn_login" id="btn-action" style="background-color:#d9534f">Leave Team</button></a>
+                        <!--<a href="{% url 'leave_team' pk=project.id %}"><button type="submit" class="btn_login" id="btn-action" style="background-color:#d9534f">Leave Team</button></a>-->
+                        <button onclick="window.location='{% url 'leave_team' pk=project.id %}'" type="submit" class="btn_login" id="btn-action" style="background-color:#d9534f">Leave Team</button>
                     </div>
                 </div>
                 <div class="col-md-2 col-lg-2 text-left">
@@ -357,8 +367,11 @@
                     </div>
                 </div>
                 <div class="col-md-2 col-lg-2 text-center" id="issue-details">
-                    {% if issue.assigned_to == project.proposed_by and issue.assigned_to != request.user %}
-                    <a href="{% url 'assign_issue' ik=issue.id pk=project.id %}"><button type="submit" class="btn_login" id="btn-assign">Assign to me</button></a> {% else %}
+                    {% if issue.assigned_to == project.proposed_by and issue.assigned_to != request.user and my_profile.position == "Coder" %}
+                    <!--<a href="{% url 'assign_issue' ik=issue.id pk=project.id %}"><button type="submit" class="btn_login" id="btn-assign">Assign to me</button></a> -->
+                    <button onclick="window.location='{% url 'assign_issue' ik=issue.id pk=project.id %}'" type="submit" class="btn_login" id="btn-assign">Assign to me</button>
+                    {% else %}
+                    
                     <h4>{{ issue.assigned_to }}</h4>
                     {% endif %}
                 </div>
@@ -565,38 +578,13 @@
                         <h2> Yes, I want to scrap this Project:</h2>
                         <div class="row"></div>
                         <div class="row"></div>
-                        <a href="{% url 'delete_project' pk=project.id %}"><button type="submit" class="btn btn-danger" id="btn-issue" style="background-color:#d9534f">Cancel Project</button></a>
+                        <!--<a href="{% url 'delete_project' pk=project.id %}"><button type="submit" class="btn btn-danger" id="btn-issue" style="background-color:#d9534f">Cancel Project</button></a>-->
+                        <button onclick="window.location='{% url 'delete_project' pk=project.id %}'" type="submit" class="btn btn-danger" id="btn-issue" style="background-color:#d9534f">Cancel Project</button>
                     </div>
                 </div>
                 <div class="col-md-3 col-lg-3 text-right"></div>
             </div>
         </div>   
-        <div id="finishModal" class="modal">
-             <div class="row"></div>
-             <div class="row">
-                 <div class="col-md-4 col-lg-4 text-right"></div>
-                 <div class="col-md-4 col-lg-4 text-center">
-                     <h1>Is Project completed?</h1>
-                 </div>
-                 <div class="col-md-4 col-lg-4 text-right"></div>
-             </div>
-             <div class="row">
-                 <div class="row"></div>
-                 <div class="row"></div>
-                 <div class="col-md-3 col-lg-3 text-right"></div>
-         
-                 <div class="col-md-6 col-lg-6 text-center">
-                     <div class="card" id="form-card">
-                         <div class="row"></div>
-                         <h2> Yes, this Project is completed:</h2>
-                         <div class="row"></div>
-                         <div class="row"></div>
-                         <a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a>
-                     </div>
-                 </div>
-                 <div class="col-md-3 col-lg-3 text-right"></div>
-             </div>
-        </div>     
         <div id="teamModal" class="modal">
              <div class="row"></div>
              <div class="row">

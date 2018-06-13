@@ -28,7 +28,9 @@
 
             <h1>This month we support:</h1>
             {% if my_profile.position == "admin" %}
-            <a href="{% url 'propose_charity' %}"><button type="submit" class="btn_login" id="btn-issue">New Charity</button></a> {% endif %}
+            <!--<a href="{% url 'propose_charity' %}"><button type="submit" class="btn_login" id="btn-issue">New Charity</button></a> -->
+            <button onclick="window.location='{% url 'propose_charity' %}'" type="submit" class="btn_login" id="btn-issue">New Charity</button>
+            {% endif %}
         </div>
         <div class="col-md-3 col-lg-3 text-center"></div>
     </div>

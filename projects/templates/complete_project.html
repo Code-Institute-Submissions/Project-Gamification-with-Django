@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
+
+<div id="page-inner">
+  <div class=row></div>
+  <div class=row></div>
+
+  <div class="col-md-4 col-lg-4 text-right"></div>
+  <div class="col-md-4 col-lg-4 text-center" id="col-form">
+    <div class="col-md-2 col-lg-2 text-right"></div>
+    <div class="col-md-8 col-lg-8 text-center">
+      <div class=row></div>
+      <div class=row></div>
+      <h1>Choose Project stage:</h1>
+      <div class=row></div>
+      <div class=row></div>
+      <div class="card" id="form-card">
+             <div class="row"></div>
+             <h2> Yes, this Project is completed:</h2>
+             <div class="row"></div>
+             <div class="row"></div>
+             <form method="POST">
+              {% csrf_token %}
+             <!--<a href="{% url 'complete_project' pk=project.id %}"><button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button></a>-->
+             <button type="submit" class="btn_login" id="btn-status" style="background-color:#cea007">Finish Project!</button>
+              </form>
+         </div>
+     </div>
+             <div class="col-md-3 col-lg-3 text-right"></div>
+             </div>
+        </div>     
+        
+        
+ </div>
+      <div class=row></div>
+        <div class=row></div>
+         <div class=row></div>
+    </div>
+    <div class="col-md-2 col-lg-2 text-right"></div>
+  </div>
+  <div class="col-md-4 col-lg-4 text-right"></div>
+
+</div>
+<script>
+  var elem = document.querySelectorAll('select')
+  var instance = M.FormSelect.init(elem)
+</script>
+
+
+
+
+{% endblock %}
+        

@@ -52,7 +52,8 @@
                     </div>
                     <div class="col-md-5 col-lg-5" id="my-details">
                         {% if my_profile.personality == '' %}
-                        <a href="{% url 'gamification_test' pk=user.id %}"><button type="submit" class="btn_login" id="btn-mypersonality">Take Test</button></a>
+                        <!--<a href="{% url 'gamification_test' pk=user.id %}"><button type="submit" class="btn_login" id="btn-mypersonality">Take Test</button></a>-->
+                        <button onclick="window.location='{% url 'gamification_test' pk=user.id %}'" type="submit" class="btn_login" id="btn-mypersonality">Take Test</button>
                         {% else %}
                         <h4>{{ my_profile.personality }}</h4>
                         {% endif %}
@@ -144,7 +145,8 @@
             </div>
             {% endfor%} {% if my_profile.my_wallet > 450 %}
             <div class="row text-right" id="issue-btn-row">
-                <a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" id="btn-issue">New Project</button></a>
+                <!--<a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" id="btn-issue">New Project</button></a>-->
+                <button onclick="window.location='{% url 'propose_project' %}'" type="submit" class="btn_login" id="btn-issue">New Project</button>
             </div>
             {% endif %} {% elif my_profile.position == 'Coder' %}
             <div class="row" id="row-table">
@@ -214,7 +216,8 @@
                     </div>
                 </div>
                 <div class="col-md-2 col-lg-2 text-center" id="mydetails-table">
-                    <a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login tooltipped" data-position="top" data-tooltip="Issue Fixed" id="btn-fixed">Fixed</button></a>
+                    <!--<a href="{% url 'issue_fixed' pk=issue.id %}"><button type="submit" class="btn_login tooltipped" data-position="top" data-tooltip="Issue Fixed" id="btn-fixed">Fixed</button></a>-->
+                    <button onclick="window.location='{% url 'issue_fixed' pk=issue.id %}'" type="submit" class="btn_login tooltipped" data-position="top" data-tooltip="Issue Fixed" id="btn-fixed">Fixed</button>
                 </div>
             </div>
             {% endfor%}
