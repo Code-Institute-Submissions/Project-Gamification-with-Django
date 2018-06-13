@@ -87,4 +87,4 @@ def adjust_donations(request, id):
     chosen_donations.pop(id)
         
     request.session['chosen_donations'] = chosen_donations
-    return redirect(reverse('charities'))
+    return render(request, "view_donations.html")

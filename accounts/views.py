@@ -52,6 +52,9 @@ def login_page(request):
 
             else:
                 messages.error(request, "unable to log you in at this time!")
+        else:
+            messages.error(request, "Invalid Credentials")
+                
     else:
         user_form = UserRegistrationForm()
         login_form = UserLoginForm()

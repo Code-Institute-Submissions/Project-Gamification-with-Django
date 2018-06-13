@@ -395,7 +395,7 @@ background text
 
 .cont_form_login>a,
 .cont_form_sign_up>a {
-  color: #2a5776;
+  color: #234a66;
   position: relative;
   float: left;
   margin: 10px;
@@ -438,4 +438,11 @@ input[type="email"] {
 
 #form-arrow {
   font-size: 30px;
+}
+
+input:not([type]):focus:not([readonly]) + label, input[type="text"]:focus:not([readonly]) + label, input[type="password"]:focus:not([readonly]) + label, 
+input[type="email"]:focus:not([readonly]) + label, input[type="url"]:focus:not([readonly]) + label, input[type="time"]:focus:not([readonly]) + label, input[type="date"]:focus:not([readonly]) + label, 
+input[type="datetime"]:focus:not([readonly]) + label, input[type="datetime-local"]:focus:not([readonly]) + label, input[type="tel"]:focus:not([readonly]) + label, 
+input[type="number"]:focus:not([readonly]) + label, input[type="search"]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: white;
 }

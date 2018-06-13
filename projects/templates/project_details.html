@@ -304,14 +304,6 @@
                         <h2>Actions</h2>
                     </div>
                 </div>
-                {{ project_team }}
-                {{ skill_coverage }}
-                {{ my_profile.owner }}
-                {% if request.user in project_team %}
-                ZLE
-                {% else %}
-                DOBRZE
-                {% endif %}
                 <div class="row" id="row-table">
                     <div class="col-md-12 col-lg-12 text-center" id="row-action">
                         <!--<a href="{% url 'join_team' pk=project.id %}"><button type="submit" class="btn_login" id="btn-action" >Join Team</button></a>-->
@@ -351,7 +343,7 @@
             {% for issue in issues %}
             <div class="row" id="row-table">
                 <div class="col-md-2 col-lg-2 text-center" id="issue-details">
-                    <h4 style="color:red">{{issue.name|truncatechars:20}}</h4>
+                    <h5 style="color:red">{{issue.name|truncatechars:20}}</h5>
                 </div>
                 <div class="col-md-6 col-lg-6 text-left" id="issue-details">
                     <h5>{{ issue.description|truncatechars:100 }}</h5>
@@ -465,7 +457,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12" id="field">
-                                    <input id="name" name="html" type="number" class="validate" value="{{requiredskills.html}}" required>
+                                    <input id="name" name="html" type="number" class="validate" max="10" value="{{requiredskills.html}}" required>
                                 </div>
                             </div>
                             <div class="row text-left">
@@ -473,8 +465,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12" id="field">
-                                    <input id="name" name="css" type="number" class="validate" value="{{requiredskills.css}}" required>
-
+                                    <input id="name" name="css" type="number" class="validate" max="10" value="{{requiredskills.css}}" required>
                                 </div>
                             </div>
                             <div class="row text-left">
@@ -482,8 +473,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12" id="field">
-                                    <input id="name" name="js" type="number" class="validate" value="{{requiredskills.js}}" required>
-
+                                    <input id="name" name="js" type="number" class="validate" max="10" value="{{requiredskills.js}}" required>
                                 </div>
                             </div>
                             <div class="row text-left">
@@ -492,7 +482,7 @@
                             <div class="row">
                                 <div class="input-field col s12" id="field">
 
-                                    <input id="name" name="db" type="number" class="validate" value="{{requiredskills.db}}" required>
+                                    <input id="name" name="db" type="number" class="validate" max="10" value="{{requiredskills.db}}" required>
                                 </div>
                             </div>
                             <div class="row text-left">
@@ -500,7 +490,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12" id="field">
-                                    <input id="name" name="python" type="number" class="validate" value="{{requiredskills.python}}" required>
+                                    <input id="name" name="python" type="number" class="validate" max="10" value="{{requiredskills.python}}" required>
                                 </div>
                             </div>
                             <div class="row">

@@ -1,8 +1,11 @@
 {% extends "base.html" %} {% load staticfiles %} {% load bootstrap_tags %} {% block content %}
-
-
-
-
+{% if messages %}
+    <div class="alert alert-info">
+        <div class="messages text-center">
+            {% for message in messages %} {{ message }} {% endfor %}
+        </div>
+    </div>
+{% endif %}
 <div class="cont_login">
     <div class="cont_info_log_sign_up">
         <div class="col_md_login">

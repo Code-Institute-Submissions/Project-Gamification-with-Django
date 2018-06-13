@@ -45,7 +45,7 @@ def charity_donation(request):
                 
             if customer.paid:
                 messages.error(request, "You have successfully paid")
-                request.session['cart'] = {}
+                request.session['chosen_donations'] = {}
                 return redirect(reverse('charities'))
             else:
                 messages.error(request, "Unable to take payment")

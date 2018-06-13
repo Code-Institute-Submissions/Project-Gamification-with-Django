@@ -277,7 +277,6 @@ def join_team(request, pk):
 def leave_team(request, pk):
     project = Project.objects.get(pk=pk)
     commitskill = CommitSkill.objects.filter(project=project, user=request.user).delete()
-    # commitskill.all().delete()
     TeamMember.leave_team(request.user, project)
     
     return redirect(reverse('project_details', kwargs={'pk': pk }))
@@ -337,6 +336,9 @@ def complete_project(request, pk):
     team_members = 0
     for element in project_team:
         team_members += 1
+    if team_members == 0:
+        team_members = 1
+        
 
     prize = project.budget / team_members
     

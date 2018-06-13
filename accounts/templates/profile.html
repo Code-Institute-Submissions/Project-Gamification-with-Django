@@ -226,12 +226,17 @@
         <div class="col-md-5 col-lg-5 text-left" id="col-assignedissues"></div>
         {% endif %}
         <div class="col-md-1 col-lg-1 text-left"></div>
-        <div class="col-md-5 col-lg-5 text-right" id="col-mydetails">
-            <!--<a href="{% url 'charities' %}">-->
-            <!--<i class="fa fa-shipping-cart"></i> Donate!-->
-            <!--{% if project_count > 0 %}-->
-            <!--<label class="badge badge-warning">{{ project_count }}</label>-->
-            <!--{% endif %}-->
+        <div class="col-md-5 col-lg-5 text-left" id="col-assignedissues">
+            <div class="row" id="row-table">
+                <div class="col-md-12 col-lg-12 text-center" id="details-left">
+                    <h2>Support Charity</h2>
+                </div>
+                                <div class="row" id="row-table">
+                    <div class="col-md-12 col-lg-12 text-center" id="row-action">
+                        <button onclick="window.location='{% url 'charities' %}'" type="submit" class="btn_login" id="btn-action" style="background-color:#234a66">Support</button>
+                          </div>
+        </div>
+            </div>
         </div>
     </div>
 
