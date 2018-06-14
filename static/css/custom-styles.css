@@ -878,7 +878,7 @@ strong {
 
 .navbar-right {
     width: 800px;
-    margin-right: -200px;
+    margin-right: -190px;
 }
 
 .navbar-right ::placeholder {
@@ -1702,8 +1702,8 @@ input:not([type]):focus:not([readonly]) {
     h4 {
         font-size: 14px;
     }
-    
-    
+
+
     h5 {
         font-size: 12px;
     }
@@ -1712,24 +1712,37 @@ input:not([type]):focus:not([readonly]) {
         width: 120px;
         height: 200px;
     }
-    
+
     #btn-fixed {
         width: 60px;
         font-size: 10px;
     }
-    
+
     #my-details h4 {
         margin-left: 5px;
     }
-    
+
 }
 
 
 @media(max-width:1500px) {
 
-#my-details .fa-2x {
-    display: none
-}
+    #my-details .fa-2x {
+        display: none
+    }
+
+    #status-container {
+        margin-left: 0px;
+    }
+
+    #btn-status {
+        width: 120px;
+        font-size: 10px;
+    }
+
+    #card-charity h2 {
+        font-size: 20px;
+    }
 
 }
 
@@ -1841,6 +1854,19 @@ input:not([type]):focus:not([readonly]) {
     .top-navbar .nav>li>a {
         padding: 17px 12px;
     }
+
+    #status-container {
+        margin-left: 0px;
+    }
+
+    #btn-status {
+        width: 80px;
+        font-size: 10px;
+    }
+
+    #card-charity h2 {
+        font-size: 20px;
+    }
 }
 
 
@@ -1874,6 +1900,11 @@ input:not([type]):focus:not([readonly]) {
         margin-top: 0px;
     }
 
+    .btn-success {
+        width: 120px;
+       font-size: 10px;
+    }
+
 }
 
 
@@ -1890,4 +1921,6 @@ input:not([type]):focus:not([readonly]) {
     .top-navbar .nav>li>a {
         padding: 17px 9px;
     }
+
+
 }
