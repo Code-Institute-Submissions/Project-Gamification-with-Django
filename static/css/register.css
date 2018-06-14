@@ -492,7 +492,7 @@ textarea.materialize-textarea:focus:not([readonly])+label {
     position: relative;
     width: 340px;
     left: -20px;
-    top: -120px;
+    top: -150px;
     margin-left: 0px;
     text-align: center;
     padding-left: 80px;
@@ -512,7 +512,7 @@ textarea.materialize-textarea:focus:not([readonly])+label {
     width: 120px;
   }
 
-  p {
+  .cont_login p {
     display: none;
   }
   .cont_login h2 {

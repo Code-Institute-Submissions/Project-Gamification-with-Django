@@ -1697,6 +1697,36 @@ input:not([type]):focus:not([readonly]) {
     MEDIA QUERIES     
 ------------------------------------------------*/
 
+@media (min-width:1200px) and (max-width:1960px) {
+
+    
+    #project-card2 {
+        height: 200px;
+    }
+    
+    #project-card2 h3 {
+        font-size: 14px;
+    } 
+
+    #project-card2 p {
+        font-size: 10px;
+    }
+    
+    #btn-card {
+        margin-top: 40px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 @media(max-width:1900px) {
 
     h4 {
@@ -1867,6 +1897,14 @@ input:not([type]):focus:not([readonly]) {
     #card-charity h2 {
         font-size: 20px;
     }
+
+    #project-card2 h3 {
+        font-size: 18px;
+    }
+
+    #project-card2 p {
+        font-size: 10px;
+    }
 }
 
 
@@ -1902,7 +1940,11 @@ input:not([type]):focus:not([readonly]) {
 
     .btn-success {
         width: 120px;
-       font-size: 10px;
+        font-size: 10px;
+    }
+
+    #col-payment {
+        width: 240px;
     }
 
 }
