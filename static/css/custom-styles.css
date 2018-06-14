@@ -234,6 +234,8 @@ label {
     color: #adadad;
 }
 
+
+
 /*----------------------------------------------
    DASHBOARD STYLES    
 ------------------------------------------------*/
@@ -1207,8 +1209,7 @@ strong {
     margin: 0px;
     position: relative;
     vertical-align: middle;
-    background-color: white;
-
+    /*background-color: white;*/
 }
 
 
@@ -1696,6 +1697,42 @@ input:not([type]):focus:not([readonly]) {
     MEDIA QUERIES     
 ------------------------------------------------*/
 
+@media(max-width:1900px) {
+
+    h4 {
+        font-size: 14px;
+    }
+    
+    
+    h5 {
+        font-size: 12px;
+    }
+
+    #profile-img {
+        width: 120px;
+        height: 200px;
+    }
+    
+    #btn-fixed {
+        width: 60px;
+        font-size: 10px;
+    }
+    
+    #my-details h4 {
+        margin-left: 5px;
+    }
+    
+}
+
+
+@media(max-width:1500px) {
+
+#my-details .fa-2x {
+    display: none
+}
+
+}
+
 @media(max-width:859px) {
 
 
@@ -1741,10 +1778,10 @@ input:not([type]):focus:not([readonly]) {
         top: 59px;
     }
 
-    /*#page-inner {*/
-    /*    margin: 0px;*/
-    /*    padding: 0px;*/
-    /*}*/
+    #page-inner {
+        margin: 0px;
+
+    }
     .navbar-header {
         background: #2a5776;
     }
