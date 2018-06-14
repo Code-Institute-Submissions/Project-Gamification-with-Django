@@ -1699,7 +1699,9 @@ input:not([type]):focus:not([readonly]) {
 
 @media (min-width:1200px) and (max-width:1960px) {
 
-    
+    #status-card h2 {
+        font-size: 24px;
+    }
     #project-card2 {
         height: 200px;
     }
