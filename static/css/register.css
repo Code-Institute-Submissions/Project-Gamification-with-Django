@@ -460,7 +460,9 @@ textarea.materialize-textarea:focus:not([readonly])+label {
 @media(max-width:1285px) {
 
 
-  .cont_login {}
+  .btn_login {
+    width: 180px;
+  }
 
 
 

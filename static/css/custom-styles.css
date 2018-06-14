@@ -1705,15 +1705,15 @@ input:not([type]):focus:not([readonly]) {
     #project-card2 {
         height: 200px;
     }
-    
+
     #project-card2 h3 {
         font-size: 14px;
-    } 
+    }
 
     #project-card2 p {
         font-size: 10px;
     }
-    
+
     #btn-card {
         margin-top: 40px;
     }
@@ -1759,6 +1759,10 @@ input:not([type]):focus:not([readonly]) {
 
 @media(max-width:1500px) {
 
+    #details-right .fa-2x {
+        display: none
+    }
+
     #my-details .fa-2x {
         display: none
     }
@@ -1774,6 +1778,34 @@ input:not([type]):focus:not([readonly]) {
 
     #card-charity h2 {
         font-size: 20px;
+    }
+
+    #name-card b {
+        font-size: 10px;
+    }
+    
+    #skill-descr {
+        font-size: 10px;
+    }
+    
+    #row-table h2 {
+        margin-top: 0px;
+    }
+    
+    #actions {
+        margin-top: 10px;
+    }
+    
+    #issue-title h3 {
+        font-size: 18px;
+    }
+    
+    #issue-details #lean-coin {
+        display: none;
+    }
+    
+    #issue-details h5 {
+        font-size: 11px;
     }
 
 }
@@ -1907,6 +1939,32 @@ input:not([type]):focus:not([readonly]) {
     #project-card2 p {
         font-size: 10px;
     }
+
+    #details-portrait {
+        margin-top: 0px;
+    }
+
+    #details-right h3 {
+        font-size: 18px;
+    }
+
+    #details-left {
+        padding-left: 2px;
+    }
+
+    #skill-descr {
+        display: none;
+    }
+
+    #skill-cell {
+        padding: 2px;
+    }
+
+    #skill-cell h2 {
+        font-size: 20px;
+    }
+
+
 }
 
 
@@ -1938,6 +1996,7 @@ input:not([type]):focus:not([readonly]) {
 
     #details-left h2 {
         margin-top: 0px;
+        margin-bottom: 0px;
     }
 
     .btn-success {
@@ -1948,6 +2007,7 @@ input:not([type]):focus:not([readonly]) {
     #col-payment {
         width: 240px;
     }
+
 
 }
 
