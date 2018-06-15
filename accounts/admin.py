@@ -6,6 +6,9 @@ admin.site.register(Personality)
 admin.site.register(Position)
 
 
+
+## Displaying MyProfile in Admin Panel
+
 class MyProfileModelAdmin(admin.ModelAdmin):
     list_display = ["owner","position", "personality"]
     class Meta:

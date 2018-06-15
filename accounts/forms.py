@@ -5,10 +5,15 @@ from django.core.exceptions import ValidationError
 from .models import *
 
 
+######################### Login User ###########################################
+
+
 class UserLoginForm(forms.Form):
     username_or_email = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
+
+######################### Create User ##########################################
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -22,7 +27,7 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         
-        
+## Unique email requirement        
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -30,6 +35,8 @@ class UserRegistrationForm(UserCreationForm):
         if User.objects.filter(email=email).exclude(username=username):
             raise forms.ValidationError(u'Email addresses must be unique.')
         return email
+        
+## Password match requirment
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
@@ -42,6 +49,9 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError("Passwords do not match")
 
         return password2
+
+
+######################### USER DETAILS ######################################### 
     
     
 class MyDetailsForm(forms.ModelForm):
@@ -50,6 +60,10 @@ class MyDetailsForm(forms.ModelForm):
         model = MyProfile
         fields = ['position','image']  ## deleted personality field
         
+        
+        
+        
+######################### GAMIFICATION PERSONALITY TEST ########################
         
         
 class PersonalityForm(forms.Form):

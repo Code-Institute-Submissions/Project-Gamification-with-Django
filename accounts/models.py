@@ -2,7 +2,10 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-# Create your models here.
+
+
+######################### USER DETAILS ######################################### 
+
 
 class MyProfile(models.Model):
     position = models.CharField(max_length=254, default='Coder', blank=True)
@@ -21,7 +24,9 @@ class MyProfile(models.Model):
     
     def __str__(self):
         return str(self.owner)
-        
+
+######################### COMPANY POSITIONS ####################################
+  
         
 class Position(models.Model):
     name = models.CharField(max_length=254, default='undefined')
@@ -32,6 +37,9 @@ class Position(models.Model):
     
     def __str__(self):
         return self.name
+    
+######################### GAMIFICATION PERSONALITY TYPES #######################
+    
     
 class Personality(models.Model):
     name = models.CharField(max_length=254, default='undefined')    
