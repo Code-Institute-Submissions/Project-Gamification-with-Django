@@ -1699,6 +1699,9 @@ input:not([type]):focus:not([readonly]) {
 
 @media (min-width:1200px) and (max-width:1960px) {
 
+    #details-right h3 {
+        font-size: 20px;
+    }
     #status-card h2 {
         font-size: 24px;
     }
@@ -1717,6 +1720,7 @@ input:not([type]):focus:not([readonly]) {
     #btn-card {
         margin-top: 40px;
     }
+
 }
 
 
@@ -1763,6 +1767,8 @@ input:not([type]):focus:not([readonly]) {
         display: none
     }
 
+
+
     #my-details .fa-2x {
         display: none
     }
@@ -1772,7 +1778,7 @@ input:not([type]):focus:not([readonly]) {
     }
 
     #btn-status {
-        width: 120px;
+        width: 100px;
         font-size: 10px;
     }
 
@@ -1783,30 +1789,32 @@ input:not([type]):focus:not([readonly]) {
     #name-card b {
         font-size: 10px;
     }
-    
+
     #skill-descr {
         font-size: 10px;
     }
-    
+
     #row-table h2 {
         margin-top: 0px;
     }
-    
+
     #actions {
         margin-top: 10px;
     }
-    
+
     #issue-title h3 {
         font-size: 18px;
     }
-    
+
     #issue-details #lean-coin {
         display: none;
     }
-    
+
     #issue-details h5 {
         font-size: 11px;
     }
+
+
 
 }
 
@@ -1964,6 +1972,10 @@ input:not([type]):focus:not([readonly]) {
         font-size: 20px;
     }
 
+    #btn-assign {
+        width: 40px;
+        font-size: 8px;
+    }
 
 }
 
@@ -2006,6 +2018,31 @@ input:not([type]):focus:not([readonly]) {
 
     #col-payment {
         width: 240px;
+    }
+
+    #btn-issue {
+        width: 120px;
+    }
+
+    #issue-details {
+        height: 90px;
+        padding: 0px;
+    }
+
+    #issue-title {
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    #issue-title h3 {
+        font-size: 10px;
+    }
+
+
+    #issue-details h4 {
+        font-size: 10px;
+        margin: 0px;
+        padding-top: 30px;
     }
 
 
