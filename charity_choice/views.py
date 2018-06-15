@@ -8,8 +8,10 @@ from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+######################### CHARITIES PAGE #######################################
 
+
+@login_required
 def charities(request):
     
     charities = Charity.objects.all()
@@ -21,6 +23,8 @@ def charities(request):
     return render(request, "charities.html", context)
 
     
+######################### ADMIN ADDS NEW CHARITY ###############################
+
 
 @login_required
 def propose_charity(request):
@@ -33,7 +37,7 @@ def propose_charity(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
-            donation = 5
+            donation = 5                                                        ## fixed 5eu donation amount
             image = form.cleaned_data['image']
            
             new_charity = Charity.objects.create(
@@ -52,13 +56,10 @@ def propose_charity(request):
         form = ProposeCharityForm()
         
     return render (request, 'propose_charity.html', {'form': form })    
-    
+ 
 
+######################### ADMIN'S DELETE CHARITY ###############################
 
-def view_donations(request):
-    """A view that renders the cart contents page"""
-    return render(request, "view_donations.html")
-    
 
 def delete_charity(request, pk):
 
@@ -66,19 +67,33 @@ def delete_charity(request, pk):
         charity = get_object_or_404(Charity, pk=pk)
         charity.delete()
             
-        return redirect(reverse('charities'))    
+        return redirect(reverse('charities'))   
+        
+    
+######################### VIEW CHOSEN DONATIONS ################################
 
+
+def view_donations(request):
+    """A view that renders the cart contents page"""
+    return render(request, "view_donations.html")
+
+
+######################### CHOSE YOUR DONATION ##################################
+   
     
 def add_to_donations(request, id):
     
-    quantity=1
+    quantity=1                                                                  ## fixed quantity allowed per one session    
     
     chosen_donations = request.session.get('chosen_donations', {})
     chosen_donations[id] = chosen_donations.get(id, quantity)
     
     request.session['chosen_donations'] = chosen_donations
     return redirect(reverse('charities'))
+  
     
+######################### CHOSE YOUR DONATION ##################################
+
 
 def adjust_donations(request, id):
     

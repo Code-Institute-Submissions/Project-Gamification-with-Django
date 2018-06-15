@@ -5,11 +5,13 @@ from datetime import datetime
 from django.db.models import Count, DateField
 from django.db.models import Min, Max
 
-# Register your models here.
+
+
 
 
 admin.site.register(ProjectState)
 
+## Displaying Projects in Admin Panel
 
 
 class ProjectModelAdmin(admin.ModelAdmin):
@@ -18,6 +20,9 @@ class ProjectModelAdmin(admin.ModelAdmin):
         model = Project
     
 admin.site.register(Project, ProjectModelAdmin)
+
+
+## Displaying Issues in Admin Panel
 
 
 class IssueModelAdmin(admin.ModelAdmin):
@@ -32,12 +37,18 @@ class IssueModelAdmin(admin.ModelAdmin):
 admin.site.register(Issue, IssueModelAdmin)
 
 
+## Displaying Skillset List in Admin Panel
+
+
 class RequiredSkillsModelAdmin(admin.ModelAdmin):
     list_display = ["project","html","css","js","db","python"]
     class Meta:
         model = RequiredSkills
 
 admin.site.register(RequiredSkills, RequiredSkillsModelAdmin)
+
+
+## Displaying Team Membership in Admin Panel
 
 
 class TeamMemberModelAdmin(admin.ModelAdmin):
@@ -53,6 +64,8 @@ class TeamMemberModelAdmin(admin.ModelAdmin):
 admin.site.register(TeamMember, TeamMemberModelAdmin)
 
 
+## Displaying Team Membership in Admin Panel
+
 
 class CommitSkillModelAdmin(admin.ModelAdmin):
     list_display = ["project","user","skill"]
@@ -63,10 +76,11 @@ class CommitSkillModelAdmin(admin.ModelAdmin):
     
     class Meta:
         model = CommitSkill
-        
- 
 
 admin.site.register(CommitSkill, CommitSkillModelAdmin)
+
+
+## Displaying Project Messages in Admin Panel
 
 class ProjectMessageModelAdmin(admin.ModelAdmin):
     list_display = ["project","message_date", "message"]
@@ -79,6 +93,9 @@ class ProjectMessageModelAdmin(admin.ModelAdmin):
     
 admin.site.register(ProjectMessage, ProjectMessageModelAdmin)    
 
+
+
+## Displaying Gamification Advices in Admin Panel
 
 class GamificationAdviceModelAdmin(admin.ModelAdmin):
     list_display = ["name","advice"]

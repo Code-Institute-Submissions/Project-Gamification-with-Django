@@ -150,7 +150,8 @@ def profile(request, pk):
 
 ######################### USERS FIXES BUG ######################################
            
-
+           
+@login_required
 def issue_fixed(request, pk):
     
     issue = get_object_or_404(Issue, id=pk)
@@ -166,7 +167,8 @@ def issue_fixed(request, pk):
     
 ######################### GAMIFICATION PERSONALITY TEST ########################
 
-    
+
+@login_required    
 def gamification_test(request, pk):
     
     my_profile = get_object_or_404(MyProfile, owner=request.user)

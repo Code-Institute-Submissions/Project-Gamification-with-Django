@@ -4,7 +4,7 @@ from projects.models import Project
 from accounts.models import MyProfile
 import collections
 
-# Create your views here.
+######################### PROJECT SEARCH BUTTON ################################
 
 def find_project(request):
     projects = Project.objects.filter(name__icontains=request.GET['query'])

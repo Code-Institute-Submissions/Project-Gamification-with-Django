@@ -11,6 +11,10 @@ from django.utils import timezone
 import collections
 
 
+
+######################### MAIN DASHBOARD PAGE ##################################
+
+
 @login_required
 def all_projects(request):
     projects = Project.objects.all()
@@ -31,6 +35,10 @@ def all_projects(request):
     
    
     return render(request, "projects.html", context)
+    
+    
+######################### PROJECT DETAILS PAGE #################################    
+
 
 @login_required
 def project_details(request, pk):
@@ -43,6 +51,9 @@ def project_details(request, pk):
     project_log = ProjectMessage.objects.filter(project = project).order_by('-message_date')
     my_profile = get_object_or_404(MyProfile, owner=request.user)
     
+    
+## TEAM COMPOSITION 
+
     achievers = 0
     explorers = 0
     socializers = 0
@@ -113,6 +124,7 @@ def project_details(request, pk):
     else:
         team_type = "Equilibrium"
         
+#####
 
     context = {'project': project, 
                 'issues': issues, 
@@ -139,10 +151,11 @@ def project_details(request, pk):
     if request.method == 'GET':
         return render(request, 'project_details.html', context )
         
+        
     elif request.method == 'POST':
         requiredskills = get_object_or_404(RequiredSkills, project=project)
         
-        form = RaiseIssueForm(request.POST)
+        form = RaiseIssueForm(request.POST)                                     ## raise an issue modal
        
         if form.is_valid():
            name = form.cleaned_data['name']
@@ -164,7 +177,7 @@ def project_details(request, pk):
                                          ).save
                
                
-           project.budget = project.budget - new_issue.cost
+           project.budget = project.budget - new_issue.cost                     ## deduct issue cost from project budget    
            if project.budget < 0:
                project.status = "hold"
                ProjectMessage.objects.create(
@@ -179,15 +192,21 @@ def project_details(request, pk):
                
                
                
-        requiredskillsform = RequiredSkillsForm(request.POST, instance = requiredskills)
+        requiredskillsform = RequiredSkillsForm(request.POST,                   
+                                                instance = requiredskills)      ## define team skillset needed for project
         
-        if requiredskillsform.is_valid():
+        if requiredskillsform.is_valid():                                       
             requiredskills = requiredskillsform.save()
             
         return redirect(reverse('project_details', kwargs={'pk': pk }))    
         
 
-    return render(request, 'project_details.html', context, { 'form': form, 'requiredskillsform': requiredskillsform } )   
+    return render(request, 'project_details.html', 
+                  context, { 'form': form, 
+                             'requiredskillsform': requiredskillsform } )   
+
+
+######################### ADD PROJECT PAGE #####################################   
 
 
 @login_required
@@ -196,7 +215,7 @@ def propose_project(request):
     my_profile = get_object_or_404(MyProfile, owner=request.user)
     current_time = timezone.now()
     
-    if my_profile.my_wallet < 450:
+    if my_profile.my_wallet < 450:                                              ## does not allow to start project without budget needed
         
         return redirect(reverse('projects')) 
         
@@ -223,7 +242,7 @@ def propose_project(request):
                new_project.save()
                
                
-               my_profile.my_wallet = my_profile.my_wallet - 450
+               my_profile.my_wallet = my_profile.my_wallet - 450                ## calculate remaining leancoins
                my_profile.save()
                
                RequiredSkills.objects.create(
@@ -245,6 +264,10 @@ def propose_project(request):
     return render (request, 'propose_project.html', {'form': form })    
     
     
+######################### REMOVE PROJECT #######################################
+
+
+@login_required    
 def delete_project(request, pk):
     project = get_object_or_404(Project, pk=pk)
     project.delete()
@@ -252,6 +275,10 @@ def delete_project(request, pk):
     return redirect(reverse('projects'))
     
     
+######################### APPLY FOR PROJECT TEAM ###############################  
+    
+    
+@login_required    
 def join_team(request, pk):
     project = Project.objects.get(pk=pk)
     TeamMember.join_team(request.user, project)
@@ -273,7 +300,12 @@ def join_team(request, pk):
        
     
     return render (request, 'join_team.html', {'form': form, 'requiredskills' : requiredskills })
-    
+
+
+######################### LEAVE PROJECT TEAM ###################################
+
+
+@login_required    
 def leave_team(request, pk):
     project = Project.objects.get(pk=pk)
     commitskill = CommitSkill.objects.filter(project=project, user=request.user).delete()
@@ -281,12 +313,15 @@ def leave_team(request, pk):
     
     return redirect(reverse('project_details', kwargs={'pk': pk }))
     
-  
+    
+######################### REJECT CANDIDATE #####################################
 
+  
+@login_required
 def reject_candidate(request, pk):
     
     if request.method == 'DELETE':
-        commitskill = get_object_or_404(CommitSkill, pk=pk)  ## ZMIENIC
+        commitskill = get_object_or_404(CommitSkill, pk=pk) 
         user = commitskill.user
         project = commitskill.project
         commitskill.delete()   
@@ -295,6 +330,10 @@ def reject_candidate(request, pk):
     return redirect(reverse('project_details', kwargs={'pk': pk }))    
     
 
+######################### ADVANCE PROJECT ######################################
+
+
+@login_required
 def advance_project(request, pk):
     
     project = Project.objects.get(pk=pk)
@@ -324,9 +363,11 @@ def advance_project(request, pk):
         
     return render (request, 'advance_project.html', context )    
     
-    
+ 
+######################### FINISH PROJECT #######################################    
   
-
+  
+@login_required
 def complete_project(request, pk):
     
     project = Project.objects.get(pk=pk)
@@ -369,6 +410,8 @@ def complete_project(request, pk):
     
     return render (request, 'complete_project.html', context)
     
+    
+######################### ASSIGN PROJECT ISSUE TO YOURSELF #####################
 
 
 def assign_issue(request, pk, ik):

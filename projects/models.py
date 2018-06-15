@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
+######################### PROJECT DETAILS ######################################
+
 
 class Project(models.Model):
     name = models.CharField(max_length=254, default='')
@@ -19,7 +21,9 @@ class Project(models.Model):
     def __str__(self):
         return self.name
         
-   
+        
+######################### PROJECT STATE ########################################  
+        
         
 class ProjectState(models.Model):
     name = models.CharField(max_length=254, default='proposed')
@@ -32,7 +36,8 @@ class ProjectState(models.Model):
         return self.name    
         
         
-
+######################### ISSUE DETAILS ########################################  
+        
         
 class Issue(models.Model):
     name = models.CharField(max_length=254, default='')
@@ -50,7 +55,8 @@ class Issue(models.Model):
         return "{0}-{1}".format(self.project.name, self.name)       
         
 
-
+######################### REQUIRED SKILLSET FOR PROJECT ########################
+        
         
 class RequiredSkills(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -67,11 +73,12 @@ class RequiredSkills(models.Model):
         
     def __str__(self):
         return str(self.project)    
-        
+
+######################### TEAM MEMBERSHIP ######################################        
       
         
 class TeamMember(models.Model):
-    projects = models.ManyToManyField(Project)
+    projects = models.ManyToManyField(Project)                                  ## many-to-many relationship
     current_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     class Meta:
@@ -79,7 +86,7 @@ class TeamMember(models.Model):
         verbose_name_plural = "Team Members" 
     
     @classmethod
-    def join_team(cls, current_user, new_project):
+    def join_team(cls, current_user, new_project):                              ## join team
         teammember, created = cls.objects.get_or_create(
             current_user=current_user
         )
@@ -87,7 +94,7 @@ class TeamMember(models.Model):
         
         
     @classmethod
-    def leave_team(cls, current_user, new_project):
+    def leave_team(cls, current_user, new_project):                             ## leave team
         teammember, created = cls.objects.get_or_create(
             current_user=current_user
         )
@@ -97,7 +104,8 @@ class TeamMember(models.Model):
         return str(self.current_user)       
         
         
-        
+######################### APPLY FOR PROJECT TEAM ###############################     
+
 
 class CommitSkill(models.Model):  
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -112,7 +120,9 @@ class CommitSkill(models.Model):
     def __str__(self):
         return "{0}-{1}".format(self.project.name, self.user.username)   
         
-
+        
+######################### PROJECT LOG MESSAGES #################################
+        
         
 class ProjectMessage(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -121,6 +131,9 @@ class ProjectMessage(models.Model):
     
     def __str__(self):
         return str(self.project)
+    
+    
+######################### GAMIFICATION ADVICE ##################################    
     
     
 class GamificationAdvice(models.Model):

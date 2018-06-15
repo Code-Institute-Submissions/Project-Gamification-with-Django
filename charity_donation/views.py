@@ -8,9 +8,13 @@ from charity_choice.models import Charity
 from django.conf import settings
 import stripe
 
-# Create your views here.
 
-stripe.api_key = settings.STRIPE_SECRET
+
+stripe.api_key = settings.STRIPE_SECRET                                         ## hidden
+
+
+######################### FINALIZING YOUR DONATION #############################
+
 
 @login_required()
 def charity_donation(request):
@@ -22,7 +26,7 @@ def charity_donation(request):
             donation = donation_form.save(commit=False)
             donation.save()
             
-            chosen_donations = request.session.get('chosen_donations', {})
+            chosen_donations = request.session.get('chosen_donations', {})      ## request context from charity_choice app    
             total = 0
             for id, quantity in chosen_donations.items():
                 charity = get_object_or_404(Charity, pk=id)
@@ -35,7 +39,7 @@ def charity_donation(request):
                 
             try:
                 customer = stripe.Charge.create(
-                    amount = int(total * 100),
+                    amount = int(total * 100),                                  ## counts in cents
                     currency = "EUR",
                     description = request.user.email,
                     card = make_donation_form.cleaned_data['stripe_id'],
@@ -56,4 +60,6 @@ def charity_donation(request):
         donation_form = DonationForm()
         make_donation_form = MakeDonationForm()
             
-    return render(request, "charity_donation.html", {'donation_form': donation_form, 'make_donation_form': make_donation_form, 'publishable': settings.STRIPE_PUBLISHABLE })    
+    return render(request, "charity_donation.html", {'donation_form': donation_form, 
+                                                     'make_donation_form': make_donation_form, 
+                                                     'publishable': settings.STRIPE_PUBLISHABLE })    

@@ -1,7 +1,9 @@
 from django.db import models
 from charity_choice.models import Charity
 
-# Create your models here.
+
+
+######################### DONOR REGISTRY MODEL #################################
 
 class Donation(models.Model):
     donor = models.CharField(max_length=50, blank=False, default="Donor")
@@ -13,6 +15,9 @@ class Donation(models.Model):
     class Meta:
         verbose_name = "User Donation"
         verbose_name_plural = "User Donations"     
+
+
+######################### DONATION MODEL #######################################
 
 
 class DonationLineItem(models.Model):

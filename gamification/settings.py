@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')                                       
 DEBUG = True
 
 ## C9 HOST
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'projectgamification.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'projectgamification.herokuapp.com']        ## add heroku for hosting
 
 
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'charity_choice',
     'charity_donation',
-    'storages',
+    'storages',                                                                 ## for S3 image hosting
     'django_forms_bootstrap',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.humanize'
+    'django.contrib.humanize'                                                   ## allow stats
 ]
 
 MIDDLEWARE = [
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'gamification.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],                          
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,14 +89,10 @@ WSGI_APPLICATION = 'gamification.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
-if "DATABASE_URL" in os.environ:
+## HEROKU DB as priority for hosting, else - sqlite3 local DB
+
+if "DATABASE_URL" in os.environ:        
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
     print("Database URL not found. USing SQLite instead")
@@ -146,6 +142,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+###### AWS S3 CONFIG ###########################################################
+
 AWS_S3_OBJECT_PARAMETERS = {
     'Expires': 'Fri, 31 Dec 2055 20:00:00 GMT',
     'CacheControl': 'max-age=94608000',
@@ -154,15 +152,15 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 AWS_STORAGE_BUCKET_NAME = 'project-gamification'
 AWS_S3_REGION_NAME = 'eu-west-1'
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")                         ## hidden
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")                 ## hidden
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME          
 
 
-STATICFILES_LOCATION = 'static'
+
+STATICFILES_LOCATION = 'static'                                                 
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-
 
 
 STATIC_URL = '/static/'
