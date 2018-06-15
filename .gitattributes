@@ -1,2 +1,6 @@
 static/* linguist-vendored
-templates/* linguist-vendored
+accounts/templates/* linguist-vendored
+projects/templates/* linguist-vendored
+charity_choice/templates/* linguist-vendored
+charity_donation/templates/* linguist-vendored
+htmlcov/* linguist-vendored
