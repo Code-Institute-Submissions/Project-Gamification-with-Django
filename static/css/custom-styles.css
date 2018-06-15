@@ -234,7 +234,9 @@ label {
     color: #adadad;
 }
 
-
+.modal {
+    overflow: auto;
+}
 
 /*----------------------------------------------
    DASHBOARD STYLES    
@@ -1816,6 +1818,7 @@ input:not([type]):focus:not([readonly]) {
 
 
 
+
 }
 
 @media(max-width:859px) {
@@ -2044,6 +2047,9 @@ input:not([type]):focus:not([readonly]) {
         margin: 0px;
         padding-top: 30px;
     }
+
+
+
 
 
 }
