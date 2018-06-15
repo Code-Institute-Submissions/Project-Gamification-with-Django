@@ -28,7 +28,8 @@ def charities(request):
 
 @login_required
 def propose_charity(request):
-    
+    if not request.user.is_superuser:
+        raise Http404
 
     if request.method == 'POST':
 
@@ -62,6 +63,8 @@ def propose_charity(request):
 
 
 def delete_charity(request, pk):
+    if not request.user.is_superuser:
+        raise Http404
 
     if request.method == 'DELETE':
         charity = get_object_or_404(Charity, pk=pk)

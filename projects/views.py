@@ -269,6 +269,9 @@ def propose_project(request):
 
 @login_required    
 def delete_project(request, pk):
+    
+    if not request.user.is_superuser:
+        raise Http404
     project = get_object_or_404(Project, pk=pk)
     project.delete()
         
@@ -336,6 +339,9 @@ def reject_candidate(request, pk):
 @login_required
 def advance_project(request, pk):
     
+    if not request.user.is_superuser:
+        raise Http404
+    
     project = Project.objects.get(pk=pk)
     project_states = ProjectState.objects.all()
     
@@ -369,6 +375,9 @@ def advance_project(request, pk):
   
 @login_required
 def complete_project(request, pk):
+    
+    if not request.user.is_superuser:
+        raise Http404
     
     project = Project.objects.get(pk=pk)
     project_team = TeamMember.objects.filter(projects = project)
