@@ -24,7 +24,7 @@
           {% endfor %}
         </select>
           </div>
-          {{ my_profile.owner }}
+          {{ my_profile.owner|truncatechars:16 }}
           <div class=row></div>
           <button type="submit" class="btn btn-success">Submit</button>
         </form>

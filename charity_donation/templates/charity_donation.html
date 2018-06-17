@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-stacked">
                             <div id="card-charity">
-                                <h2 class="header">{{ item.charity.name }}</h2>
+                                <h2 class="header">{{ item.charity.name|truncatechars:16 }}</h2>
                                 <br>
                                 <p>{{ item.charity.description|truncatechars:60 }}</p>
                             </div>

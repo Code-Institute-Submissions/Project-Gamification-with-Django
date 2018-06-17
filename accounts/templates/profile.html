@@ -21,7 +21,7 @@
             <div class="col-md-8 col-lg-8 text-left">
                 <div class="row">
                     <div class="col-md-8 col-lg-8" id="personal-details">
-                        <h1>{{ user.username }}</h1>
+                        <h1>{{ user.username|truncatechars:16 }}</h1>
                         {% if my_profile.position == 'PM' %}
                         <h4 style="font-style:italic;color:#234a66;margin-top:10px;">Project Manager</h4>
                         {% elif my_profile.position == 'admin' %}
@@ -41,7 +41,7 @@
                     <div class="col-md-1 col-lg-1">
                     </div>
                     <div class="col-sm-10 col-md-5 col-lg-5" id="my-details">
-                        <h4>{{ user.email }}</h4>
+                        <h4>{{ user.email|truncatechars:12 }}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -103,7 +103,7 @@
                     </div>
                     <div class="col-sm-10 col-md-5 col-lg-5" id="my-details">
                         {% for element in joined_projects %}
-                        <h4 id="project-team">{{ element.name }}</h4>
+                        <h4 id="project-team">{{ element.name|truncatechars:16 }}</h4>
                         {% endfor %}
                     </div>
                 </div>
@@ -122,7 +122,7 @@
             <div class="row" id="row-table">
                 <div class="col-sm-12 col-md-4 col-lg-3 text-center" id="mydetails-table">
                     <a href="{% url 'project_details' pk=project.id %}">
-                        <h4 style="color:#234a66; padding-top:0px;">{{ project.name }}</h4>
+                        <h4 style="color:#234a66; padding-top:0px;">{{ project.name|truncatechars:16 }}</h4>
                     </a>
 
                 </div>
@@ -158,7 +158,7 @@
             <div class="row" id="row-table">
                 <div class="col-sm-12 col-md-4 col-lg-3 text-center" id="mydetails-table">
                     <a href="{% url 'project_details' pk=project.id %}">
-                        <h4 style="color:#234a66; padding-top:0px;">{{ project.name }}</h4>
+                        <h4 style="color:#234a66; padding-top:0px;">{{ project.name|truncatechars:16 }}</h4>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-8 col-lg-5 text-left" id="mydetails-table">
@@ -199,7 +199,7 @@
                     <h4 style="color:red; padding-top:0px;">{{issue.name|truncatechars:20}}</h4>
                 </div>
                 <div class="col-md-12 col-lg-2 text-center" id="mydetails-table">
-                    <h4 style="color:#234a66; padding-top:0px;">{{issue.project}}</h4>
+                    <h4 style="color:#234a66; padding-top:0px;">{{issue.project|truncatechars:16 }}</h4>
                 </div>
                 <div class="col-md-12 col-lg-4 text-left" id="mydetails-table">
                     <h5>{{ issue.description|truncatechars:80 }}</h5>
