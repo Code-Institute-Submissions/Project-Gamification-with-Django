@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-# import env                                                                      ## comment out for testing purposes & for heroku deployment
+import env                                                                      ## comment out for testing purposes & for heroku deployment
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')                                       ## comment out for testing purposes
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True                                                                    ## swap for use
 
 ## C9 HOST
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'projectgamification.herokuapp.com']        ## add heroku for hosting

@@ -185,9 +185,9 @@ https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types
 1. List of chosen donations
 2. Stripe Payment form
 
-#### Various Forms:
+#### Forms Examples:
 
-![10](https://user-images.githubusercontent.com/26208598/41512259-86052e44-727d-11e8-9789-0c709e1a35ee.JPG)
+![forms](https://user-images.githubusercontent.com/26208598/41513028-090d1068-728d-11e8-848c-86040025688e.JPG)
 
 #### Admin View:
 
