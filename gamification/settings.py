@@ -24,11 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 ## Swap secret keys for testing purposes
-SECRET_KEY = "SecretKeyForUseOnTravis"                                        ## activate for heroku deployment & travis ci
-# SECRET_KEY = os.environ.get('SECRET_KEY')                                       ## comment out for testing purposes & for heroku deployment
+# SECRET_KEY = "SecretKeyForUseOnTravis"                                        ## activate for heroku deployment & travis ci
+SECRET_KEY = os.environ.get('SECRET_KEY')                                       ## comment out for testing purposes & for heroku deployment
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ## C9 HOST
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'projectgamification.herokuapp.com']        ## add heroku for hosting
