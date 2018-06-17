@@ -399,7 +399,7 @@ def complete_project(request, pk):
     
     if request.method == 'POST':
         
-        project_manager.my_wallet = project_manager.my_wallet + 450
+        project_manager.my_wallet = project_manager.my_wallet + 540
         project_manager.save()
         
         for element in project_team:
