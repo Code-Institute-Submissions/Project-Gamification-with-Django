@@ -1,7 +1,7 @@
 # PROJECT GAMIFICATION DASHBOARD
 
 #### LINK:
-https://github.com/
+https://projectgamification.herokuapp.com/
 
 #### TLDR:
 Project management Dashboard made with Django. Register new profile or use one of existing ones (password for all of them: adminadmin). Explore & Enjoy!
