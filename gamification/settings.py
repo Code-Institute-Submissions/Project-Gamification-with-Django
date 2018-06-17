@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-# import env                                                                      ## comment out for testing purposes & for heroku deployment
+import env                                                                      ## comment out for testing purposes & for heroku deployment
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 ## Swap secret keys for testing purposes
-# SECRET_KEY = "SecretKeyForUseOnTravis"                                        ## activate for heroku deployment & travis ci
-SECRET_KEY = os.environ.get('SECRET_KEY')                                       ## comment out for testing purposes & for heroku deployment
+# SECRET_KEY = "SecretKeyForUseOnTravis"                                        ## activate for travis ci
+SECRET_KEY = os.environ.get('SECRET_KEY')                                       ## comment out for testing purposes
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -159,8 +159,8 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 
 
-STATICFILES_LOCATION = 'static'                                                 ## comment out for heroku deployment
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'                           ## comment out for heroku deployment
+STATICFILES_LOCATION = 'static'                                                 ## comment out for testing
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'                           ## comment out for testing
 
 
 STATIC_URL = '/static/'
@@ -168,12 +168,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     )
 
-MEDIAFILES_LOCATION = 'media'                                                   ## comment out for heroku deployment
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'                           ## comment out for heroku deployment
+MEDIAFILES_LOCATION = 'media'                                                   ## comment out for testing
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'                           ## comment out for testing
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)      ## comment out for heroku deployment
-# MEDIA_URL = '/media/'                                                         ## activate for heroku deployment  
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)      ## comment out for testing
+# MEDIA_URL = '/media/'                                                         ## activate for testing
 
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
