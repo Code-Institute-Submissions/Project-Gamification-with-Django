@@ -6,7 +6,7 @@ from .models import *
 from accounts.models import MyProfile
 from .forms import ProposeProjectForm, RaiseIssueForm, RequiredSkillsForm, CommitSkillForm, ChangeStateForm
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404  
 from django.utils import timezone
 import collections
 

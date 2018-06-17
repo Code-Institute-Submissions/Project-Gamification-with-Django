@@ -6,7 +6,7 @@ from .models import Charity
 from accounts.models import MyProfile
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-
+from django.http import Http404  
 
 ######################### CHARITIES PAGE #######################################
 
