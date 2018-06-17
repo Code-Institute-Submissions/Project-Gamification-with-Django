@@ -918,8 +918,8 @@ div#sideNav:hover {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #234a66;
-    background-color: #969696;
-    color: #969696;
+    background-color: #778899;
+    color: #778899;
 }
 
 #form-card h2,
@@ -937,8 +937,8 @@ div#sideNav:hover {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    color: white;
-    background-color: grey;
+    color: #3b6e99;
+    background-color: white;
 }
 
 .form-control {
@@ -982,8 +982,8 @@ div#sideNav:hover {
 
 #name {
     text-align: center;
-    color: white;
-    background-color: grey;
+    color: #3b6e99;
+    background-color: white;
 }
 
 #field {
