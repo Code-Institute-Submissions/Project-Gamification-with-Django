@@ -18,15 +18,15 @@ class TestViews(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "charities.html")
         
-    def test_get_propose_charity_page(self):
-        self.user = User.objects.create_user(username='testuser', password='12345')
-        myprofile = MyProfile.objects.create(owner = self.user, position="test")
-        login = self.client.login(username='testuser', password='12345')
-        charity = Charity.objects.create(name='Test', description="Test")
-        charity = get_object_or_404(Charity, pk=1)
-        page = self.client.get("/charity_choice/propose_charity/")
-        self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "propose_charity.html")
+    # def test_get_propose_charity_page(self):
+    #     self.user = User.objects.create_user(username='testuser', password='12345')
+    #     myprofile = MyProfile.objects.create(owner = self.user, position="test")
+    #     login = self.client.login(username='testuser', password='12345')
+    #     charity = Charity.objects.create(name='Test', description="Test")
+    #     charity = get_object_or_404(Charity, pk=1)
+    #     page = self.client.get("/charity_choice/propose_charity/")
+    #     self.assertEqual(page.status_code, 200)
+    #     self.assertTemplateUsed(page, "propose_charity.html")
 
     # def test_post_charity_details(self):
     #     self.user = User.objects.create_user(username='username', password='password')
