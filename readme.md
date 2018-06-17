@@ -200,6 +200,8 @@ https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types
 
 (swap settings and disable env in settings.py in order to pass integration test)<br>
 [![Build Status](https://travis-ci.org/LukaszMalucha/Project-Gamification-with-Django.svg?branch=master)](https://travis-ci.org/LukaszMalucha/Project-Gamification-with-Django)
+<br>
+![travis](https://user-images.githubusercontent.com/26208598/41512542-c7a7a832-7281-11e8-93dc-bee6360a536f.JPG)
 
 ### Test Files:
 
