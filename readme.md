@@ -121,6 +121,11 @@ This Project is a simulation of work environment, where more traditional agile t
 1. Project Status button(ADMIN ONLY) - allows Program Manager(admin) to launch/advance/complete project (depends on project status)
 
 
+#### Project Details(On Hold) - Admin Perspective:
+
+![holdd](https://user-images.githubusercontent.com/26208598/41524599-f58091e8-72d5-11e8-8ce8-1f9e2b54f654.JPG)
+
+1. Cancel Project button(ADMIN ONLY) - allows Program Manager(admin) to kill project if decision was made
 
 #### Team Analysis Modal: 
 
@@ -142,6 +147,8 @@ This Project is a simulation of work environment, where more traditional agile t
 3. Take Test - which player type are you?
 4. Gamification Test - based on Bartle player taxonomy:
 https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types
+
+*For Presentation purposes Edit Button allows to swap positions anytime and it won't dissapear after first submit*
 
 #### User Profile - PM Perspective:
 
