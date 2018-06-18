@@ -4,7 +4,12 @@
 https://projectgamification.herokuapp.com/
 
 #### TLDR:
-Project management Dashboard made with Django. Register new profile or use one of existing ones (password for all of them: adminadmin). Explore & Enjoy!
+Project management Dashboard made with Django. Register new profile(more fun) or use one of existing ones:<br>
+Coders username: Callum, Cady, Cahir, Caleb, Camille, Carl, <br>
+PMs username: Pascal, Patrice, Paul, Peggy, Peter, Polly <br>
+(password for all of them: adminadmin) 
+
+Explore & Enjoy!
 
 
 ## PROJECT CASE
