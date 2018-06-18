@@ -5,7 +5,7 @@ from .forms import *
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from .models import *
-from projects.models import Project, Issue, TeamMember
+from projects.models import Project, Issue, TeamMember, ProjectMessage
 from projects.views import all_projects
 
 
@@ -155,11 +155,17 @@ def profile(request, pk):
 def issue_fixed(request, pk):
     
     issue = get_object_or_404(Issue, id=pk)
+    # project = get_object_or_404(Project, name = issue.project)
     my_profile = get_object_or_404(MyProfile, owner=request.user)
     
     my_profile.my_wallet = my_profile.my_wallet + issue.cost                    ## reward
     my_profile.save()
     issue.delete()
+    
+    ProjectMessage.objects.create(
+                   project = issue.project,
+                   message = 'Issue "{0}" fixed by user {1}'.format(issue.name, issue.assigned_to)
+                   ).save()
     
   
     return redirect(reverse('profile', kwargs={'pk': pk }))

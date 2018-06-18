@@ -75,7 +75,7 @@
             <li>
                 <a href="{% url 'projects' %}"><i class="fas fa-3x fa-object-group"></i></a>
             </li>
-            {% if my_profile.position == 'PM' %}
+            {% if my_profile.position == 'PM' and my_profile.my_wallet > 450 %}
             <li>
                 <a href="{% url 'propose_project' %}" class="waves-effect waves-dark"><i class="fas fa-3x fa-project-diagram"></i></a>
             </li>

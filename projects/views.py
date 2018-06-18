@@ -120,7 +120,7 @@ def project_details(request, pk):
     elif  max(project_ratios) == innovation_ratio and innovation_ratio != 0:  
         team_type = "Research Lab"
     elif max(project_ratios) == teamwork_ratio and teamwork_ratio != 0:  
-        team_type = "Think tank"
+        team_type = "Think Tank"
     else:
         team_type = "Equilibrium"
         

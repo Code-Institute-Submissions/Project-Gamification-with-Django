@@ -147,7 +147,7 @@ This Project is a simulation of work environment, where more traditional agile t
 3. Take Test - which player type are you?
 4. Gamification Test - based on Bartle player taxonomy:
 https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types
-
+<br>
 *For Presentation purposes Edit Button allows to swap positions anytime and it won't dissapear after first submit*
 
 #### User Profile - PM Perspective:

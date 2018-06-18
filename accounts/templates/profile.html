@@ -41,7 +41,7 @@
                     <div class="col-md-1 col-lg-1">
                     </div>
                     <div class="col-sm-10 col-md-5 col-lg-5" id="my-details">
-                        <h4>{{ user.email|truncatechars:12 }}</h4>
+                        <h4>{{ user.email|truncatechars:24 }}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -145,7 +145,6 @@
             </div>
             {% endfor%} {% if my_profile.my_wallet > 450 %}
             <div class="row text-right" id="issue-btn-row">
-                <!--<a href="{% url 'propose_project' %}"><button type="submit" class="btn_login" id="btn-issue">New Project</button></a>-->
                 <button onclick="window.location='{% url 'propose_project' %}'" type="submit" class="btn_login" id="btn-issue">New Project</button>
             </div>
             {% endif %} {% elif my_profile.position == 'Coder' %}
@@ -268,11 +267,12 @@
                             <select id="type_of_algorithm" name="position">
                               <option value="{{ my_profile.position }}" disabled selected>{{ my_profile.position }}</option>
                               {% for type in positions %}
+                              {% if type.name != 'admin' %}
                                   <option value={{type.name}}>{{type.name}}</option>
+                              {% endif %}      
                               {% endfor %}
                             </select>
                         </div>
-                        
                         <div class="row"></div>
                         <div class="row text-left">
                             <h2>My Portrait:</h2>

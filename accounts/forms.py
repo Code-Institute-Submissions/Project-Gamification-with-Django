@@ -58,7 +58,7 @@ class MyDetailsForm(forms.ModelForm):
     
     class Meta:
         model = MyProfile
-        fields = ['position','image']  ## deleted personality field
+        fields = ['position','image'] 
         
         
         
